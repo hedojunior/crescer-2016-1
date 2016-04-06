@@ -8,6 +8,10 @@ public class Dwarf {
          this.nome = nome;
     }
     
+    public int getVida() {
+        return vida;
+    }
+    
     public void danoRecebido() {
          this.vida -= 10;
     }
@@ -19,3 +23,15 @@ public class Dwarf {
         return nome;
     }
 }
+
+
+    
+
+// Diferenças
+
+// Declarar um objeto:
+// Dwarf gimli = null;
+
+// Criação (instanciação):
+// new Dwarf();
+// Dwarf d1 = new Dwarf();
