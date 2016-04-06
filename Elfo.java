@@ -18,10 +18,9 @@ public class Elfo {
 		flechas--;
 	}
 
-	public void atirarFlechaDwarf( Dwarf nome) {
+	public void atirarFlechaDwarf(Dwarf name) {
 		flechas--;
-		int vida = nome.getVida() - 10;
-		nome.setVida(vida);
+		name.danoRecebido();
 
 	}
 
