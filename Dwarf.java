@@ -1,9 +1,11 @@
 public class Dwarf {
     
-    public int vida;
+    private int vida;
+    private String nome;
 
-     public Dwarf(){
+     public Dwarf(String nome){
          this.vida = 110;
+         this.nome = nome;
      }
     
      public void danoRecebido() {
