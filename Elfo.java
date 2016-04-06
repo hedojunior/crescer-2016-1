@@ -18,9 +18,9 @@ public class Elfo {
 		flechas--;
 	}
 
-	public void atirarFlechaDwarf(Dwarf name) {
+	public void atirarFlechaDwarf(Dwarf dwarf) {
 		flechas--;
-		name.danoRecebido();
+		dwarf.danoRecebido();
 
 	}
 
