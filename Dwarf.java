@@ -10,5 +10,5 @@ public class Dwarf {
      public void danoRecebido() {
         this.vida = vida;
         vida = vida - 10;
-  }
+  };
 }
