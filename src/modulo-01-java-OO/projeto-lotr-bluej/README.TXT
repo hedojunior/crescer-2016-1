@@ -1,25 +1,12 @@
-// ANTES
-public atirarFlechaRefactory(this.flechas, this.experiencia){
-    if(boolean acertar == true){
-        flechas--;
-        experiencia++;
-    }else{
-        flechas--;
-    }
-}
+----------------------------------------------------------------------------
+Este é o arquivo README do projeto. Você deve descrever aqui o seu projeto.
+Informe ao usuário (alguém que não sabe nada sobre este projeto!) tudo que
+ele/ela precisa saber. Os comentários devem incluir, pelo menos:
+------------------------------------------------------------------------
 
-// DEPOIS
-// OBS: acertar no escopo abaixo é inútil.
-public void atirarFlechaRefactory() {
-    experiencia++;
-    flechas--;
-}
-
-
-
-
-
-
-
-
-
+TITULO DO PROJETO:
+OBJETIVO DO PROJETO:
+VERSÃO ou DATA:
+COMO INICIAR O PROJETO:
+AUTORES:
+INSTRUÇÕES PARA O USUÁRIO:
