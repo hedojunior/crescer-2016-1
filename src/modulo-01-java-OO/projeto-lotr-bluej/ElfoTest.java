@@ -57,21 +57,20 @@ public class ElfoTest
    
    @Test
    public void atirarFlechaEmTresDwarfs(){
+      //Arrange
       Elfo elfo = new Elfo("Elfo");
       Dwarf dwarf = new Dwarf("Dwarf");
       Dwarf dwarf2 = new Dwarf("Dwarf2");
       Dwarf dwarf3 = new Dwarf("Dwarf3");
-      
+      int flechas_obtidas = elfo.getFlechas();
+      int xp_obtido = elfo.getExperiencia();
       int xp_esperado = elfo.getExperiencia() + 3;
       int flechas_esperadas = elfo.getFlechas() - 3;
-      
+      //Act
       elfo.atirarFlechaDwarf(dwarf);
       elfo.atirarFlechaDwarf(dwarf2);
       elfo.atirarFlechaDwarf(dwarf3);
-      
-      int flechas_obtidas = elfo.getFlechas();
-      int xp_obtido = elfo.getExperiencia();
-      
+      //Assert     
       assertEquals(xp_esperado , xp_obtido);
       assertEquals(flechas_esperadas , flechas_obtidas);
    }
