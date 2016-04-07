@@ -1,4 +1,4 @@
-
+﻿
 
 import static org.junit.Assert.*;
 import org.junit.After;
@@ -108,6 +108,7 @@ public class ElfoTest
        assertEquals(esperada, elfo.toString());
        assertEquals(esperada2, elfo2.toString());
    }
+// teste de commit
    
    
 }
