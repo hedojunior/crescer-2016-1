@@ -1,6 +1,6 @@
 public class Dwarf {
     
-    private int vida;
+    private int vida, experiencia;
     private String nome;
     private Status status;
     private Inventario inventario;
@@ -38,6 +38,10 @@ public class Dwarf {
         return inventario;
     }
     
+    public int getExperiencia() {
+        return experiencia;
+    }
+    
     public DataTerceiraEra getDataNascimento() {
         return dataNascimento;
     }
@@ -47,11 +51,17 @@ public class Dwarf {
     }
     
     public void danoRecebido() {       
-        if(this.status != Status.MORTO) { 
-            this.vida -= 10;
-                if (vida <= 0){
-                    this.estaMorto();
-                }
+        double resultado = this.getNumeroSorte();
+        if(resultado < 0) {
+            this.experiencia += 2;
+        }else if(resultado >=0 && resultado <=100){
+        }else{
+            if(this.status != Status.MORTO) { 
+                this.vida -= 10;
+                    if (vida <= 0){
+                        this.estaMorto();
+                    }
+            }
         }
     }
        
@@ -73,7 +83,7 @@ public class Dwarf {
         boolean ehSeixas = this.nome == "Seixas";
         if( this.getDataNascimento().ehBissexto() && this.vida >=80 && this.vida <=90){
             return 101.0 * -33;
-        }else if( this.getDataNascimento().ehBissexto() == false && ehMeireles || this.getDataNascimento().ehBissexto() == false && ehSeixas == true){
+        }else if( this.getDataNascimento().ehBissexto() == false && ehMeireles || this.getDataNascimento().ehBissexto() == false && ehSeixas){
             return (101.0 * 33) % 100;
         }else{
             return 101.0;

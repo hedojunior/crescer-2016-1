@@ -120,6 +120,54 @@ public class DwarfTest
    }
    
    @Test
+   public void adiciona4Itens() {
+       //Arrange
+       boolean obtido;
+       Dwarf dwarf = new Dwarf("Dwarf");
+       Item i1 = new Item(1,"Item");
+       Item i2 = new Item(1,"Item");
+       Item i3 = new Item(1,"Item");
+       Item i4 = new Item(1,"Item");
+       //Act
+       dwarf.adicionarItem(i1);
+       dwarf.adicionarItem(i2);
+       dwarf.adicionarItem(i3);
+       dwarf.adicionarItem(i4);
+       obtido = dwarf.getInventario().getInventario().contains(i1) == 
+       dwarf.getInventario().getInventario().contains(i2) ==
+       dwarf.getInventario().getInventario().contains(i3) ==
+       dwarf.getInventario().getInventario().contains(i4);
+       //Assert
+       assertTrue(obtido);
+   }
+      
+   @Test
+   public void perde4Itens() {
+       //Arrange
+       boolean obtido;
+       Dwarf dwarf = new Dwarf("Dwarf");
+       Item i1 = new Item(1,"Item");
+       Item i2 = new Item(1,"Item");
+       Item i3 = new Item(1,"Item");
+       Item i4 = new Item(1,"Item");
+       //Act
+       dwarf.adicionarItem(i1);
+       dwarf.adicionarItem(i2);
+       dwarf.adicionarItem(i3);
+       dwarf.adicionarItem(i4);
+       dwarf.perderItem(i1);
+       dwarf.perderItem(i2);
+       dwarf.perderItem(i3);
+       dwarf.perderItem(i4);
+       obtido = dwarf.getInventario().getInventario().contains(i1) == 
+       dwarf.getInventario().getInventario().contains(i2) ==
+       dwarf.getInventario().getInventario().contains(i3) ==
+       dwarf.getInventario().getInventario().contains(i4);
+       //Assert
+       assertTrue(obtido);
+   }
+   
+   @Test
    public void perdeItem() {
        //Arrange
        boolean obtido;
@@ -194,18 +242,73 @@ public class DwarfTest
    }
    
    @Test
-   public void numeroSorteSeixasAnoNaoBissexto(){
+   public void numeroSorteDwarfQualquerNomeDataBissextoVida90(){
        //Arrange
-       double esperado = 101.0 * 33 % 100;
-       DataTerceiraEra data = new DataTerceiraEra(07,04,2015);
-       Dwarf dwarf = new Dwarf("Seixas",data);
+       double esperado = 101.0 * -33;
+       DataTerceiraEra data = new DataTerceiraEra(01,01,2016);
+       Dwarf dwarf = new Dwarf(null,data);
        //Act
+       dwarf.danoRecebido();
+       dwarf.danoRecebido();
        //Assert
        assertEquals(esperado,dwarf.getNumeroSorte(),0);
    }
-    
    
+   @Test
+   public void vidaEExperienciaIguaisAposDanoMeireles() {
+       DataTerceiraEra data = new DataTerceiraEra(01,01,2015);
+       Dwarf d1 = new Dwarf("Meireles",data);
+       int vida_esperada = d1.getVida();
+       int xp_esperada = d1.getExperiencia();
+       //Act
+       d1.danoRecebido();
+       //Assert
+       assertEquals(vida_esperada, d1.getVida());
+       assertEquals(xp_esperada, d1.getExperiencia());
+   }
    
+   @Test
+   public void vidaEExperienciaAposDanoDataBissextoDwarf90Vida() {
+       DataTerceiraEra data = new DataTerceiraEra(01,01,2016);
+       Dwarf d1 = new Dwarf(null,data);
+       int vida_esperada = d1.getVida() - 20;
+       int xp_esperada = d1.getExperiencia() + 2;
+       //Act
+       d1.danoRecebido();
+       d1.danoRecebido();
+       d1.danoRecebido();
+       //Assert
+       assertEquals(vida_esperada, d1.getVida());
+       assertEquals(xp_esperada, d1.getExperiencia());
+   }
    
+   @Test
+   public void Experiencia8AposDanoDataBissextoDwarf90Vida() {
+       DataTerceiraEra data = new DataTerceiraEra(01,01,2016);
+       Dwarf d1 = new Dwarf(null,data);
+       int vida_esperada = d1.getVida() - 20;
+       int xp_esperada = d1.getExperiencia() + 8;
+       //Act
+       d1.danoRecebido();
+       d1.danoRecebido();
+       d1.danoRecebido();
+       d1.danoRecebido();
+       d1.danoRecebido();
+       d1.danoRecebido();
+       //Assert
+       assertEquals(vida_esperada, d1.getVida());
+       assertEquals(xp_esperada, d1.getExperiencia());
+   }
    
+   @Test
+   public void dwarfTomaDanoNormalmente(){
+       //Arrange
+       DataTerceiraEra data = new DataTerceiraEra(1,1,2016);
+       Dwarf dwarf = new Dwarf(null,data);
+       int esperado = dwarf.getVida() - 10;
+       //Act
+       dwarf.danoRecebido();
+       //Assert
+       assertEquals(esperado,dwarf.getVida());
+   }
 }
