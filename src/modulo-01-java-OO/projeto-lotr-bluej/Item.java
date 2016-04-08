@@ -11,8 +11,11 @@ public class Item {
         return this.quantidade;
     }
     
-    public String getDescricao() {
-        return this.descricao;
+    public void setQuantidade(int quantidade) {
+     this.quantidade = quantidade;
     }
     
+    public String getDescricao() {
+        return this.descricao;
+    }    
 }

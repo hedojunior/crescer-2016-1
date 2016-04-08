@@ -15,10 +15,7 @@ public class Dwarf {
     }
         
     public Dwarf(String nome, DataTerceiraEra dataNascimento){
-        this.vida = 110;
-        this.nome = nome;
-        this.status = Status.VIVO;
-        this.inventario = new Inventario();
+       this(nome);
         this.dataNascimento = dataNascimento;
     }
     
@@ -56,9 +53,9 @@ public class Dwarf {
             this.experiencia += 2;
         }   else if(this.status != Status.MORTO && resultado > 100) { 
                 this.vida -= 10;
-                    if (vida <= 0){
-                        this.estaMorto();
-                    }
+                if (vida <= 0){
+                    this.estaMorto();
+                }
             }
     }
            
@@ -85,6 +82,11 @@ public class Dwarf {
         }else{
             return 101.0;
         }
+    }
+    
+    public void tentarSorte() {
+        if(this.getNumeroSorte() == -3333.0)
+            inventario.temSorte();
     }
 }
 

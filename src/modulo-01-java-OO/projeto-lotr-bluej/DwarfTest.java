@@ -114,7 +114,7 @@ public class DwarfTest
        Item i = new Item(1,"Item");
        //Act
        dwarf.adicionarItem(i);
-       obtido = dwarf.getInventario().getInventario().contains(i);
+       obtido = dwarf.getInventario().getItens().contains(i);
        //Assert
        assertTrue(obtido);
    }
@@ -133,10 +133,10 @@ public class DwarfTest
        dwarf.adicionarItem(i2);
        dwarf.adicionarItem(i3);
        dwarf.adicionarItem(i4);
-       obtido = dwarf.getInventario().getInventario().contains(i1) == 
-       dwarf.getInventario().getInventario().contains(i2) ==
-       dwarf.getInventario().getInventario().contains(i3) ==
-       dwarf.getInventario().getInventario().contains(i4);
+       obtido = dwarf.getInventario().getItens().contains(i1) == 
+       dwarf.getInventario().getItens().contains(i2) ==
+       dwarf.getInventario().getItens().contains(i3) ==
+       dwarf.getInventario().getItens().contains(i4);
        //Assert
        assertTrue(obtido);
    }
@@ -159,10 +159,10 @@ public class DwarfTest
        dwarf.perderItem(i2);
        dwarf.perderItem(i3);
        dwarf.perderItem(i4);
-       obtido = dwarf.getInventario().getInventario().contains(i1) == 
-       dwarf.getInventario().getInventario().contains(i2) ==
-       dwarf.getInventario().getInventario().contains(i3) ==
-       dwarf.getInventario().getInventario().contains(i4);
+       obtido = dwarf.getInventario().getItens().contains(i1) == 
+       dwarf.getInventario().getItens().contains(i2) ==
+       dwarf.getInventario().getItens().contains(i3) ==
+       dwarf.getInventario().getItens().contains(i4);
        //Assert
        assertTrue(obtido);
    }
@@ -176,7 +176,7 @@ public class DwarfTest
        //Act
        dwarf.adicionarItem(i);
        dwarf.perderItem(i);
-       obtido = dwarf.getInventario().getInventario().contains(i);
+       obtido = dwarf.getInventario().getItens().contains(i);
        //Assert
        assertFalse(obtido);
    }
@@ -327,4 +327,60 @@ public class DwarfTest
        //Assert
        assertEquals(esperado,dwarf.getVida());
    }
+   
+   @Test
+   public void dwarfTentaSorteComUmItemEDataSendoBissextoEVidaSendo90() {
+       DataTerceiraEra data = new DataTerceiraEra(1,1,2016);
+       Dwarf dwarf = new Dwarf("Dwarf", data);
+       Item item = new Item(1,"Item");
+       dwarf.adicionarItem(item);
+       dwarf.danoRecebido();
+       dwarf.danoRecebido();
+       dwarf.tentarSorte();
+       assertEquals(1001, dwarf.getInventario().getItens().get(0).getQuantidade());
+   }
+   
+   @Test
+   public void dwarfTentaSorteComDoisItensEDataSendoBissextoEVidaSendo90() {
+       DataTerceiraEra data = new DataTerceiraEra(1,1,2016);
+       Dwarf dwarf = new Dwarf("Dwarf", data);
+       Item item = new Item(1,"Item");
+       Item item2 = new Item(1,"Item");
+       dwarf.adicionarItem(item);
+       dwarf.adicionarItem(item2);
+       dwarf.danoRecebido();
+       dwarf.danoRecebido();
+       dwarf.tentarSorte();
+       assertEquals(1001, dwarf.getInventario().getItens().get(0).getQuantidade());
+       assertEquals(1001, dwarf.getInventario().getItens().get(1).getQuantidade());
+   }
+   
+   @Test
+   public void dwarfTentaSorteComDoisItensEDataNaoSendoBissextoENomeSendoSeixas() {
+       DataTerceiraEra data = new DataTerceiraEra(1,1,2015);
+       Dwarf dwarf = new Dwarf("Seixas", data);
+       Item item = new Item(1,"Item");
+       Item item2 = new Item(1,"Item");
+       dwarf.adicionarItem(item);
+       dwarf.adicionarItem(item2);
+       dwarf.tentarSorte();
+       assertEquals(1, dwarf.getInventario().getItens().get(0).getQuantidade());
+       assertEquals(1, dwarf.getInventario().getItens().get(1).getQuantidade());
+   }
+   
+   @Test
+   public void dwarfTentaSorteComDoisItensEDataSendoBissextoEVidaSendo110() {
+       DataTerceiraEra data = new DataTerceiraEra(1,1,2016);
+       Dwarf dwarf = new Dwarf("Dwarf", data);
+       Item item = new Item(1,"Item");
+       Item item2 = new Item(1,"Item");
+       dwarf.adicionarItem(item);
+       dwarf.adicionarItem(item2);
+       dwarf.tentarSorte();
+       assertEquals(1, dwarf.getInventario().getItens().get(0).getQuantidade());
+       assertEquals(1, dwarf.getInventario().getItens().get(1).getQuantidade());
+   }
+   
+   
+   
 }
