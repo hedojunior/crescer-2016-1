@@ -81,4 +81,30 @@ public class InventarioTest
         String obtido = inventario.getDescricoesItens();
         assertEquals("Espada,Escudo", obtido);
     }
+    
+    @Test
+    public void descobreOItemMaisPopularQueEstaNoInicioDaLista() {
+        Inventario inventario = new Inventario();
+        Item item1 = new Item(5,"Item");
+        Item item2 = new Item(4,"Item");
+        inventario.adicionarItem(item1);
+        inventario.adicionarItem(item2);
+        Item obtido = inventario.maiorQtd();
+        assertEquals(5, obtido.getQuantidade());
+    }
+    
+    @Test
+    public void descobreOItemMaisPopularQueEstaNoFimDaLista() {
+        Inventario inventario = new Inventario();
+        Item item1 = new Item(5,"Item");
+        Item item2 = new Item(4,"Item");
+        Item item3 = new Item(4,"Item");
+        Item item4 = new Item(8,"Item");
+        inventario.adicionarItem(item1);
+        inventario.adicionarItem(item2);
+        inventario.adicionarItem(item3);
+        inventario.adicionarItem(item4);
+        Item obtido = inventario.maiorQtd();
+        assertEquals(8, obtido.getQuantidade());
+    }
 }

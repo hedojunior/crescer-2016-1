@@ -32,7 +32,18 @@ public class Inventario {
    
    public void temSorte() {
        for(int i = 0; i < this.inventario.size(); i++) {
-           this.inventario.get(i).setQuantidade(inventario.get(i).getQuantidade()+1000) ;
+           this.inventario.get(i).setQuantidade(this.inventario.get(i).getQuantidade()+1000) ;
        }
+   }
+   
+   public Item maiorQtd() {
+       int maior_quantidade = this.inventario.get(0).getQuantidade();
+       Item maior = this.inventario.get(0);
+       for(int i = 0; i <this.inventario.size(); i++) {
+           if(this.inventario.get(i).getQuantidade() > maior_quantidade){
+               maior = this.inventario.get(i);
+            }
+       }
+       return maior;
    }
 }
