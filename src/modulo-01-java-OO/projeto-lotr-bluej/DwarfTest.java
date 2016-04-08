@@ -270,16 +270,17 @@ public class DwarfTest
    @Test
    public void vidaEExperienciaIguaisAposDanoMeirelesNewString() {
        DataTerceiraEra data = new DataTerceiraEra(01,01,2015);
-       Dwarf d1 = new Dwarf("Meireles",data);
-       int vida_esperada = d1.getVida();
+       Dwarf d1 = new Dwarf(new String("Meireles"),data);
+       int vida_esperada = d1.getVida() - 10;
        int xp_esperada = d1.getExperiencia();
        String nome_esperado = "Meireles";
+       boolean teste_nome = d1.getNome().equals(nome_esperado);
        //Act
        d1.danoRecebido();
        //Assert
        assertEquals(vida_esperada, d1.getVida());
        assertEquals(xp_esperada, d1.getExperiencia());
-       assertEquals(nome_esperado, d1.getNome());
+       assertTrue(teste_nome);
    }
       
    @Test
