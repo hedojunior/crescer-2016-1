@@ -267,6 +267,20 @@ public class DwarfTest
        assertEquals(xp_esperada, d1.getExperiencia());
    }
    
+   /* @Test
+   public void vidaEExperienciaIguaisAposDanoMeirelesNewString() {
+       DataTerceiraEra data = new DataTerceiraEra(01,01,2015);
+       Dwarf d1 = new Dwarf("Meireles",data);
+       int vida_esperada = d1.getVida();
+       int xp_esperada = d1.getExperiencia();
+       //Act
+       d1.danoRecebido();
+       //Assert
+       assertEquals(vida_esperada, d1.getVida());
+       assertEquals(xp_esperada, d1.getExperiencia());
+   }
+   */
+   
    @Test
    public void vidaEExperienciaAposDanoDataBissextoDwarf90Vida() {
        DataTerceiraEra data = new DataTerceiraEra(01,01,2016);
