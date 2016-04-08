@@ -1,4 +1,4 @@
-﻿
+
 
 import static org.junit.Assert.*;
 import org.junit.After;
@@ -62,14 +62,15 @@ public class ElfoTest
       Dwarf dwarf = new Dwarf("Dwarf");
       Dwarf dwarf2 = new Dwarf("Dwarf2");
       Dwarf dwarf3 = new Dwarf("Dwarf3");
-      int flechas_obtidas = elfo.getFlechas();
-      int xp_obtido = elfo.getExperiencia();
+      int xp_obtido, flechas_obtidas;
       int xp_esperado = elfo.getExperiencia() + 3;
       int flechas_esperadas = elfo.getFlechas() - 3;
       //Act
       elfo.atirarFlechaDwarf(dwarf);
       elfo.atirarFlechaDwarf(dwarf2);
       elfo.atirarFlechaDwarf(dwarf3);
+      xp_obtido = elfo.getExperiencia();
+      flechas_obtidas = elfo.getFlechas();
       //Assert     
       assertEquals(xp_esperado , xp_obtido);
       assertEquals(flechas_esperadas , flechas_obtidas);
@@ -108,7 +109,6 @@ public class ElfoTest
        assertEquals(esperada, elfo.toString());
        assertEquals(esperada2, elfo2.toString());
    }
-// teste de commit
    
    
 }

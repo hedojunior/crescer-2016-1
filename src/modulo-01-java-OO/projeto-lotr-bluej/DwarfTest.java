@@ -105,4 +105,107 @@ public class DwarfTest
        assertEquals(0, dwarf.getVida());
        assertEquals(esperado, dwarf.getStatus());
    }
+   
+   @Test
+   public void adicionaItem() {
+       //Arrange
+       boolean obtido;
+       Dwarf dwarf = new Dwarf("Dwarf");
+       Item i = new Item(1,"Item");
+       //Act
+       dwarf.adicionarItem(i);
+       obtido = dwarf.getInventario().getInventario().contains(i);
+       //Assert
+       assertTrue(obtido);
+   }
+   
+   @Test
+   public void perdeItem() {
+       //Arrange
+       boolean obtido;
+       Dwarf dwarf = new Dwarf("Dwarf");
+       Item i = new Item(1,"Item");
+       //Act
+       dwarf.adicionarItem(i);
+       dwarf.perderItem(i);
+       obtido = dwarf.getInventario().getInventario().contains(i);
+       //Assert
+       assertFalse(obtido);
+   }
+   
+   @Test
+   public void compararDataNascimento() {
+       //Arrange
+       DataTerceiraEra dataNascimento = new DataTerceiraEra(07,04,2016);
+       Dwarf dwarf = new Dwarf("Dwarf", dataNascimento);
+       boolean dia, mes, ano;
+       //Act
+       dia = dataNascimento.getDia() == dwarf.getDataNascimento().getDia(); 
+       mes = dataNascimento.getMes() == dwarf.getDataNascimento().getMes();
+       ano = dataNascimento.getAno() == dwarf.getDataNascimento().getAno();
+       //Assert
+       assertTrue(dia);
+       assertTrue(mes);
+       assertTrue(ano);
+    }
+   
+   @Test
+   public void numeroSorteSeixas(){
+       //Arrange
+       double esperado = 101.0 * 33 % 100;
+       DataTerceiraEra data = new DataTerceiraEra(07,04,2015);
+       Dwarf dwarf = new Dwarf("Seixas",data);
+       //Act
+       //Assert
+       assertEquals(esperado,dwarf.getNumeroSorte(),0);
+   }
+   
+   @Test
+   public void numeroSorteMeirelesAnoBissexto(){
+       //Arrange
+       double esperado = 101.0;
+       DataTerceiraEra data = new DataTerceiraEra(07,04,2016);
+       Dwarf dwarf = new Dwarf("Meireles",data);
+       //Act
+       //Assert
+       assertEquals(esperado,dwarf.getNumeroSorte(),0);
+   }
+   
+   @Test
+   public void numeroSorteSeixasAnoBissexto(){
+       //Arrange
+       double esperado = 101.0;
+       DataTerceiraEra data = new DataTerceiraEra(07,04,2016);
+       Dwarf dwarf = new Dwarf("Seixas",data);
+       //Act
+       //Assert
+       assertEquals(esperado,dwarf.getNumeroSorte(),0);
+   }
+   
+   @Test
+   public void numeroSorteMeirelesAnoNaoBissexto(){
+       //Arrange
+       double esperado = 101.0 * 33 % 100;
+       DataTerceiraEra data = new DataTerceiraEra(07,04,2015);
+       Dwarf dwarf = new Dwarf("Meireles",data);
+       //Act
+       //Assert
+       assertEquals(esperado,dwarf.getNumeroSorte(),0);
+   }
+   
+   @Test
+   public void numeroSorteSeixasAnoNaoBissexto(){
+       //Arrange
+       double esperado = 101.0 * 33 % 100;
+       DataTerceiraEra data = new DataTerceiraEra(07,04,2015);
+       Dwarf dwarf = new Dwarf("Seixas",data);
+       //Act
+       //Assert
+       assertEquals(esperado,dwarf.getNumeroSorte(),0);
+   }
+    
+   
+   
+   
+   
 }
