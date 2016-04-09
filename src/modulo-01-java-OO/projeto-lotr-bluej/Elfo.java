@@ -16,6 +16,10 @@ public class Elfo {
         return flechas;
     }
     
+    public String getNome(){
+        return nome;
+    }
+    
      public int getExperiencia(){
         return experiencia;
     }
