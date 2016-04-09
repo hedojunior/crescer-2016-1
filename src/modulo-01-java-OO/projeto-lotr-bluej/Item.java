@@ -5,7 +5,7 @@ public class Item {
     public Item(int quantidade, String descricao) {
         this.quantidade = quantidade;
         this.descricao = descricao;
-        }
+    }
        
     public int getQuantidade() {
         return this.quantidade;
