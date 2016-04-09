@@ -52,7 +52,7 @@ public class Inventario {
        Item aux = null;
        for (int i = 0; i < this.inventario.size(); i++) {
            for(int j = 0; j < this.inventario.size() - 1; j++) {
-               if(this.inventario.get(j).getQuantidade() < this.inventario.get(j + 1).getQuantidade()){
+               if(this.inventario.get(j).getQuantidade() > this.inventario.get(j + 1).getQuantidade()){
                    aux = this.inventario.get(j);
                    this.inventario.set(j,this.inventario.get(j + 1));
                    this.inventario.set(j + 1, aux);
