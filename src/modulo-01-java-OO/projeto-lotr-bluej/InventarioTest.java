@@ -1,5 +1,3 @@
-
-
 import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
@@ -66,7 +64,7 @@ public class InventarioTest
    }
    
    @Test
-    public void getDescricoesComUmItem() {
+   public void getDescricoesComUmItem() {
         //Arrange
         Inventario inventario = new Inventario();
         inventario.adicionarItem(new Item(1, "Espada"));
@@ -74,10 +72,10 @@ public class InventarioTest
         String obtido = inventario.getDescricoesItens();
         //Assert
         assertEquals("Espada", obtido);
-    }
+   }
 
-    @Test
-    public void getDescricoesComDoisItens() {
+   @Test
+   public void getDescricoesComDoisItens() {
         //Arrange
         Inventario inventario = new Inventario();
         inventario.adicionarItem(new Item(1, "Espada"));
@@ -86,10 +84,10 @@ public class InventarioTest
         String obtido = inventario.getDescricoesItens();
         //Assert
         assertEquals("Espada,Escudo", obtido);
-    }
+   }
     
-    @Test
-    public void descobreOItemMaisPopularQueEstaNoInicioDaLista() {
+   @Test
+   public void descobreOItemMaisPopularQueEstaNoInicioDaLista() {
         //Arrange
         Inventario inventario = new Inventario();
         Item item1 = new Item(5,"Item");
@@ -100,10 +98,10 @@ public class InventarioTest
         Item obtido = inventario.maiorQtd();
         //Assert
         assertEquals(5, obtido.getQuantidade());
-    }
+   }
     
-    @Test
-    public void descobreOItemMaisPopularQueEstaNoFimDaLista() {
+   @Test
+   public void descobreOItemMaisPopularQueEstaNoFimDaLista() {
         //Arrange
         Inventario inventario = new Inventario();
         Item item1 = new Item(5,"Item");
@@ -118,10 +116,10 @@ public class InventarioTest
         Item obtido = inventario.maiorQtd();
         //Assert
         assertEquals(8, obtido.getQuantidade());
-    }
-    
-    @Test
-    public void ordenaListaCom6Itens() {
+   }
+   
+   @Test
+   public void ordenaListaCom6Itens() {
         //Arrange
         Inventario inventario = new Inventario();
         inventario.adicionarItem(new Item(8, "Lembas"));
@@ -136,10 +134,10 @@ public class InventarioTest
         assertEquals(13,inventario.getItens().get(0).getQuantidade());
         assertEquals(5,inventario.getItens().get(2).getQuantidade());
         assertEquals(1,inventario.getItens().get(5).getQuantidade());
-    }
+   }
     
-    @Test
-    public void ordenaListaCom2Itens() {
+   @Test
+   public void ordenaListaCom2Itens() {
         //Arrange
         Inventario inventario = new Inventario();
         inventario.adicionarItem(new Item(8, "Lembas"));
@@ -149,10 +147,10 @@ public class InventarioTest
         //Assert
         assertEquals(13,inventario.getItens().get(0).getQuantidade());
         assertEquals(8,inventario.getItens().get(1).getQuantidade());
-    }
+   }
     
-    @Test
-    public void ordenaListaCom1Item() {
+   @Test
+   public void ordenaListaCom1Item() {
         //Arrange
         Inventario inventario = new Inventario();
         inventario.adicionarItem(new Item(8, "Lembas"));
@@ -160,5 +158,5 @@ public class InventarioTest
         inventario.ordenaItens();
         //Assert
         assertEquals(8,inventario.getItens().get(0).getQuantidade());
-    }
+   }
 }
