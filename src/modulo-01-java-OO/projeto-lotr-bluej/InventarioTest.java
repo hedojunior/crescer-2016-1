@@ -67,34 +67,44 @@ public class InventarioTest
    
    @Test
     public void getDescricoesComUmItem() {
+        //Arrange
         Inventario inventario = new Inventario();
         inventario.adicionarItem(new Item(1, "Espada"));
+        //Act
         String obtido = inventario.getDescricoesItens();
+        //Assert
         assertEquals("Espada", obtido);
     }
 
     @Test
     public void getDescricoesComDoisItens() {
+        //Arrange
         Inventario inventario = new Inventario();
         inventario.adicionarItem(new Item(1, "Espada"));
         inventario.adicionarItem(new Item(1, "Escudo"));
+        //Act
         String obtido = inventario.getDescricoesItens();
+        //Assert
         assertEquals("Espada,Escudo", obtido);
     }
     
     @Test
     public void descobreOItemMaisPopularQueEstaNoInicioDaLista() {
+        //Arrange
         Inventario inventario = new Inventario();
         Item item1 = new Item(5,"Item");
         Item item2 = new Item(4,"Item");
         inventario.adicionarItem(item1);
         inventario.adicionarItem(item2);
+        //Act
         Item obtido = inventario.maiorQtd();
+        //Assert
         assertEquals(5, obtido.getQuantidade());
     }
     
     @Test
     public void descobreOItemMaisPopularQueEstaNoFimDaLista() {
+        //Arrange
         Inventario inventario = new Inventario();
         Item item1 = new Item(5,"Item");
         Item item2 = new Item(4,"Item");
@@ -104,7 +114,51 @@ public class InventarioTest
         inventario.adicionarItem(item2);
         inventario.adicionarItem(item3);
         inventario.adicionarItem(item4);
+        //Act
         Item obtido = inventario.maiorQtd();
+        //Assert
         assertEquals(8, obtido.getQuantidade());
+    }
+    
+    @Test
+    public void ordenaListaCom6Itens() {
+        //Arrange
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item(8, "Lembas"));
+        inventario.adicionarItem(new Item(13, "Anões"));
+        inventario.adicionarItem(new Item(1, "Anel"));
+        inventario.adicionarItem(new Item(5, "Exércitos"));
+        inventario.adicionarItem(new Item(4, "Hobbits"));
+        inventario.adicionarItem(new Item(1, "Sauron"));
+        //Act
+        inventario.ordenaItens();
+        //Assert
+        assertEquals(13,inventario.getItens().get(0).getQuantidade());
+        assertEquals(5,inventario.getItens().get(2).getQuantidade());
+        assertEquals(1,inventario.getItens().get(5).getQuantidade());
+    }
+    
+    @Test
+    public void ordenaListaCom2Itens() {
+        //Arrange
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item(8, "Lembas"));
+        inventario.adicionarItem(new Item(13, "Anões"));
+        //Act
+        inventario.ordenaItens();
+        //Assert
+        assertEquals(13,inventario.getItens().get(0).getQuantidade());
+        assertEquals(8,inventario.getItens().get(1).getQuantidade());
+    }
+    
+    @Test
+    public void ordenaListaCom1Item() {
+        //Arrange
+        Inventario inventario = new Inventario();
+        inventario.adicionarItem(new Item(8, "Lembas"));
+        //Act
+        inventario.ordenaItens();
+        //Assert
+        assertEquals(8,inventario.getItens().get(0).getQuantidade());
     }
 }
