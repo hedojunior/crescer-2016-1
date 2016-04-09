@@ -7,42 +7,46 @@ public class DataTerceiraEraTest
 {
     @Test
     public void EhBissexto() {
+        //Arrange
         DataTerceiraEra data = new DataTerceiraEra(06,04,2016);
-        boolean esperado = true;
-        boolean obtido = data.ehBissexto();
-        assertEquals(esperado, obtido);   
+        //Act
+        //Assert
+        assertTrue(data.ehBissexto());   
     }
     
     @Test
     public void NaoEhBissexto() {
+        //Arrange
         DataTerceiraEra data = new DataTerceiraEra(06,04,915);
-        boolean esperado = false;
-        boolean obtido = data.ehBissexto();
-        assertEquals(esperado, obtido);   
+        //Act
+        //Assert
+        assertFalse(data.ehBissexto());   
     }
     
     @Test
     public void NaoEhBissextoAntigo() {
+        //Arrange
         DataTerceiraEra data = new DataTerceiraEra(06,04,1015);
-        boolean esperado = false;
-        boolean obtido = data.ehBissexto();
-        assertEquals(esperado, obtido);   
+        //Act
+        //Assert
+        assertFalse(data.ehBissexto());   
     }
-    
     
     @Test
     public void SeraBissexto() {
+        //Arrange
         DataTerceiraEra data = new DataTerceiraEra(06,04,2400);
-        boolean esperado = true;
-        boolean obtido = data.ehBissexto();
-        assertEquals(esperado, obtido);
+        //Act
+        //Assert
+        assertTrue(data.ehBissexto());
     }
     
     @Test
     public void SeraBissextoComMilhar() {
+        //Arrange
         DataTerceiraEra data = new DataTerceiraEra(29,11,3400);
-        boolean esperado = false;
-        boolean obtido = data.ehBissexto();
-        assertEquals(esperado, obtido);
+        //Act
+        //Assert
+        assertFalse(data.ehBissexto());
     }
 }
