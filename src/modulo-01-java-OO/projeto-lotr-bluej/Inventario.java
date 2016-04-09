@@ -37,13 +37,27 @@ public class Inventario {
    }
    
    public Item maiorQtd() {
-       int maior_quantidade = this.inventario.get(0).getQuantidade();
-       Item maior = this.inventario.get(0);
+       int maior_quantidade = 0;
+       int indice_maior = 0;
        for(int i = 0; i <this.inventario.size(); i++) {
            if(this.inventario.get(i).getQuantidade() > maior_quantidade){
-               maior = this.inventario.get(i);
+               maior_quantidade = this.inventario.get(i).getQuantidade();
+               indice_maior = i;
             }
        }
-       return maior;
+       return this.inventario.get(indice_maior);
    }
+   
+    public void ordenaItens() {
+       Item aux = null;
+       for (int i = 0; i < this.inventario.size(); i++) {
+           for(int j = 0; j < this.inventario.size() - 1; j++) {
+               if(this.inventario.get(j).getQuantidade() < this.inventario.get(j + 1).getQuantidade()){
+                   aux = this.inventario.get(j);
+                   this.inventario.set(j,this.inventario.get(j + 1));
+                   this.inventario.set(j + 1, aux);
+               }
+           }
+       }
+   } 
 }
