@@ -1,5 +1,3 @@
-
-
 import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
@@ -9,48 +7,55 @@ public class ElfoTest
 {
    @Test
    public void criarElfo(){
+       //Arrange
        Elfo elfo = new Elfo("Elfo");
-       int flechas_esperadas = 42;
-       assertEquals(flechas_esperadas, elfo.getFlechas());  
+       //Act
+       //Assert
+       assertEquals(42, elfo.getFlechas());  
    }
    
    @Test
    public void criarDoisElfos(){
+       //Arrange
        Elfo elfo = new Elfo("Elfo");
        Elfo elfo2 = new Elfo("Elfo2");
-       int flechas_esperadas = 42;
-       assertEquals(flechas_esperadas, elfo.getFlechas());  
-       assertEquals(flechas_esperadas, elfo2.getFlechas());
+       //Act
+       //Assert
+       assertEquals(42, elfo.getFlechas());  
+       assertEquals(42, elfo2.getFlechas());
    }
     
    @Test
    public void criarElfoSemNome(){
-       Elfo elfo = new Elfo("");
-       int flechas_esperadas = 42;
-       assertEquals(flechas_esperadas, elfo.getFlechas());  
-       
+       //Arrange
+       Elfo elfo = new Elfo(null);
+       //Act
+       //Assert
+       assertEquals(42, elfo.getFlechas());  
+       assertNull(elfo.getNome());
    }
    
    @Test
    public void criarElfoCom100000Flechas(){
+       //Arrange
        Elfo elfo = new Elfo("Elfo",100000);
-       int flechas_esperadas = 100000;
-       assertEquals(flechas_esperadas, elfo.getFlechas());  
+       //Act
+       //Assert
+       assertEquals(100000, elfo.getFlechas());  
    }    
        
    @Test
    public void AtirarFlechaDwarf(){
+      //Arrange
       Elfo elfo = new Elfo("Elfo");
       Dwarf dwarf = new Dwarf("Dwarf");
-      
-      int xp_esperado = elfo.getExperiencia() + 1;
-      int flechas_esperadas = elfo.getFlechas() - 1;
-      
+      int xp_obtido, xp_esperado = elfo.getExperiencia() + 1;
+      int flechas_obtidas, flechas_esperadas = elfo.getFlechas() - 1;
+      //Act
       elfo.atirarFlechaDwarf(dwarf);
-      
-      int flechas_obtidas = elfo.getFlechas();
-      int xp_obtido = elfo.getExperiencia();
-      
+      flechas_obtidas  = elfo.getFlechas();
+      xp_obtido = elfo.getExperiencia();
+      //Assert
       assertEquals(xp_esperado , xp_obtido);
       assertEquals(flechas_esperadas , flechas_obtidas);
    }
@@ -62,9 +67,8 @@ public class ElfoTest
       Dwarf dwarf = new Dwarf("Dwarf");
       Dwarf dwarf2 = new Dwarf("Dwarf2");
       Dwarf dwarf3 = new Dwarf("Dwarf3");
-      int xp_obtido, flechas_obtidas;
-      int xp_esperado = elfo.getExperiencia() + 3;
-      int flechas_esperadas = elfo.getFlechas() - 3;
+      int xp_obtido, xp_esperado = elfo.getExperiencia() + 3;
+      int flechas_obtidas, flechas_esperadas = elfo.getFlechas() - 3;
       //Act
       elfo.atirarFlechaDwarf(dwarf);
       elfo.atirarFlechaDwarf(dwarf2);
@@ -78,37 +82,37 @@ public class ElfoTest
    
    @Test
    public void atirarFlechaEmDwarfSemNome(){
+      //Arrange
       Elfo elfo = new Elfo("Elfo");
-      Dwarf dwarf = new Dwarf("");
-     
-      int xp_esperado = elfo.getExperiencia() + 1;
-      int flechas_esperadas = elfo.getFlechas() - 1;
-      
+      Dwarf dwarf = new Dwarf(null);
+      int xp_obtido, xp_esperado = elfo.getExperiencia() + 1;
+      int flechas_obtidas, flechas_esperadas = elfo.getFlechas() - 1;
+      //Act
       elfo.atirarFlechaDwarf(dwarf);
-      
-      int flechas_obtidas = elfo.getFlechas();
-      int xp_obtido = elfo.getExperiencia();
-      
+      flechas_obtidas = elfo.getFlechas();
+      xp_obtido = elfo.getExperiencia();
+      //Assert
       assertEquals(xp_esperado , xp_obtido);
       assertEquals(flechas_esperadas , flechas_obtidas);
    }
    
    @Test
    public void milFlechasToString(){
+       //Arrange
        Elfo elfo = new Elfo("Legolas",1000);
-       String esperada = "Legolas possui 1000 flechas e 0 níveis de experiência."; 
-       assertEquals(esperada, elfo.toString());  
+       //Act
+       //Assert
+       assertEquals("Legolas possui 1000 flechas e 0 níveis de experiência.", elfo.toString());  
    }
    
    @Test
    public void retornarDoisElfosToString(){
+       //Arrange
        Elfo elfo = new Elfo("Legolas",1000);
        Elfo elfo2 = new Elfo("Baby Legolas",5);
-       String esperada = "Legolas possui 1000 flechas e 0 níveis de experiência.";
-       String esperada2 = "Baby Legolas possui 5 flechas e 0 níveis de experiência."; 
-       assertEquals(esperada, elfo.toString());
-       assertEquals(esperada2, elfo2.toString());
+       //Act
+       //Assert
+       assertEquals("Legolas possui 1000 flechas e 0 níveis de experiência.", elfo.toString());
+       assertEquals("Baby Legolas possui 5 flechas e 0 níveis de experiência.", elfo2.toString());
    }
-   
-   
 }
