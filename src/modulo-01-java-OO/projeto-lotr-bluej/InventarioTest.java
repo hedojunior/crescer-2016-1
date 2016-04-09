@@ -131,9 +131,9 @@ public class InventarioTest
         //Act
         inventario.ordenaItens();
         //Assert
-        assertEquals(13,inventario.getItens().get(0).getQuantidade());
-        assertEquals(5,inventario.getItens().get(2).getQuantidade());
-        assertEquals(1,inventario.getItens().get(5).getQuantidade());
+        assertEquals(1,inventario.getItens().get(0).getQuantidade());
+        assertEquals(4,inventario.getItens().get(2).getQuantidade());
+        assertEquals(13,inventario.getItens().get(5).getQuantidade());
    }
     
    @Test
@@ -145,8 +145,8 @@ public class InventarioTest
         //Act
         inventario.ordenaItens();
         //Assert
-        assertEquals(13,inventario.getItens().get(0).getQuantidade());
-        assertEquals(8,inventario.getItens().get(1).getQuantidade());
+        assertEquals(8,inventario.getItens().get(0).getQuantidade());
+        assertEquals(13,inventario.getItens().get(1).getQuantidade());
    }
     
    @Test
