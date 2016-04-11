@@ -3,6 +3,7 @@ public class IrishDwarf extends Dwarf {
     public IrishDwarf(String nome)
     {
          super(nome);
+         this.vida = 110;
     }
         
     public IrishDwarf(String nome, DataTerceiraEra dataNascimento)
