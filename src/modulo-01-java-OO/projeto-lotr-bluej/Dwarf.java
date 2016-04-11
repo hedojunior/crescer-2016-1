@@ -3,19 +3,17 @@ public class Dwarf {
     private int vida, experiencia;
     private String nome;
     private Status status;
-    private Inventario inventario;
+    protected Inventario inventario = new Inventario();
     private DataTerceiraEra dataNascimento;
     
     public Dwarf(String nome){
          this.vida = 110;
          this.nome = nome;
-         this.status = Status.VIVO;
-         this.inventario = new Inventario();
          this.dataNascimento = new DataTerceiraEra(1,1,1);
     }
         
     public Dwarf(String nome, DataTerceiraEra dataNascimento){
-       this(nome);
+        this(nome);
         this.dataNascimento = dataNascimento;
     }
     
