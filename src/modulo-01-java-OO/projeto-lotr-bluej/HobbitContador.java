@@ -36,4 +36,15 @@ public class HobbitContador {
     }
     return multiplos;
    }
+   
+   public ArrayList<Integer> obterMultiplosDeTresAte(int numero) {
+       ArrayList<Integer> multiplos = new ArrayList<>(); // Arrays.asList() é desnecessário, pois o ArrayList inicia vazio e vai adicionando os multiplos
+
+       for (int i = 1; i <= numero; i++) { // limite é uma variável que não existe; A melhor solução seria  inserir a variável 'numero' diretamente, como limitação do for.
+           if (i % 3 == 0)// break; é desnecessário pois não queremos finalizar o método aqui, queremos continuar as repetições até encontrarmos todos os valores.
+           multiplos.add(i);
+       }
+
+       return multiplos;
+   }
 }
