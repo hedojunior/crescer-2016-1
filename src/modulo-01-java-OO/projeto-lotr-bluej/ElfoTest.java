@@ -115,4 +115,22 @@ public class ElfoTest
        assertEquals("Legolas possui 1000 flechas e 0 níveis de experiência.", elfo.toString());
        assertEquals("Baby Legolas possui 5 flechas e 0 níveis de experiência.", elfo2.toString());
    }
+   
+   @Test
+   public void ElfoNasceCom100DeVida() {
+       //Arrange
+       Elfo elfo = new Elfo("elfo");
+       //Act
+       //Assert
+       assertEquals(100, elfo.getVida());
+   }
+   
+   @Test
+   public void ElfoNasceComStatusVivo() {
+       //Arrange
+       Elfo elfo = new Elfo("elfo");
+       //Act
+       //Assert
+       assertEquals(Status.VIVO, elfo.getStatus());
+   }
 }
