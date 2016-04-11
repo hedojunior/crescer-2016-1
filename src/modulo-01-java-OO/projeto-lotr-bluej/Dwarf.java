@@ -1,27 +1,15 @@
 public class Dwarf extends Personagem {
-    private int vida = 110;
-    private Status status;
     private DataTerceiraEra dataNascimento;
     
     public Dwarf(String nome){
          super(nome);
          this.dataNascimento = new DataTerceiraEra(1,1,1);
-         this.status = Status.VIVO;
          this.vida = 110;
     }
         
     public Dwarf(String nome, DataTerceiraEra dataNascimento){
         this(nome);
         this.dataNascimento = dataNascimento;
-    }
-    
-    public int getVida()
-    {
-        return this.vida;
-    }
-    
-    public Status getStatus() {
-        return status;
     }
     
     public DataTerceiraEra getDataNascimento() {
