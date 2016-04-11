@@ -26,4 +26,22 @@ public class ElfoVerdeTest
        elfo.adicionarItem(item);
        assertTrue(elfo.getInventario().getItens().contains(item));
    }
+   
+   @Test
+   public void adicionaItemComDescricaoArcoDeVidro()
+   {
+       ElfoVerde elfo = new ElfoVerde("GreenElf");
+       Item item = new Item(1,"Arco e Flecha de Vidro");
+       elfo.adicionarItem(item);
+       assertTrue(elfo.getInventario().getItens().contains(item));
+   }
+   
+   @Test
+   public void adicionaItemComDescricaoAleatoria()
+   {
+       ElfoVerde elfo = new ElfoVerde("GreenElf");
+       Item item = new Item(1,"Lemba");
+       elfo.adicionarItem(item);
+       assertFalse(elfo.getInventario().getItens().contains(item));
+   }
 }
