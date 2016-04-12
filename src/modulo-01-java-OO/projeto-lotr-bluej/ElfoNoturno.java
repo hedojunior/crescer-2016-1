@@ -23,7 +23,7 @@ public class ElfoNoturno extends Elfo
      */
         
     public void estaVivo() {
-        if(this.vida >= 0 && this.vida < 1) {
+        if(this.vida < 1) {
             this.status = Status.MORTO;
         }
     }

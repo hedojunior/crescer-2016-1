@@ -12,7 +12,7 @@ public class ElfoNoturnoTest
         //Arrange
         ElfoNoturno elfo = new ElfoNoturno("DarkElf");
         //Act
-        for(int i = 0; i < 800; i++){
+        for(int i = 0; i < 90; i++){
             elfo.atirarFlechaDwarf(new Dwarf("Gimli"));
         }
         //Assert
