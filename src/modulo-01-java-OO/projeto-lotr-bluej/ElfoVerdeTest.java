@@ -44,4 +44,20 @@ public class ElfoVerdeTest
        elfo.adicionarItem(item);
        assertFalse(elfo.getInventario().getItens().contains(item));
    }
+   
+   @Test
+   public void incrementaContadorAoCriarElfoVerde() {
+       int esperado = Elfo.getContador() + 1;
+       Elfo elfo = new ElfoVerde("GreenElf");        
+       assertEquals(esperado, Elfo.getContador());
+   }
+   
+   @Test
+   public void incrementaContadorAoCriarTresElfosVerdes() {
+       int esperado = Elfo.getContador() + 3;
+       Elfo elfo = new ElfoVerde("GreenElf");        
+       Elfo elfo2 = new ElfoVerde("GreenElf");
+       Elfo elfo3 = new ElfoVerde("GreenElf");
+       assertEquals(esperado, Elfo.getContador());
+   }
 }

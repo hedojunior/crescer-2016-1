@@ -133,4 +133,20 @@ public class ElfoTest
        //Assert
        assertEquals(Status.VIVO, elfo.getStatus());
    }
+   
+   @Test
+   public void contadorAumentaQuandoElfoNasce() {
+       int esperado = Elfo.getContador() + 1;
+       Elfo elfo = new Elfo("Elfo");
+       assertEquals(esperado, Elfo.getContador());
+   }
+   
+   @Test
+   public void contadorAumentaQuandoTresElfosNascem() {
+       int esperado = Elfo.getContador() + 3;
+       Elfo elfo = new Elfo("Elfo");
+       Elfo elfo1 = new Elfo("Elfo");
+       Elfo elfo2 = new Elfo("Elfo");
+       assertEquals(esperado, Elfo.getContador());
+   }
 }
