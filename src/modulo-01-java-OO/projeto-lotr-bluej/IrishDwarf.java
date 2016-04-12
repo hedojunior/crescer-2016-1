@@ -6,13 +6,11 @@ public class IrishDwarf extends Dwarf {
          this.vida = 110;
     }
         
-    public IrishDwarf(String nome, DataTerceiraEra dataNascimento)
-    {
+    public IrishDwarf(String nome, DataTerceiraEra dataNascimento) {
         super(nome,dataNascimento);
     }
     
-    public void tentarSorte() 
-    {
+    public void tentarSorte() {
         int soma = 0, i = 0,quantidade = 0;
         if(this.getNumeroSorte() == 101.0 * -33) {
             while ( i < this.getInventario().getItens().size()){
