@@ -52,20 +52,4 @@ public class ElfoNoturnoTest
         //Assert
         assertEquals(95, elfo.getVida(),0);
     }
-    
-    @Test
-    public void aumentaContadorQuandoElfoNoturnoÉCriado() {
-        int esperado = Elfo.getContador() + 1;
-        Elfo elfoNoturno = new ElfoNoturno("DarkElf");
-        assertEquals(esperado,Elfo.getContador());
-    }
-    
-    @Test
-    public void aumentaContadorQuando3ElfosNoturnosSãoCriados() {
-        int esperado = Elfo.getContador() + 3;
-        Elfo elfoNoturno = new ElfoNoturno("DarkElf");
-        Elfo elfoNoturno1 = new ElfoNoturno("DarkElf");
-        Elfo elfoNoturno2 = new ElfoNoturno("DarkElf");
-        assertEquals(esperado,Elfo.getContador());
-    }
 }

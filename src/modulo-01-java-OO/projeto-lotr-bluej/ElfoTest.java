@@ -145,8 +145,8 @@ public class ElfoTest
    public void contadorAumentaQuandoTresElfosNascem() {
        int esperado = Elfo.getContador() + 3;
        Elfo elfo = new Elfo("Elfo");
-       Elfo elfo1 = new Elfo("Elfo");
-       Elfo elfo2 = new Elfo("Elfo");
+       Elfo elfo1 = new ElfoVerde("Elfo");
+       Elfo elfo2 = new ElfoNoturno("Elfo");
        assertEquals(esperado, Elfo.getContador());
    }
 }
