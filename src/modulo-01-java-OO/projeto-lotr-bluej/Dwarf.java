@@ -49,4 +49,8 @@ public class Dwarf extends Personagem {
         if(this.getNumeroSorte() == -3333.0)
             inventario.temSorte();
     }
+    
+    public static Dwarf descobrirMenosVida(Dwarf d1, Dwarf d2) {
+        return d1.getVida() < d2.getVida() ? d1: d2;   
+    }
 }
