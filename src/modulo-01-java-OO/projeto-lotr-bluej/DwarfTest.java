@@ -14,7 +14,7 @@ public class DwarfTest
        //Act
        Dwarf dwarf = new Dwarf("Dwarf");
        //Assert 
-       assertEquals(vida_esperada, dwarf.getVida());  
+       assertEquals(vida_esperada, dwarf.getVida(),0);  
    }
    
    @Test
@@ -31,24 +31,24 @@ public class DwarfTest
    public void dwarfToma10Dano(){
        //Arrange
        Dwarf dwarf = new Dwarf("Thráin");
-       int vida_esperada = dwarf.getVida() - 10;
+       double vida_esperada = dwarf.getVida() - 10;
        //Act
        dwarf.danoRecebido();
        //Assert
-       assertEquals(vida_esperada,dwarf.getVida());
+       assertEquals(vida_esperada,dwarf.getVida(),0);
    }
    
    @Test
    public void dwarfToma110Dano(){
        //Arrange
        Dwarf dwarf = new Dwarf("Kíli");
-       int vida_esperada = dwarf.getVida() - 110;
+       double vida_esperada = dwarf.getVida() - 110;
        // Act
        for(int i = 0; i < 11; i++) {
            dwarf.danoRecebido();
        }
        // Assert
-       assertEquals(vida_esperada,dwarf.getVida());
+       assertEquals(vida_esperada,dwarf.getVida(),0);
    }
       
    @Test
@@ -60,7 +60,7 @@ public class DwarfTest
            dwarf.danoRecebido();
        }
        //Assert
-       assertEquals(0, dwarf.getVida());
+       assertEquals(0, dwarf.getVida(),0);
        assertEquals(Status.MORTO, dwarf.getStatus());
    }
    
@@ -73,7 +73,7 @@ public class DwarfTest
            dwarf.danoRecebido();
        }
        //Assert
-       assertEquals(0, dwarf.getVida());
+       assertEquals(0, dwarf.getVida(),0);
        assertEquals(Status.MORTO, dwarf.getStatus());
    }
    
@@ -217,12 +217,12 @@ public class DwarfTest
    public void vidaEExperienciaIguaisAposDanoMeireles() {
        DataTerceiraEra data = new DataTerceiraEra(01,01,2015);
        Dwarf d1 = new Dwarf("Meireles",data);
-       int vida_esperada = d1.getVida();
+       double vida_esperada = d1.getVida();
        int xp_esperada = d1.getExperiencia();
        //Act
        d1.danoRecebido();
        //Assert
-       assertEquals(vida_esperada, d1.getVida());
+       assertEquals(vida_esperada, d1.getVida(),0);
        assertEquals(xp_esperada, d1.getExperiencia());
    }
    
@@ -230,14 +230,14 @@ public class DwarfTest
    public void vidaEExperienciaIguaisAposDanoMeirelesNewString() {
        DataTerceiraEra data = new DataTerceiraEra(01,01,2015);
        Dwarf d1 = new Dwarf(new String("Meireles"),data);
-       int vida_esperada = d1.getVida() - 10;
+       double vida_esperada = d1.getVida() - 10;
        int xp_esperada = d1.getExperiencia();
        String nome_esperado = "Meireles";
        boolean teste_nome = d1.getNome().equals(nome_esperado);
        //Act
        d1.danoRecebido();
        //Assert
-       assertEquals(vida_esperada, d1.getVida());
+       assertEquals(vida_esperada, d1.getVida(),0);
        assertEquals(xp_esperada, d1.getExperiencia());
        assertTrue(teste_nome);
    }
@@ -246,14 +246,14 @@ public class DwarfTest
    public void vidaEExperienciaAposDanoDataBissextoDwarf90Vida() {
        DataTerceiraEra data = new DataTerceiraEra(01,01,2016);
        Dwarf d1 = new Dwarf("Azaghâl",data);
-       int vida_esperada = d1.getVida() - 20;
+       double vida_esperada = d1.getVida() - 20;
        int xp_esperada = d1.getExperiencia() + 2;
        //Act
        d1.danoRecebido();
        d1.danoRecebido();
        d1.danoRecebido();
        //Assert
-       assertEquals(vida_esperada, d1.getVida());
+       assertEquals(vida_esperada, d1.getVida(),0);
        assertEquals(xp_esperada, d1.getExperiencia());
    }
    
@@ -261,14 +261,14 @@ public class DwarfTest
    public void Experiencia8AposDanoDataBissextoDwarf90Vida() {
        DataTerceiraEra data = new DataTerceiraEra(01,01,2016);
        Dwarf d1 = new Dwarf("Fundin",data);
-       int vida_esperada = d1.getVida() - 20;
+       double vida_esperada = d1.getVida() - 20;
        int xp_esperada = d1.getExperiencia() + 8;
        //Act
        for (int i = 0; i <6; i++) {
            d1.danoRecebido();
        }
        //Assert
-       assertEquals(vida_esperada, d1.getVida());
+       assertEquals(vida_esperada, d1.getVida(),0);
        assertEquals(xp_esperada, d1.getExperiencia());
    }
    
