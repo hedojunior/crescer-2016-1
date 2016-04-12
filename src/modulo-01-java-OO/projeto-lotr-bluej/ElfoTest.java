@@ -122,7 +122,7 @@ public class ElfoTest
        Elfo elfo = new Elfo("elfo");
        //Act
        //Assert
-       assertEquals(100, elfo.getVida());
+       assertEquals(100, elfo.getVida(),0);
    }
    
    @Test
