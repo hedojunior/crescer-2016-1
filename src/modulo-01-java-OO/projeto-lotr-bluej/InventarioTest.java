@@ -159,4 +159,22 @@ public class InventarioTest
         //Assert
         assertEquals(8,inventario.getItens().get(0).getQuantidade());
    }
+   
+   @Test
+   public void retornaTrueSeOsInventariosForemIguais() {
+       Inventario inventario = new Inventario();
+       Inventario inventario2 = new Inventario();
+       inventario.adicionarItem(new Item(1,"Espada"));
+       inventario2.adicionarItem(new Item(1,"Espada"));
+       assertTrue(inventario.equals(inventario2));
+   }
+   
+   @Test
+   public void retornaFalseSeOsInventariosForemDiferentes() {
+       Inventario inventario = new Inventario();
+       Inventario inventario2 = new Inventario();
+       inventario.adicionarItem(new Item(1,"Espada"));
+       inventario2.adicionarItem(new Item(1,"Escudo"));
+       assertFalse(inventario.equals(inventario2));
+   }
 }

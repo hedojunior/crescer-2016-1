@@ -59,5 +59,24 @@ public class Inventario {
                }
            }
        }
-   } 
+   }
+   
+   public boolean equals(Object obj) {
+       boolean resultado = false;
+       Inventario outro = (Inventario)obj;
+       if  (this.getItens().size() != outro.getItens().size()) {
+           resultado = false;
+           return resultado;
+       }else {
+           for( int i = 0; i < this.getItens().size(); i++) {
+               if (this.getItens().get(i).equals(outro.getItens().get(i)) ) {
+                   resultado = true;
+               }else {
+                   resultado = false;
+                   break;
+               }
+           }
+       } return resultado;
+   }
+   
 }
