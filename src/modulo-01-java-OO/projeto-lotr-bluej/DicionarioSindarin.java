@@ -3,6 +3,7 @@ public class DicionarioSindarin {
     public static void main(String[] args) {
         HashMap<String, String> dicionarioSindarin = new HashMap<>(); 
         dicionarioSindarin.put("terra", "amar");
+        dicionarioSindarin.put("fire", "naur");
         dicionarioSindarin.put("fogo", "naur");
         dicionarioSindarin.put("vento", "gwaew");
         dicionarioSindarin.put("água", "nem");
