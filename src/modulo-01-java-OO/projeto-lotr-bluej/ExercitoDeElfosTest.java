@@ -9,12 +9,12 @@ public class ExercitoDeElfosTest
    @Test
    public void alistaEBuscaElfoVerde() {
         //Arrange
-        Elfo elfo = new ElfoVerde("Grün Elf");
+        Elfo elfo = new ElfoVerde("Green Elf");
         ExercitoDeElfos exercito = new ExercitoDeElfos();
         //Act
         exercito.alistarElfo(elfo);
         //Assert
-        assertEquals(elfo, exercito.buscarElfo("Grün Elf"));
+        assertEquals(elfo, exercito.buscarElfo("Green Elf"));
    }
     
    @Test
@@ -31,23 +31,23 @@ public class ExercitoDeElfosTest
    @Test
     public void naoAlistaElfoNormalERetornaNullAoBuscar() {
     //Arrange
-    Elfo elfo = new Elfo("Elfo Genérico");
+    Elfo elfo = new Elfo("Elfo Generico");
     ExercitoDeElfos exercito = new ExercitoDeElfos();
     //Act
     exercito.alistarElfo(elfo);
     //Assert
     assertFalse(exercito.getExercito().containsValue(elfo));
-    assertEquals(null, exercito.buscarElfo("Elfo Genérico"));
+    assertEquals(null, exercito.buscarElfo("Elfo Generico"));
    }
    
    @Test
    public void agrupaElfosVivosEmSegundaHashEmUmArrayList() {
        //Arrange
        ExercitoDeElfos exercito = new ExercitoDeElfos();
-       Elfo elfo1 = new ElfoVerde("ElfoVerde Genérico");
-       Elfo elfo2 = new ElfoNoturno("ElfoNoturno Genérico");
-       Elfo elfo3 = new ElfoNoturno("ElfoNoturno Genérico #2");
-       Elfo elfo4 = new ElfoVerde("ElfoVerde Genérico #2");
+       Elfo elfo1 = new ElfoVerde("ElfoVerde Generico");
+       Elfo elfo2 = new ElfoNoturno("ElfoNoturno Generico");
+       Elfo elfo3 = new ElfoNoturno("ElfoNoturno Generico #2");
+       Elfo elfo4 = new ElfoVerde("ElfoVerde Generico #2");
        //Act
        exercito.alistarElfo(elfo1);
        exercito.alistarElfo(elfo2);
@@ -65,10 +65,10 @@ public class ExercitoDeElfosTest
    public void agrupaElfosVivosEmSegundaHashEmUmArrayListEElfoMortoEmUmaNovaArrayList() {
        //Arrange
        ExercitoDeElfos exercito = new ExercitoDeElfos();
-       Elfo elfo1 = new ElfoVerde("ElfoVerde Genérico");
-       Elfo elfo2 = new ElfoNoturno("ElfoNoturno Genérico",100);
-       Elfo elfo3 = new ElfoNoturno("ElfoNoturno Genérico #2");
-       Elfo elfo4 = new ElfoVerde("ElfoVerde Genérico #2");
+       Elfo elfo1 = new ElfoVerde("ElfoVerde Generico");
+       Elfo elfo2 = new ElfoNoturno("ElfoNoturno Generico",100);
+       Elfo elfo3 = new ElfoNoturno("ElfoNoturno Generico #2");
+       Elfo elfo4 = new ElfoVerde("ElfoVerde Generico #2");
        //Act
        for (int i = 0; i< 90; i ++) {
            elfo2.atirarFlechaDwarf(new Dwarf("Gimli"));
@@ -89,10 +89,10 @@ public class ExercitoDeElfosTest
    public void buscarElfosVivosCorretamente() {
        ArrayList<Elfo> vivosOrganizados, mortosOrganizados;
        ExercitoDeElfos exercito = new ExercitoDeElfos();
-       Elfo elfo1 = new ElfoVerde("ElfoVerde Genérico");
-       Elfo elfo2 = new ElfoNoturno("ElfoNoturno Genérico",100);
-       Elfo elfo3 = new ElfoNoturno("ElfoNoturno Genérico #2");
-       Elfo elfo4 = new ElfoVerde("ElfoVerde Genérico #2");
+       Elfo elfo1 = new ElfoVerde("ElfoVerde Generico");
+       Elfo elfo2 = new ElfoNoturno("ElfoNoturno Generico",100);
+       Elfo elfo3 = new ElfoNoturno("ElfoNoturno Generico #2");
+       Elfo elfo4 = new ElfoVerde("ElfoVerde Generico #2");
        //Act
        for (int i = 0; i< 90; i ++) {
            elfo2.atirarFlechaDwarf(new Dwarf("Gimli"));

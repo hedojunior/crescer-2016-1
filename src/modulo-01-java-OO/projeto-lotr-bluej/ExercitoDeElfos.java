@@ -24,13 +24,11 @@ public class ExercitoDeElfos {
         for(String chave : exercito.keySet()) {
             if(!(elfosAgrupados.containsKey(exercito.get(chave).getStatus()))){
                 elfosAgrupados.put(exercito.get(chave).getStatus(), new ArrayList<Elfo>());
-                elfosAgrupados.get(exercito.get(chave).getStatus()).add(exercito.get(chave));
-            } else {
-                elfosAgrupados.get(exercito.get(chave).getStatus()).add(exercito.get(chave));
+            }
+            elfosAgrupados.get(exercito.get(chave).getStatus()).add(exercito.get(chave));
             }
         }
-    }
-    
+     
     public ArrayList<Elfo> buscar (Status status) {
        return elfosAgrupados.get(status);
     }
