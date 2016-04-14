@@ -38,4 +38,6 @@ public abstract class Personagem
     public void perderItem(Item item) {
         this.getInventario().removerItem(item);
     }
+    
+    public abstract void tentarSorte();
 }

@@ -35,4 +35,7 @@ public class Elfo extends Personagem {
             this.nome,this.flechas, FlechasNoSingular ? "flecha" : "flechas", this.experiencia, ExperienciaNoSingular ? "nível" : "níveis");       
     }
     
+    public void tentarSorte() {
+        System.out.println("Elfo tentou a sorte!");
+    }
 }
