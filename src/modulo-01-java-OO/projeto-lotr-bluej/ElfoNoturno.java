@@ -8,8 +8,8 @@ public class ElfoNoturno extends Elfo
         super(nome, flechas);
     }
     
-    public void atirarFlechaDwarf(Dwarf dwarf) {
-        super.atirarFlechaDwarf(dwarf);
+    public void atirarFlecha(Dwarf dwarf) {
+        super.atirarFlecha(dwarf);
         this.experiencia += 2;
         this.vida -= ((this.vida / 100) * 5);
         this.estaVivo();

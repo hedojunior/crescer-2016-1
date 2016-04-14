@@ -45,14 +45,14 @@ public class ElfoTest
    }    
        
    @Test
-   public void AtirarFlechaDwarf(){
+   public void atirarFlecha(){
       //Arrange
       Elfo elfo = new Elfo("Elfo");
       Dwarf dwarf = new Dwarf("Dwarf");
       int xp_obtido, xp_esperado = elfo.getExperiencia() + 1;
       int flechas_obtidas, flechas_esperadas = elfo.getFlechas() - 1;
       //Act
-      elfo.atirarFlechaDwarf(dwarf);
+          elfo.atirarFlecha(dwarf);
       flechas_obtidas  = elfo.getFlechas();
       xp_obtido = elfo.getExperiencia();
       //Assert
@@ -70,9 +70,9 @@ public class ElfoTest
       int xp_obtido, xp_esperado = elfo.getExperiencia() + 3;
       int flechas_obtidas, flechas_esperadas = elfo.getFlechas() - 3;
       //Act
-      elfo.atirarFlechaDwarf(dwarf);
-      elfo.atirarFlechaDwarf(dwarf2);
-      elfo.atirarFlechaDwarf(dwarf3);
+      elfo.atirarFlecha(dwarf);
+      elfo.atirarFlecha(dwarf2);
+      elfo.atirarFlecha(dwarf3);
       xp_obtido = elfo.getExperiencia();
       flechas_obtidas = elfo.getFlechas();
       //Assert     
@@ -88,7 +88,7 @@ public class ElfoTest
       int xp_obtido, xp_esperado = elfo.getExperiencia() + 1;
       int flechas_obtidas, flechas_esperadas = elfo.getFlechas() - 1;
       //Act
-      elfo.atirarFlechaDwarf(dwarf);
+      elfo.atirarFlecha(dwarf);
       flechas_obtidas = elfo.getFlechas();
       xp_obtido = elfo.getExperiencia();
       //Assert

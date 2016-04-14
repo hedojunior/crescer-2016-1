@@ -21,7 +21,7 @@ public class Elfo extends Personagem {
         return flechas;
     }
        
-    public void atirarFlechaDwarf(Dwarf dwarf) {
+    public void atirarFlecha(Dwarf dwarf) {
         experiencia++;
         flechas--;
         dwarf.danoRecebido();               

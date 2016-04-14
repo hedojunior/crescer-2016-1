@@ -10,9 +10,9 @@ public class ElfoVerde extends Elfo
     super(nome,flechas);
    }
    
-   public void atirarFlechaDwarf(Dwarf dwarf) 
+   public void atirarFlecha(Dwarf dwarf) 
    {
-        super.atirarFlechaDwarf(dwarf);
+        super.atirarFlecha(dwarf);
         this.experiencia++;               
    }
    

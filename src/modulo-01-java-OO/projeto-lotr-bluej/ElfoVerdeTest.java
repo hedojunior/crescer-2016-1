@@ -13,7 +13,7 @@ public class ElfoVerdeTest
        //Arrange
        ElfoVerde elfo = new ElfoVerde("GreenElf",5);
        //Act
-       elfo.atirarFlechaDwarf(new Dwarf("Gimli"));
+       elfo.atirarFlecha(new Dwarf("Gimli"));
        //Assert
        assertEquals(2, elfo.getExperiencia());
    }

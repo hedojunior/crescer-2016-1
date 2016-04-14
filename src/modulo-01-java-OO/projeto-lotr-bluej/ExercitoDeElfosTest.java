@@ -71,7 +71,7 @@ public class ExercitoDeElfosTest
        Elfo elfo4 = new ElfoVerde("ElfoVerde Generico #2");
        //Act
        for (int i = 0; i< 90; i ++) {
-           elfo2.atirarFlechaDwarf(new Dwarf("Gimli"));
+           elfo2.atirarFlecha(new Dwarf("Gimli"));
        }
        exercito.alistarElfo(elfo1);
        exercito.alistarElfo(elfo2);
@@ -95,7 +95,7 @@ public class ExercitoDeElfosTest
        Elfo elfo4 = new ElfoVerde("ElfoVerde Generico #2");
        //Act
        for (int i = 0; i< 90; i ++) {
-           elfo2.atirarFlechaDwarf(new Dwarf("Gimli"));
+           elfo2.atirarFlecha(new Dwarf("Gimli"));
        }
        exercito.alistarElfo(elfo1);
        exercito.alistarElfo(elfo2);
