@@ -2,6 +2,7 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import java.util.*;
 
 public class ExercitoDeElfosTest
 {
@@ -82,6 +83,38 @@ public class ExercitoDeElfosTest
        assertTrue(exercito.getElfosAgrupados().get(Status.MORTO).contains(elfo2));
        assertTrue(exercito.getElfosAgrupados().get(Status.VIVO).contains(elfo3));
        assertTrue(exercito.getElfosAgrupados().get(Status.VIVO).contains(elfo4));
+   }
+   
+   @Test
+   public void buscarElfosVivosCorretamente() {
+       ArrayList<Elfo> vivosOrganizados, mortosOrganizados;
+       ExercitoDeElfos exercito = new ExercitoDeElfos();
+       Elfo elfo1 = new ElfoVerde("ElfoVerde Genérico");
+       Elfo elfo2 = new ElfoNoturno("ElfoNoturno Genérico",100);
+       Elfo elfo3 = new ElfoNoturno("ElfoNoturno Genérico #2");
+       Elfo elfo4 = new ElfoVerde("ElfoVerde Genérico #2");
+       //Act
+       for (int i = 0; i< 90; i ++) {
+           elfo2.atirarFlechaDwarf(new Dwarf("Gimli"));
+       }
+       exercito.alistarElfo(elfo1);
+       exercito.alistarElfo(elfo2);
+       exercito.alistarElfo(elfo3);
+       exercito.alistarElfo(elfo4);
+       exercito.agruparElfos();
+       vivosOrganizados = exercito.buscar(Status.VIVO);
+       mortosOrganizados = exercito.buscar(Status.MORTO);
+       assertTrue(vivosOrganizados.contains(elfo1));
+       assertTrue(vivosOrganizados.contains(elfo3));
+       assertTrue(vivosOrganizados.contains(elfo4));
+       assertTrue(mortosOrganizados.contains(elfo2));
+   }
+   
+   @Test
+   public void retornarNullQuandoNãoHouveremElfosVivosAgrupados() {
+       ExercitoDeElfos exercito = new ExercitoDeElfos();
+       exercito.agruparElfos();
+       assertEquals(null, exercito.buscar(Status.VIVO));
    }
 }   
  

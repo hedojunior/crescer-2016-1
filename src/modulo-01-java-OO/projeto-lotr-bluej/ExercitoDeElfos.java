@@ -15,6 +15,7 @@ public class ExercitoDeElfos {
     public HashMap<String, Elfo> getExercito() {
         return this.exercito;
     }
+    
     public HashMap<Status, ArrayList<Elfo>> getElfosAgrupados() {
         return this.elfosAgrupados;
     }
@@ -28,6 +29,10 @@ public class ExercitoDeElfos {
                 elfosAgrupados.get(exercito.get(chave).getStatus()).add(exercito.get(chave));
             }
         }
+    }
+    
+    public ArrayList<Elfo> buscar (Status status) {
+       return elfosAgrupados.get(status);
     }
 }
 
