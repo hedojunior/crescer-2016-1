@@ -1,8 +1,6 @@
 import java.util.*;
 
 public class SindarinParaIngles implements TradutorSindarin {
-    
-    
     private HashMap<String, String> dicionario = new HashMap<String, String>()
     {
         {
@@ -15,7 +13,10 @@ public class SindarinParaIngles implements TradutorSindarin {
     };
     
     public String traduzir(String palavraEmSindarin) {
-        return dicionario.get(palavraEmSindarin);
+        if(!(dicionario.containsValue(palavraEmSindarin))){
+            return "nada, pois não está em nosso dicionário";
+        }else{
+            return dicionario.get(palavraEmSindarin);
+         }
     }
-
 }

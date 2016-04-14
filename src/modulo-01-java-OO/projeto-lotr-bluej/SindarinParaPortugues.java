@@ -7,16 +7,18 @@ public class SindarinParaPortugues implements TradutorSindarin {
     {
         {
             put("naur", "fogo");
-            put("terra", "amar");
-            put("fogo", "naur");
-            put("vento", "gwaew");
-            put("água", "nem");
-            put("coração", "gûr");
+            put("amar", "terra");
+            put("gwaew", "vento");
+            put("nem", "água");
+            put("gûr", "coração");
         }
     };
     
     public String traduzir(String palavraEmSindarin) {
-        return dicionario.get(palavraEmSindarin);
+        if(!(dicionario.containsKey(palavraEmSindarin))){
+            return "nada, pois não está no nosso dicionário.";
+        } else{
+            return dicionario.get(palavraEmSindarin);
+          }
     }
-
 }
