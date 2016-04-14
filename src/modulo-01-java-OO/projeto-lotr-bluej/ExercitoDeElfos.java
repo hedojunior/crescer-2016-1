@@ -21,6 +21,7 @@ public class ExercitoDeElfos {
     }
     
     public void agruparElfos() {
+        elfosAgrupados.clear();
         for(String chave : exercito.keySet()) {
             if(!(elfosAgrupados.containsKey(exercito.get(chave).getStatus()))){
                 elfosAgrupados.put(exercito.get(chave).getStatus(), new ArrayList<Elfo>());
