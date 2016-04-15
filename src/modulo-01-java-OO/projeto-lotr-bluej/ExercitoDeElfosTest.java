@@ -117,26 +117,5 @@ public class ExercitoDeElfosTest
        assertEquals(null, exercito.buscar(Status.VIVO));
    }
    
-   @Test
-    public void testaSeOsElfosVerdesQueAtacaramEstaoEmOrdemNoArrayList() {
-        Estrategia estrategia = new Estrategia1();
-        ExercitoDeElfos exercito1 = new ExercitoDeElfos();
-        Elfo elfoverde1 = new ElfoVerde("GreenElf1");
-        Elfo elfoverde2 = new ElfoVerde("GreenElf2");
-        Elfo elfoverde3 = new ElfoVerde("GreenElf3");
-        Elfo elfoverde4 = new ElfoVerde("GreenElf4");
-        exercito1.alistarElfo(elfoverde1);
-        exercito1.alistarElfo(elfoverde2);
-        exercito1.alistarElfo(elfoverde3);
-        exercito1.alistarElfo(elfoverde4);
-        exercito1.agruparElfos();
-        ArrayList<Elfo> esperado = exercito1.buscar(Status.VIVO);
-        ArrayList<Dwarf> anoes = new ArrayList<>();
-        anoes.add(new Dwarf("Gimli"));
-        anoes.add(new Dwarf("Bomfur"));
-        estrategia.estrategiaDeAtaque(exercito1.buscar(Status.VIVO),anoes);
-        ArrayList<Elfo> atacantes = estrategia.getOrdemDoUltimoAtaque();
-        assertEquals(esperado, atacantes);
-    }
 }   
  
