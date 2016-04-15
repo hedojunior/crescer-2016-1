@@ -47,10 +47,44 @@ public class Estrategia1Test {
         ArrayList<Dwarf> anoes = new ArrayList<>();
         anoes.add(new Dwarf("Gimli"));
         anoes.add(new Dwarf("Bomfur"));
-        estrategia.estrategiaDeAtaque(exercito1.buscar(Statu),anoes);
+        estrategia.estrategiaDeAtaque(exercito1.buscar(Status.VIVO),anoes);
         ArrayList<Elfo> atacantes = estrategia.getOrdemDoUltimoAtaque();
         assertEquals(elfonoturno1, atacantes.get(0));
         assertEquals(elfoverde1,atacantes.get(1));
     }
     
-}
+    @Test
+    public void testaSeOsElfosVerdesQueAtacaramEstaoEmOrdemNoArrayList() {
+        Estrategia estrategia = new Estrategia1();
+        ExercitoDeElfos exercito1 = new ExercitoDeElfos();
+        Elfo elfoverde1 = new ElfoVerde("GreenElf1");
+        Elfo elfoverde2 = new ElfoVerde("GreenElf2");
+        Elfo elfoverde3 = new ElfoVerde("GreenElf3");
+        Elfo elfoverde4 = new ElfoVerde("GreenElf4");
+        exercito1.alistarElfo(elfoverde1);
+        exercito1.alistarElfo(elfoverde2);
+        exercito1.alistarElfo(elfoverde3);
+        exercito1.alistarElfo(elfoverde4);
+        exercito1.agruparElfos();
+        ArrayList<Elfo> esperado = exercito1.buscar(Status.VIVO);
+        ArrayList<Dwarf> anoes = new ArrayList<>();
+        anoes.add(new Dwarf("Gimli"));
+        anoes.add(new Dwarf("Bomfur"));
+        estrategia.estrategiaDeAtaque(exercito1.buscar(Status.VIVO),anoes);
+        ArrayList<Elfo> atacantes = estrategia.getOrdemDoUltimoAtaque();
+        assertEquals(esperado, atacantes);
+    }
+    
+    @Test
+    public void calculaIntencoesCorretamente() {
+        Estrategia1 estrategia = new Estrategia1();
+        ArrayList<Elfo> elfos = new ArrayList<>();
+        elfos.add(new ElfoNoturno("N1"));
+        elfos.add(new ElfoNoturno("N2"));
+        elfos.add(new ElfoNoturno("N3"));
+        elfos.add(new ElfoVerde("V1"));
+        assertEquals(8,estrategia.calcularIntencoes(elfos, 2),0);
+        
+    }
+}   
+ 

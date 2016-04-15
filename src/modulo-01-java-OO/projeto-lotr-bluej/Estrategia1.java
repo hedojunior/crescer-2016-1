@@ -5,8 +5,8 @@ public class Estrategia1 implements Estrategia {
         public void estrategiaDeAtaque(ArrayList<Elfo> horda, ArrayList<Dwarf> alvos) {
             OrdemDoUltimoAtaque.clear();
             double intencoes = 0;
-            int contadorVerde = 0, contadorNoturno = 0, numeroDwarves = alvos.size();
-            intencoes = this.calcularIntencoes(contadorVerde,contadorNoturno,horda, numeroDwarves);
+            int numeroDwarves = alvos.size();
+            intencoes = this.calcularIntencoes(horda, numeroDwarves);
             this.batalha(horda,alvos,intencoes);
         }
         
@@ -14,7 +14,8 @@ public class Estrategia1 implements Estrategia {
             return this.OrdemDoUltimoAtaque;
         }
         
-        private double calcularIntencoes (int contadorVerde, int contadorNoturno, ArrayList<Elfo> horda, int numeroDwarves){
+        public double calcularIntencoes (ArrayList<Elfo> horda, int numeroDwarves){
+            int contadorVerde = 0, contadorNoturno = 0;
             for (Elfo elfo : horda) {
                 if(elfo instanceof ElfoVerde) {
                     contadorVerde++;
@@ -31,11 +32,15 @@ public class Estrategia1 implements Estrategia {
                 if(elfo instanceof ElfoNoturno && intencoesElfoNoturno > 0 || elfo instanceof ElfoVerde) {
                     OrdemDoUltimoAtaque.add(elfo);
                     for(Dwarf dwarf : alvos){
-                        elfo.atirarFlecha(dwarf);
-                        if (elfo instanceof ElfoNoturno) intencoesElfoNoturno--;
+                        if (elfo instanceof ElfoNoturno && intencoesElfoNoturno > 0){
+                            elfo.atirarFlecha(dwarf);
+                            intencoesElfoNoturno--;
+                        }   else if (elfo instanceof ElfoVerde){
+                                elfo.atirarFlecha(dwarf);
+                            }
                     }
-                } else {
-                    continue;
+                    } else {
+                        continue;
                 }
             }
         }
