@@ -1,11 +1,13 @@
 import java.util.*;
 public class ExercitoDeElfos {
-    HashMap<String, Elfo> exercito = new HashMap<>();
-    HashMap<Status, ArrayList<Elfo>> elfosAgrupados = new HashMap<>();
+    private HashMap<String, Elfo> exercito = new HashMap<>();
+    private HashMap<Status, ArrayList<Elfo>> elfosAgrupados = new HashMap<>();
+    private Estrategia estrategia = new Estrategia1();
+
     public void alistarElfo(Elfo elfo) {
-        if( elfo instanceof ElfoNoturno || elfo instanceof ElfoVerde ) {
-            exercito.put(elfo.getNome(),elfo);
-        }
+        if( elfo instanceof ElfoNoturno || elfo instanceof ElfoVerde) {
+        exercito.put(elfo.getNome(), elfo);
+       }
     }
     
     public Elfo buscarElfo(String nome) {
@@ -33,5 +35,23 @@ public class ExercitoDeElfos {
     public ArrayList<Elfo> buscar (Status status) {
        return elfosAgrupados.get(status);
     }
+    
+    public void mudarEstrategia (Estrategia estrategia) {
+        this.estrategia = estrategia;
+    }
+    
+    public ArrayList<Elfo> getOrdemDoUltimoAtaque() {
+        return this.estrategia.getOrdemDoUltimoAtaque();
+    }
+    
+     public void atacar(ArrayList<Dwarf> alvos) {
+         this.estrategia.estrategiaDeAtaque(this.getElfosAgrupados().get(Status.VIVO),alvos);
+     }
+    
+   // public void estrategiaDeAtaque(ExercitoDeElfos exercito, ArrayList<Dwarf> dwarfs){
+     //   Estrategia estrategia1 = new Estrategia1();
+       // estrategia1.estrategiaDeAtaque(exercito,dwarfs);
+    //}
+    
 }
 
