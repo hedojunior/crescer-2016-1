@@ -27,6 +27,13 @@ public class Elfo extends Personagem {
         flechas--;
         dwarf.danoRecebido();               
     }
+    
+    public void atirarFlechasDwarf(ArrayList<Elfo> ordemDoUltimoAtaque,ArrayList<Dwarf> alvos) {
+        for(Dwarf dwarf: alvos) {
+            this.atirarFlecha(dwarf);
+            ordemDoUltimoAtaque.add(this);
+        }
+    }
    
     public String toString () {
         boolean FlechasNoSingular = Math.abs(this.flechas) == 1;
