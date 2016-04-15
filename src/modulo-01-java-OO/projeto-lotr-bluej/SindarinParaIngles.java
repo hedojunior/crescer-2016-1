@@ -13,10 +13,7 @@ public class SindarinParaIngles implements TradutorSindarin {
     };
     
     public String traduzir(String palavraEmSindarin) {
-        if(!(dicionario.containsValue(palavraEmSindarin))){
-            return "nada, pois não está em nosso dicionário";
-        }else{
-            return dicionario.get(palavraEmSindarin);
-         }
+         return dicionario.get(palavraEmSindarin);
+    
     }
 }

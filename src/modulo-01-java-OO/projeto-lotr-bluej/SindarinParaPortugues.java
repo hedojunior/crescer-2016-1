@@ -15,10 +15,6 @@ public class SindarinParaPortugues implements TradutorSindarin {
     };
     
     public String traduzir(String palavraEmSindarin) {
-        if(!(dicionario.containsKey(palavraEmSindarin))){
-            return "nada, pois não está no nosso dicionário.";
-        } else{
-            return dicionario.get(palavraEmSindarin);
-          }
+        return dicionario.get(palavraEmSindarin);
     }
 }
