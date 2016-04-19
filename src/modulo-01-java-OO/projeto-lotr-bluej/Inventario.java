@@ -40,17 +40,19 @@ public class Inventario {
        int maior_quantidade = 0;
        int indice_maior = 0;
        
-       if (this.inventario.isEmpty()){
-           return null;
-       }
-        
        for(int i = 0; i <this.inventario.size(); i++) {
            if(this.inventario.get(i).getQuantidade() > maior_quantidade){
                maior_quantidade = this.inventario.get(i).getQuantidade();
                indice_maior = i;
             }
        }
-       return this.inventario.get(indice_maior);
+       try {
+           return this.inventario.get(indice_maior);
+       }
+       catch(IndexOutOfBoundsException e) {
+          System.out.println("O Inventário está vazio!");
+          return null;
+       }
    }
    
     public void ordenaItens() {
