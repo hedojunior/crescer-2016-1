@@ -8,7 +8,7 @@ import java.util.*;
 public class Estrategia1Test {
    
     @Test
-    public void testaSeContemOsElfosQueAtacaramNoArrayList() {
+    public void ContemOsElfosQueAtacaramNoArrayList() {
         Estrategia estrategia = new Estrategia1();
         ExercitoDeElfos exercito1 = new ExercitoDeElfos();
         Elfo elfonoturno1 = new ElfoNoturno("NightElf1");
@@ -32,7 +32,7 @@ public class Estrategia1Test {
     }
     
     @Test
-    public void testaSeOsElfosQueAtacaramEstaoEmOrdemNoArrayList() {
+    public void ElfosQueAtacaramEstaoEmOrdemNoArrayList() {
         Estrategia estrategia = new Estrategia1();
         ExercitoDeElfos exercito1 = new ExercitoDeElfos();
         Elfo elfonoturno1 = new ElfoNoturno("NightElf1");
@@ -54,7 +54,7 @@ public class Estrategia1Test {
     }
     
     @Test
-    public void testaSeOsElfosVerdesQueAtacaramEstaoEmOrdemNoArrayList() {
+    public void ElfosVerdesQueAtacaramEstaoEmOrdemNoArrayList() {
         Estrategia estrategia = new Estrategia1();
         ExercitoDeElfos exercito1 = new ExercitoDeElfos();
         Elfo elfoverde1 = new ElfoVerde("GreenElf1");
@@ -76,15 +76,73 @@ public class Estrategia1Test {
     }
     
     @Test
-    public void calculaIntencoesCorretamente() {
-        Estrategia1 estrategia = new Estrategia1();
-        ArrayList<Elfo> elfos = new ArrayList<>();
-        elfos.add(new ElfoNoturno("N1"));
-        elfos.add(new ElfoNoturno("N2"));
-        elfos.add(new ElfoNoturno("N3"));
-        elfos.add(new ElfoVerde("V1"));
-        assertEquals(8,estrategia.calcularIntencoes(elfos, 2),0);
-        
+    public void NenhumElfoAtacarNaoInsereNadaNoSegundoArrayList() {
+        Estrategia estrategia = new Estrategia1();
+        ArrayList<Dwarf> anoes = new ArrayList<>();
+        anoes.add(new Dwarf("Gimli"));
+        anoes.add(new Dwarf("Bomfur"));
+        ArrayList<Elfo> vazio = new ArrayList<>();
+        estrategia.estrategiaDeAtaque(vazio,anoes);
+        ArrayList<Elfo> atacantes = estrategia.getOrdemDoUltimoAtaque();
+        assertTrue(atacantes.isEmpty());
+    }
+    
+    @Test
+    public void UmElfoVerdeAtacaInsereNoSegundoArrayList() {
+        Estrategia estrategia = new Estrategia1();
+        Elfo elfo = new ElfoVerde("G1");
+        ArrayList<Elfo> horda = new ArrayList<>();
+        horda.add(elfo);
+        ArrayList<Dwarf> anoes = new ArrayList<>();
+        anoes.add(new Dwarf("Gimli"));
+        anoes.add(new Dwarf("Bomfur"));
+        estrategia.estrategiaDeAtaque(horda,anoes);
+        ArrayList<Elfo> atacantes = estrategia.getOrdemDoUltimoAtaque();
+        assertTrue(atacantes.contains(elfo));
+    }
+    
+    @Test
+    public void UmElfoAtacaInsereNoSegundoArrayList() {
+        Estrategia estrategia = new Estrategia1();
+        Elfo elfo = new Elfo("G1");
+        ArrayList<Elfo> horda = new ArrayList<>();
+        horda.add(elfo);
+        ArrayList<Dwarf> anoes = new ArrayList<>();
+        anoes.add(new Dwarf("Gimli"));
+        anoes.add(new Dwarf("Bomfur"));
+        estrategia.estrategiaDeAtaque(horda,anoes);
+        ArrayList<Elfo> atacantes = estrategia.getOrdemDoUltimoAtaque();
+        assertTrue(atacantes.contains(elfo));
+    }
+    
+    @Test
+    public void UmElfoNoturnoAtacaDoisDwarvesENaoInsereNoSegundoArrayList() {
+        Estrategia estrategia = new Estrategia1();
+        Elfo elfo = new ElfoNoturno("G1");
+        ArrayList<Elfo> horda = new ArrayList<>();
+        horda.add(elfo);
+        ArrayList<Dwarf> anoes = new ArrayList<>();
+        anoes.add(new Dwarf("Gimli"));
+        anoes.add(new Dwarf("Bomfur"));
+        estrategia.estrategiaDeAtaque(horda,anoes);
+        ArrayList<Elfo> atacantes = estrategia.getOrdemDoUltimoAtaque();
+        assertFalse(atacantes.contains(elfo));
+    }
+    
+    @Test
+    public void UmElfoNoturnoAtacaQuatroDwarvesEInsereInsereNoSegundoArrayList() {
+        Estrategia estrategia = new Estrategia1();
+        Elfo elfo = new ElfoNoturno("G1");
+        ArrayList<Elfo> horda = new ArrayList<>();
+        horda.add(elfo);
+        ArrayList<Dwarf> anoes = new ArrayList<>();
+        anoes.add(new Dwarf("Gimli"));
+        anoes.add(new Dwarf("Bomfur"));
+        anoes.add(new Dwarf("Kili"));
+        anoes.add(new Dwarf("Fili"));
+        estrategia.estrategiaDeAtaque(horda,anoes);
+        ArrayList<Elfo> atacantes = estrategia.getOrdemDoUltimoAtaque();
+        assertTrue(atacantes.contains(elfo));
     }
 }   
  

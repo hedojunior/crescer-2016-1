@@ -14,7 +14,7 @@ public class Estrategia1 implements Estrategia {
             return this.ordemDoUltimoAtaque;
         }
         
-        public double calcularIntencoes (ArrayList<Elfo> horda, int numeroDwarves){
+        private double calcularIntencoes (ArrayList<Elfo> horda, int numeroDwarves){
             return (horda.size() * numeroDwarves);
         }
         
