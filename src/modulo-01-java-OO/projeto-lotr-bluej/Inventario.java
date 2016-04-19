@@ -39,6 +39,11 @@ public class Inventario {
    public Item maiorQtd() {
        int maior_quantidade = 0;
        int indice_maior = 0;
+       
+       if (this.inventario.isEmpty()){
+           return null;
+       }
+        
        for(int i = 0; i <this.inventario.size(); i++) {
            if(this.inventario.get(i).getQuantidade() > maior_quantidade){
                maior_quantidade = this.inventario.get(i).getQuantidade();

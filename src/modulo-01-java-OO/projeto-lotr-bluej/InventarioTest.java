@@ -119,6 +119,16 @@ public class InventarioTest
    }
    
    @Test
+   public void descobreItemPopularComListaVazia() {
+        //Arrange
+        Inventario inventario = new Inventario();
+        //Act
+        Item obtido = inventario.maiorQtd();
+        //Assert
+        assertNull(obtido);
+   }
+   
+   @Test
    public void ordenaListaCom6Itens() {
         //Arrange
         Inventario inventario = new Inventario();
