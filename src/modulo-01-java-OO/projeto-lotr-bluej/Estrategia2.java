@@ -1,26 +1,31 @@
-import java.util.ArrayList;
+import java.util.*;
 public class Estrategia2 implements Estrategia {
-    private static ArrayList<Elfo> ordemDoUltimoAtaque = new ArrayList<>();
-    public void estrategiaDeAtaque(ArrayList<Elfo> horda, ArrayList<Dwarf> alvos) {
+   private ArrayList<Elfo> ordemDoUltimoAtaque = new ArrayList<>();
+   public void estrategiaDeAtaque(ArrayList<Elfo> horda, ArrayList<Dwarf> alvos) {
        ordemDoUltimoAtaque.clear();
-       int j = 0;
-       while(j < 1) {
-            for(int i = 0; i < horda.size(); i ++){
-                if(j == 0 && horda.get(i) instanceof ElfoVerde) {
-                    horda.get(i).atirarFlechasDwarf(ordemDoUltimoAtaque,alvos);
-                } else if( horda.get(i) instanceof ElfoNoturno) {
-                    horda.get(i).atirarFlechasDwarf(ordemDoUltimoAtaque,alvos);
-                }
-            }
-            j++;
-        }
-    }
+       ordenarElfos(horda);
+       for(int i = 0; i < horda.size(); i ++){
+            horda.get(i).atirarFlechasDwarf(ordemDoUltimoAtaque,alvos);
+       }
+   }
     
-    public ArrayList<Elfo> getOrdemDoUltimoAtaque() {
-        return this.ordemDoUltimoAtaque;
-    }
     
-    private void validaElfo(Elfo elfo) {
-      
-    }
+   public ArrayList<Elfo> getOrdemDoUltimoAtaque() {
+       return this.ordemDoUltimoAtaque;
+   }
+    
+   public void ordenarElfos(ArrayList<Elfo> horda) {
+       Collections.sort(horda, new Comparator<Elfo>() {
+       public int compare(Elfo e1, Elfo e2) {
+       Elfo el1 = (Elfo)e1;
+       Elfo el2 = (Elfo)e2;
+  
+       if(el1.getClass() == el2.getClass())
+            return 0;
+   
+       return el1 instanceof ElfoVerde && el2 instanceof ElfoNoturno ? -1 : 1;
+
+       }});
+   }
+   
 }

@@ -32,6 +32,30 @@ public class Estrategia2Test {
     }
     
     @Test
+    public void atacaEmOrdemComTresNoturno() {
+        Estrategia estrategia = new Estrategia2();
+        ExercitoDeElfos exercito = new ExercitoDeElfos();
+        exercito.mudarEstrategia(estrategia);
+        Elfo n1 = new ElfoNoturno("EN1");
+        Elfo v1 = new ElfoVerde("EV1");
+        Elfo n2 = new ElfoNoturno("EN2");
+        Elfo v2 = new ElfoVerde("EV2");
+        Elfo n3 = new ElfoNoturno("EN3");
+        ArrayList<Elfo> horda = new ArrayList<>();
+        horda.add(n1);
+        horda.add(v1);
+        horda.add(n2);
+        horda.add(v2);
+        horda.add(n3);
+        ArrayList<Dwarf> alvos = new ArrayList<>();
+        alvos.add(new Dwarf("Gimli"));
+        alvos.add(new Dwarf("Bomfur"));
+        estrategia.estrategiaDeAtaque(horda,alvos);
+        assertTrue(estrategia.getOrdemDoUltimoAtaque().get(0) instanceof ElfoVerde);
+        assertTrue(estrategia.getOrdemDoUltimoAtaque().get(1) instanceof ElfoVerde);
+    }
+    
+    @Test
     public void atacaEmOrdemSóNoturnos() {
         Estrategia estrategia = new Estrategia2();
         ExercitoDeElfos exercito = new ExercitoDeElfos();
