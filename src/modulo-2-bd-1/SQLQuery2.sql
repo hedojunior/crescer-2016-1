@@ -1,3 +1,4 @@
+use CursoSQL2;
 -- 1 Faça uma consulta(query) que retorne apenas o primeiro nome do Associado (tabela associado)
 Select Left(Nome,Charindex(' ',Nome)) as 'Primeiro Nome' From Associado;
 
@@ -27,8 +28,58 @@ UF as 'Estado'
  From Cidade Group by UF;
 
 --8 Liste as cidades que possuem o mesmo nome e UF
-Select Nome From Cidade Group by Nome
-Having Count(Nome) > 1 ;
- 
+Select Nome from Cidade group by Nome
+Having count(Nome) > 1 ;
+
 --9 Identifique qual deve ser o próximo ID para a criação de um novo registro na table associado (maior + 1)
-SELECT MAX(IDAssociado)
+Select top(1) max(IDAssociado) + 1 as 'Próximo ID de Associado' from Associado;
+
+--10 Limpe a tabela CidadeAux, e insira somente as cidades com nome e UF's distintos, considere somente o menor
+-- código ID das cidades duplicadas
+Truncate table CidadeAux;
+BEGIN TRANSACTION
+Insert into CidadeAux (IDCidade, Nome, UF) Select min(IDCidade), Nome, UF from cidade group by Nome, UF; 
+COMMIT
+-- 11 Altere todas as cidades duplicadas (nome e uf iguais), acrescente no início do nome um asterisco
+	begin transaction
+	Update Cidade
+	set Nome = '*' + Nome
+	where Nome in
+	(Select Nome from Cidade group by Nome
+Having count(Nome) > 1)
+	commit
+-- 12 Faça uma consulta que liste o nome do associado e a descrição da coluna sexo, informando:
+-- Masculino ou feminino
+Select Nome, 
+Case when
+	 sexo = 'F' then 'Feminino'
+	 when
+	 sexo = 'M' then 'Masculino' 
+	 End Sexo 
+	 from Associado;
+-- 13 Faça uma consulta que mostre o nome do empregado, o Salario e o percentual a ser descontado do 
+-- imposto de renda, considerando a table abaixo:
+-- Até R$ 1.164,00 = 0%
+-- De R$ 1.164,00 até R$2.326,00 = 15%
+-- Acima de R$ 2.326,00 = 27,5%;
+
+Select NomeEmpregado as Nome,
+	   Salario,
+	   Case 
+	   when Salario < 1164 then '0%'
+	   when Salario between 1164 and 2326 then '15%'
+	   when Salario > 2326 then '27,5%'
+	   end 'Percentual descontado'
+from Empregado;
+
+-- 14 Elimine as cidades duplicadas mantendo um registro pra cada - com menor IDCidade
+--EM DESENVOLVIMENTO-------------------------------------
+Begin transaction
+Delete from Cidade
+where exists (Select max(IDCidade), Nome, UF from Cidade group by Nome, IDCidade,UF
+Having count(Nome) > 1)
+
+rollback
+-- EM DESENVOLVIMENTO-------------------------------------
+
+-- 15 Adicione uma regra que impeça que exista mais de uma cidade com o mesmo nome no mesmo estado
