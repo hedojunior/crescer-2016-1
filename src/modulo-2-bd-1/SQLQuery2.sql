@@ -19,7 +19,8 @@ Select Top(1) Cargo From Empregado Group By Cargo Order By count(IDEmpregado) de
 --6 Faça uma consulta que retorne o nome do associado e a data de quando cada completará (ou completou) 
 -- 50 anos, liste também o dia da semana.
 Select Nome,
-	   Datename(weekday,Dateadd(Year,50,DataNascimento)) as 'Dia dos 50 anos'
+	   Datename(weekday,Dateadd(Year,50,DataNascimento)) as 'Dia dos 50 anos',
+	   Dateadd(Year,50,DataNascimento) as 'Dia dos 50 anos'
 From Associado;
 
 --7 Liste a quantidade de cidades agrupando por UF - quantas cidades cada estado possui?
@@ -37,26 +38,24 @@ Select top(1) max(IDAssociado) + 1 as 'Próximo ID de Associado' from Associado;
 --10 Limpe a tabela CidadeAux, e insira somente as cidades com nome e UF's distintos, considere somente o menor
 -- código ID das cidades duplicadas
 Truncate table CidadeAux;
-BEGIN TRANSACTION
 Insert into CidadeAux (IDCidade, Nome, UF) Select min(IDCidade), Nome, UF from cidade group by Nome, UF; 
-COMMIT
+
 -- 11 Altere todas as cidades duplicadas (nome e uf iguais), acrescente no início do nome um asterisco
-	begin transaction
-	Update Cidade
+Update Cidade
 	set Nome = '*' + Nome
 	where Nome in
-	(Select Nome from Cidade group by Nome
-Having count(Nome) > 1)
-	commit
+	(Select Nome from Cidade group by Nome having count(Nome) > 1)
+
 -- 12 Faça uma consulta que liste o nome do associado e a descrição da coluna sexo, informando:
 -- Masculino ou feminino
 Select Nome, 
-Case when
+case when
 	 sexo = 'F' then 'Feminino'
 	 when
 	 sexo = 'M' then 'Masculino' 
-	 End Sexo 
-	 from Associado;
+	 end Sexo 
+from Associado;
+
 -- 13 Faça uma consulta que mostre o nome do empregado, o Salario e o percentual a ser descontado do 
 -- imposto de renda, considerando a table abaixo:
 -- Até R$ 1.164,00 = 0%
@@ -65,7 +64,7 @@ Case when
 
 Select NomeEmpregado as Nome,
 	   Salario,
-	   Case 
+	   case 
 	   when Salario < 1164 then '0%'
 	   when Salario between 1164 and 2326 then '15%'
 	   when Salario > 2326 then '27,5%'
@@ -73,13 +72,12 @@ Select NomeEmpregado as Nome,
 from Empregado;
 
 -- 14 Elimine as cidades duplicadas mantendo um registro pra cada - com menor IDCidade
---EM DESENVOLVIMENTO-------------------------------------
-Begin transaction
 Delete from Cidade
-where exists (Select max(IDCidade), Nome, UF from Cidade group by Nome, IDCidade,UF
-Having count(Nome) > 1)
-
-rollback
--- EM DESENVOLVIMENTO-------------------------------------
+where		 
+IDCidade IN 
+(select max(IDCidade) from Cidade group by Nome having count(Nome) > 1);
 
 -- 15 Adicione uma regra que impeça que exista mais de uma cidade com o mesmo nome no mesmo estado
+Alter table Cidade
+add 
+constraint UK_Cidade unique (Nome);
