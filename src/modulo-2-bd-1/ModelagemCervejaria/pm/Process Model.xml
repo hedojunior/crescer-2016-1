@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ProcessModel class="oracle.dbtools.crest.model.design.process.ProcessModel" name="Process Model" id="6D2A372A-7A25-A370-8224-21BC2D57814F">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 19:59:19 UTC</createdTime>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</ProcessModel>

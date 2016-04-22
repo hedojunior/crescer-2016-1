@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BusinessInfoDesign class="oracle.dbtools.crest.model.businessinfo.BusinessInfoDesign" name="Business Information" id="D545060A-7810-4D2F-5CE8-3A0E494FA851">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 19:59:19 UTC</createdTime>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</BusinessInfoDesign>

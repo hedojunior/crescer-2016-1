@@ -1,0 +1,75 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="193A4D57-9E8C-0E0C-1221-7BA6E474B03B" name="Cerveja">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:31:38 UTC</createdTime>
+<generatorID>C1B291EF-64F7-0735-ADF9-0A4339632714</generatorID>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDCerveja" id="1193C0AE-0360-5057-E652-1B01D97A2DDA">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:31:38 UTC</createdTime>
+<generatorID>072849C0-4085-2548-8C24-5458AF5BC920</generatorID>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Tipo" id="7EE34109-EB30-7E99-5287-CE16FFB70305">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:31:38 UTC</createdTime>
+<generatorID>D7A5E056-F30F-2D4C-5A26-9DA05632EEF3</generatorID>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Receita_IDReceita" id="1485BFA5-A157-2B95-898C-E8F3196EBBB0">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:31:38 UTC</createdTime>
+<generatorID>F15E1018-1D5E-10A8-0874-82824DCCAA6D</generatorID>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="696B67CD-B4CE-FBBC-C83E-6A32D828BCE9" referredColumn="7CEF5083-84EE-67A5-7BDF-2E0A86730680"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="EF0568EB-E24C-D491-EB64-DBC372FF4708" name="Cerveja_PK">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:31:38 UTC</createdTime>
+<generatorID>33187D53-79AB-5EC5-1F8C-814C9CADBFA7</generatorID>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1193C0AE-0360-5057-E652-1B01D97A2DDA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="75E5D1B1-22FF-B647-AAB7-C79C29771EDB" name="Cerveja_Receita_FK">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:31:38 UTC</createdTime>
+<generatorID>B96E5924-62DC-AA49-42BF-6BB537AE4676</generatorID>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1485BFA5-A157-2B95-898C-E8F3196EBBB0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

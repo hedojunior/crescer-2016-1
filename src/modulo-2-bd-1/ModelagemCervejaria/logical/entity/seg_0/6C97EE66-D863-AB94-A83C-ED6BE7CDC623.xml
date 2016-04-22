@@ -1,0 +1,83 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="6C97EE66-D863-AB94-A83C-ED6BE7CDC623" name="Cliente">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:09:06 UTC</createdTime>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<engineerTo>
+<item key="7B21B2C4-1F2A-0EA5-54D3-E965575D73E8" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="IDCliente" id="FCC7DB51-5C74-D2A0-FF2D-5A5568F96296">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:09:12 UTC</createdTime>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<engineerTo>
+<item key="7B21B2C4-1F2A-0EA5-54D3-E965575D73E8" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Nome" id="110A0F13-159E-B02F-1671-B17AC39237C8">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:09:22 UTC</createdTime>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<engineerTo>
+<item key="7B21B2C4-1F2A-0EA5-54D3-E965575D73E8" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="CPF" id="7CCD0C05-7D2A-A86F-01E7-2AD7D5E3D489">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:10:14 UTC</createdTime>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<engineerTo>
+<item key="7B21B2C4-1F2A-0EA5-54D3-E965575D73E8" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>14</dataTypeSize>
+<ownDataTypeParameters>14,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="RG" id="88E562A3-AF1E-C569-78A2-E290ADE862E5">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:12:34 UTC</createdTime>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<engineerTo>
+<item key="7B21B2C4-1F2A-0EA5-54D3-E965575D73E8" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="175BE8CB-D382-422E-7F74-DF20D5418D10" name="Cliente PK">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:09:21 UTC</createdTime>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<engineerTo>
+<item key="7B21B2C4-1F2A-0EA5-54D3-E965575D73E8" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>FCC7DB51-5C74-D2A0-FF2D-5A5568F96296</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,49 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7B77615E-8B81-01E9-1F3A-2EE0B24D74F8" name="Maquina">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:31:38 UTC</createdTime>
+<generatorID>4199B870-70A4-B6B4-ED91-81B1AE1A79DC</generatorID>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDMaquina" id="4D5E2607-0ACC-6D39-2AB8-7A8AEEE135D4">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:31:38 UTC</createdTime>
+<generatorID>BBD11F91-874F-ACAD-0E52-CB04C0B3C4EF</generatorID>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Descricao" id="9756512D-CEEB-D9B7-54A4-7475ED7F420D">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:31:38 UTC</createdTime>
+<generatorID>62B3CF01-015A-79FA-DFDA-D59B55577AD0</generatorID>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E8817004-0148-67C8-E041-A2FF548F0A0C" name="Maquina_PK">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:31:38 UTC</createdTime>
+<generatorID>40269944-1D03-FB2D-DA05-142C85522812</generatorID>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4D5E2607-0ACC-6D39-2AB8-7A8AEEE135D4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

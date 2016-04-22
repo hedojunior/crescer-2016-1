@@ -1,0 +1,72 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="1359556F-4D5D-BA99-68B4-3ED9C79854BC" name="Cliente">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:31:38 UTC</createdTime>
+<generatorID>6C97EE66-D863-AB94-A83C-ED6BE7CDC623</generatorID>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IDCliente" id="4C4C334C-E50D-5070-EFFB-8C3224D83176">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:31:38 UTC</createdTime>
+<generatorID>FCC7DB51-5C74-D2A0-FF2D-5A5568F96296</generatorID>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Nome" id="EC71C4CE-D767-89E3-E559-08E2C068C9D1">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:31:38 UTC</createdTime>
+<generatorID>110A0F13-159E-B02F-1671-B17AC39237C8</generatorID>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CPF" id="3B2551C9-4279-FDA6-4C72-A0CC001AE5B6">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:31:38 UTC</createdTime>
+<generatorID>7CCD0C05-7D2A-A86F-01E7-2AD7D5E3D489</generatorID>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>14</dataTypeSize>
+<ownDataTypeParameters>14,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="RG" id="2DD9C01E-61AE-21A3-CB94-622E7E8158D1">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:31:38 UTC</createdTime>
+<generatorID>88E562A3-AF1E-C569-78A2-E290ADE862E5</generatorID>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="18496E20-CADC-C7E7-148D-F6F5B7945835" name="Cliente_PK">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:31:38 UTC</createdTime>
+<generatorID>175BE8CB-D382-422E-7F74-DF20D5418D10</generatorID>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4C4C334C-E50D-5070-EFFB-8C3224D83176"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,9 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle.dbtools.crest.model.design.logical.LogicalDesign>
+   <object objectType="Entity" objectID="C1B291EF-64F7-0735-ADF9-0A4339632714" name="Cerveja" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Entity" propertyParentId="036E06F5-5B95-9EEA-B109-BC252F24CE0E" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Entity" objectID="6C97EE66-D863-AB94-A83C-ED6BE7CDC623" name="Cliente" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Entity" propertyParentId="036E06F5-5B95-9EEA-B109-BC252F24CE0E" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Entity" objectID="4199B870-70A4-B6B4-ED91-81B1AE1A79DC" name="Maquina" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Entity" propertyParentId="036E06F5-5B95-9EEA-B109-BC252F24CE0E" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Entity" objectID="22460853-6A55-8A8A-DEC1-FFC1B9270240" name="Pedido" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Entity" propertyParentId="036E06F5-5B95-9EEA-B109-BC252F24CE0E" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Entity" objectID="75B7EC5F-34CC-38B4-910F-3B5720B665F9" name="Receita" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Entity" propertyParentId="036E06F5-5B95-9EEA-B109-BC252F24CE0E" propertySourceId="" propertyTargetId=""/>
+   <object objectType="Relation" objectID="B96E5924-62DC-AA49-42BF-6BB537AE4676" name="Possui" seqName="seg_0" propertyClassName="oracle.dbtools.crest.model.design.logical.Relation" propertyParentId="036E06F5-5B95-9EEA-B109-BC252F24CE0E" propertySourceId="75B7EC5F-34CC-38B4-910F-3B5720B665F9" propertyTargetId="C1B291EF-64F7-0735-ADF9-0A4339632714"/>
+</oracle.dbtools.crest.model.design.logical.LogicalDesign>

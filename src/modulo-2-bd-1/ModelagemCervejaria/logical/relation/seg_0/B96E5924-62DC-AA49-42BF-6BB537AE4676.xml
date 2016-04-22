@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Possui" directorySegmentName="seg_0" id="B96E5924-62DC-AA49-42BF-6BB537AE4676">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:08:17 UTC</createdTime>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<engineerTo>
+<item key="7B21B2C4-1F2A-0EA5-54D3-E965575D73E8" value="true"/>
+</engineerTo>
+<sourcePk>A8E2BBC9-52C1-8C71-3595-41ACE851BD2A</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>75B7EC5F-34CC-38B4-910F-3B5720B665F9</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>C1B291EF-64F7-0735-ADF9-0A4339632714</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

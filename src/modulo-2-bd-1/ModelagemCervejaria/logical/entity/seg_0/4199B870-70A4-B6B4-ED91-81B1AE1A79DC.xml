@@ -1,0 +1,58 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="4199B870-70A4-B6B4-ED91-81B1AE1A79DC" name="Maquina">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:01:25 UTC</createdTime>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<engineerTo>
+<item key="7B21B2C4-1F2A-0EA5-54D3-E965575D73E8" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="IDMaquina" id="BBD11F91-874F-ACAD-0E52-CB04C0B3C4EF">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:01:33 UTC</createdTime>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<engineerTo>
+<item key="7B21B2C4-1F2A-0EA5-54D3-E965575D73E8" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Descricao" id="62B3CF01-015A-79FA-DFDA-D59B55577AD0">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:01:46 UTC</createdTime>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<engineerTo>
+<item key="7B21B2C4-1F2A-0EA5-54D3-E965575D73E8" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="40269944-1D03-FB2D-DA05-142C85522812" name="Maquina PK">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:01:43 UTC</createdTime>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<engineerTo>
+<item key="7B21B2C4-1F2A-0EA5-54D3-E965575D73E8" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>BBD11F91-874F-ACAD-0E52-CB04C0B3C4EF</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

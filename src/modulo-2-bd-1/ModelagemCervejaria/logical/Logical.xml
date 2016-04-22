@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="036E06F5-5B95-9EEA-B109-BC252F24CE0E" mainViewID="58F1E976-9B97-560E-E918-4E4A670DCA17">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 19:59:18 UTC</createdTime>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>

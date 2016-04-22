@@ -1,8 +1,21 @@
 -- 1 Faça uma consulta(query) que retorne apenas o primeiro nome do Associado (tabela associado)
 Select Left(Nome,Charindex(' ',Nome)) as 'Primeiro Nome' From Associado;
+/* Correção:
+SELECT IDAssociado,
+	   Nome,
+	   SUBSTRING(Nome,1, CHARINDEX(' ', Nome)) primeiro_nome
+FROM Associado
+*/
 
 -- 2 Faça uma consulta que retorne o nome dos associados e a idade de cada um (em anos)
 Select Nome, Datediff(Year,DataNascimento,getdate()) as Idade From Associado;
+/* Correção
+SELECT IDAssociado,
+	   Nome,
+	   DataNascimento,
+	   DATEDIFF(YEAR, DataNascimento, getdate()) Idade
+FROM Associado
+*/
 
 -- 3 Faça uma consulta que liste os empregados admitidos entre 01/05/1980 e 20/01/1982. Exibir também o total
 -- de meses de trabalho até a data de 31/12/2000
@@ -13,7 +26,7 @@ Where
 DataAdmissao between Convert(datetime,'01/05/1980',103) and Convert(datetime,'20/01/1982',103);
 
 --4 Qual o cargo (tabela empregado) que possui mais empregados?
-Select Top(1) Cargo From Empregado Group By Cargo Order By count(IDEmpregado) desc;
+Select Top(1) with ties Cargo From Empregado Group By Cargo Order By count(IDEmpregado) desc;
 
 --6 Faça uma consulta que retorne o nome do associado e a data de quando cada completará (ou completou) 
 -- 50 anos, liste também o dia da semana.
@@ -38,7 +51,14 @@ Select top(1) max(IDAssociado) + 1 as 'Próximo ID de Associado' from Associado;
 -- código ID das cidades duplicadas
 Truncate table CidadeAux;
 Insert into CidadeAux (IDCidade, Nome, UF) Select min(IDCidade), Nome, UF from cidade group by Nome, UF; 
-
+/* Correção
+	Insert into CidadeAux(IDCidade, Nome, UF)
+	SELECT MIN(IDCidade) as MenorIDCidade,
+	Nome,
+	UF
+FROM Cidade
+GROUP BY Nome, UF
+*/
 -- 11 Altere todas as cidades duplicadas (nome e uf iguais), acrescente no início do nome um asterisco
 Update Cidade
 	set Nome = '*' + Nome
@@ -80,3 +100,5 @@ IDCidade IN
 Alter table Cidade
 add 
 constraint UK_Cidade unique (Nome, UF);
+
+Select * from Cidade;

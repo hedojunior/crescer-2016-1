@@ -1,0 +1,46 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="1B13E134-8486-B979-1D15-F4E7536F281E" name="Ingrediente">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:32:34 UTC</createdTime>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<ordsAlias>table_6</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Descricao" id="59AE9317-25D2-992E-15EE-F7C5D7ED605F">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:33:07 UTC</createdTime>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="IDIngrediente" id="BEFAF01E-BE2C-1A31-06F6-14B57EED5DBD">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:33:24 UTC</createdTime>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="62648851-F662-6CA9-0B5D-63DB1A11DD29" name="Ingrediente_PK">
+<createdBy>hedo.junior</createdBy>
+<createdTime>2016-04-22 20:33:24 UTC</createdTime>
+<ownerDesignName>ModelagemCervejaria</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BEFAF01E-BE2C-1A31-06F6-14B57EED5DBD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
