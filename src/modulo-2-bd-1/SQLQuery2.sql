@@ -1,4 +1,3 @@
-use CursoSQL2;
 -- 1 Faça uma consulta(query) que retorne apenas o primeiro nome do Associado (tabela associado)
 Select Left(Nome,Charindex(' ',Nome)) as 'Primeiro Nome' From Associado;
 
@@ -19,17 +18,17 @@ Select Top(1) Cargo From Empregado Group By Cargo Order By count(IDEmpregado) de
 --6 Faça uma consulta que retorne o nome do associado e a data de quando cada completará (ou completou) 
 -- 50 anos, liste também o dia da semana.
 Select Nome,
-	   Datename(weekday,Dateadd(Year,50,DataNascimento)) as 'Dia dos 50 anos',
-	   Dateadd(Year,50,DataNascimento) as 'Dia dos 50 anos'
+	   Dateadd(Year,50,DataNascimento) as 'Dia dos 50 anos',
+	   Datename(weekday,Dateadd(Year,50,DataNascimento)) as 'Dia da Semana'
 From Associado;
 
 --7 Liste a quantidade de cidades agrupando por UF - quantas cidades cada estado possui?
-Select Count(IDCidade) as 'Quantidade de Cidades',
+Select Count(IDCidade) as 'Quantidade de Cidades', 
 UF as 'Estado'
  From Cidade Group by UF;
 
 --8 Liste as cidades que possuem o mesmo nome e UF
-Select Nome from Cidade group by Nome
+Select Nome from Cidade group by  Nome
 Having count(Nome) > 1 ;
 
 --9 Identifique qual deve ser o próximo ID para a criação de um novo registro na table associado (maior + 1)
@@ -80,4 +79,4 @@ IDCidade IN
 -- 15 Adicione uma regra que impeça que exista mais de uma cidade com o mesmo nome no mesmo estado
 Alter table Cidade
 add 
-constraint UK_Cidade unique (Nome);
+constraint UK_Cidade unique (Nome, UF);
