@@ -61,7 +61,7 @@ d.Localizacao = 'SAO PAULO';
 -- todos os empregados
 SELECT Sum(salario) as 'Total salários',
  Sum(salario * 0.145) as 'Diferença',
- (Sum(salario) - Sum(salario*0.145)) as 'Total salarios - diferença'
+ (Sum(salario) + Sum(salario*0.145)) as 'Total salarios + diferença'
 from EmpregadoAux e INNER JOIN Departamento d 
 ON e.IDDepartamento = d.IDDepartamento and 
 d.Localizacao = 'SAO PAULO';
