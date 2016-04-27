@@ -41,21 +41,15 @@ h1, .h2-sumario {
   margin: 40px auto;
 }
 
-.sobre {
-  margin: -40px auto;
-  width: 800px;
-  background-color: beige;
-}
-
-#img-blanka {
-float: left;
-}
-
-#ficha {
+.container {
   margin: -40px auto;
   width: 800px;
   background-color: beige;
   min-height: 600px;
+}
+
+#img-blanka {
+float: left;
 }
 
 #foto {
