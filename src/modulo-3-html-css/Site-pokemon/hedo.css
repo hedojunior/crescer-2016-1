@@ -18,6 +18,11 @@
   width: 12px;
 }
 
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
 ::-webkit-scrollbar-track
 {
   background: rgba(255, 2, 1, 0.1);
@@ -55,6 +60,7 @@ header:first-of-type > h1:first-of-type > span:last-of-type {
     font-size: 3em;
     color: #FFCB05;
     text-shadow: #3C5AA6 -4px 4px;
+    -webkit-animation: fadein 4s;
 }
 
 .perfil {
