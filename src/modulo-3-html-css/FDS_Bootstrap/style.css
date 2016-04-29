@@ -1,0 +1,38 @@
+body {
+  min-height: 1000px;
+}
+
+.header-top {
+  height: 65px;
+  width: 100%;
+  margin-left: 20%;
+  background-color: #FFF;
+  box-shadow: 0px 1px 5px #aaa;
+  position: fixed;
+}
+
+.header-top h1 {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-style: italic;
+  width: 250px;
+}
+
+.right-nav-header-top {
+  width: 150px;
+  height: 25px;
+  float: right;
+  right: 10%;
+  position: absolute;
+  top: 25%;
+}
+
+.right-nav-header-top span {
+  display: inline-block;
+  color: grey;
+  font-size: 2em;
+  padding-right: 10px;
+}
+
+.nav-item:hover {
+  transition: color 1000ms blue;
+}
