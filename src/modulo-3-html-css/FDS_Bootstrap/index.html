@@ -1,33 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <!-- Awesome Fonts -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 
-  <link rel="stylesheet" href="style.css"/>
-  <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <title>Projeto Crescer - Cadastro</title>
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta charset="UTF-8">
-  <title>Cadastro</title>
+    <!-- Slabo x27 -->
+    <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+
+    <!-- Awesome Fonts -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
+
 <body>
-  <header class="container-fluid header-top">
-    <h1>Projeto Crescer</h1>
-    <nav class="right-nav-header-top">
 
-      <span><i class="fa fa-search nav-item" aria-hidden="true"></i></span>
-      <span><i class="fa fa-th nav-item" aria-hidden="true"></i></span>
-      <span><i class="fa fa-globe nav-item" aria-hidden="true"></i></span>
+    <div id="wrapper">
 
-    </nav>
-  </header>
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+              <div class="img-sidebar">
+
+              </div>
+                  <li class="sidebar-brand top-name-sidebar">
+                    <p id="main-name-sidebar">Hedo Júnior</p>
+                  </li>
+                    <p id="sidebar-email">hedo.junior@cwi.com.br</p>
+                <nav id="nav-sidebar-icons">
+                    <a href="#" id="nav-sidebar-icons-pwroff"><i class="fa fa-power-off" aria-hidden="true"></i></a>
+                    <a href="#" id="nav-sidebar-icons-usr"><i class="fa fa-user" aria-hidden="true"></i></a>
+                    <a href="#"id="nav-sidebar-icons-key"><i class="fa fa-key" aria-hidden="true"></i></a>
+                    <a href="#" id="nav-sidebar-icons-cog"><i class="fa fa-cog fa-spin fa-fw margin-bottom"></i></a>
+                </nav>
+                  <ul class="list-group">
+                    <li class="list-group-item sidebar-list-db-setup">
+                        DASHBOARDS
+                    </li>
+                    <li class="list-group-item sidebar-list-bg-setup">
+                      <div class="btn-group">
+                        <a class="" data-toggle="dropdown" href="#">
+                          Administrativo
+                          <span class="caret caret-right"></span>
+                        </a>
+                      </div>
+                    </li>
+                    <li class="list-group-item sidebar-list-db-setup">
+                          CADASTRO
+                    </li>
+                    <li class="list-group-item sidebar-list-bg-setup">
+                      <div class="btn-group">
+                        <a class="" data-toggle="dropdown" href="#">
+                          Contato
+                          <span class="caret caret-right"></span>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <!-- início do nav fixo da página -->
+            <div class="container-fluid">
+              <div class="row">
+                <nav class="navbar navbar-default navbar-fixed-top col-*-12 navbar-height">
+                  <a href="#menu-toggle" class="toggle-button col-lg-2 col-md-2 col-sm-2 col-xs-2" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                  <div class="col-lg-6 col-md-10 col-sm-6 col-xs-6-offset-2">
+                    <h3 id="header-text">Projeto Crescer <small>2016/01</small></h3>
+                  </div>
+                    <ul class="nav nav-pills right-nav-header-top col-lg-4 col-md-12 col-sm-4 hidden-xs">
+                        <li role="presentation">
+                          <a href="#" class="icon-hover-effect hidden-xs">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                          </a>
+                        </li>
+                        <li role="presentation">
+                          <a href="#" class="icon-hover-effect hidden-xs">
+                            <i class="fa fa-th nav-item" aria-hidden="true"></i>
+                          </a>
+                        </li>
+                        <li role="presentation">
+                          <a href="#" class="icon-hover-effect hidden-xs">
+                            <i class="fa fa-globe nav-item" aria-hidden="true"></i>
+                          </a>
+                        </li>
+                        <li role="presentation" class="dropdown">
+                          <a class="dropdown-toggle icon-hover-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            Logout <span class="caret"></span>
+                          </a>
+                        </li>
+                        <li role="presentation">
+                          <div class="img-nav hidden-xs"></div>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
+<!-- Final do nav fixo da página -->
+<!-- Início do header da página de cadastro -->
+    <div class="page-header container-fluid">
+      <div class="row">
+        <ol class="breadcrumb breadcrumb-header col-lg-3 col-md-3 col-sm-3 col-xs-3">
+          <li><a href="#">Página Inicial</a></li>
+          <li><a href="#">Cadastro</a></li>
+          <li class="active">Usuário</li>
+        </ol>
+      <div class="col-lg-6 push 3 col-md-6 push 3 col-sm-6 push 3 col-xs-6 push 3">
+        <h1>Cadastro <br> <small>Contato</small></h1>
+      </div>
+    </div>
+  </div>
+<!-- final do header principal da tela de cadastro -->
+<!-- início da parte de cadastro -->
+  <div class="container container-form">
+    <h2>Cadastro de Usuário</h2>
+    <form>
+    <div class="row">
+      <div class="form-group col-lg-12">
+        <label for="exampleInputName1">Nome <small id="color-grey"> PESSOA FÍSICA </SMALL></label>
+          <input type="name" class="form-control" id="exampleInputName1" placeholder="Digite seu nome">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-md-4 col-sm-6">
+        <label for="exampleInputText1">CPF</label>
+          <input type="text" class="form-control" id="exampleInputText1" placeholder="Digite seu CPF">
+      </div>
+      <div class="form-group col-md-4 col-sm-6">
+        <label for="exampleInputEmail1">E-mail</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Digite seu e-mail">
+      </div>
+      <div class="form-group col-md-4 col-sm-6">
+        <fieldset disabled>
+          <label for="disabledTextInput">Disabled input</label>
+            <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-md-4 col-sm-6">
+        <label for="exampleInputText1">HELP BLOCK</label>
+          <input type="text" id="inputHelpBlock" class="form-control" aria-describedby="helpBlock">
+      </div>
+      <div class="form-group col-md-4 col-sm-6">
+        <label for="exampleInputText1">TEXT AREA <small id="color-grey">WRITE SOME TEXT HERE</small></label>
+        <textarea class="form-control" rows="3"></textarea>
+      </div>
+      <div class="form-group col-md-4 col-sm-6">
+        <label for="disabledTextInput">SELECT <small id="color-grey">LIST OF ITEMS</small></label>
+          <select class="form-control">
+            <option>First value</option>
+          </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-md-3 col-sm-6">
+        <label for="disabledTextInput">DEFAULT</label>
+          <select class="form-control">
+            <option>Option 1</option>
+          </select>
+      </div>
+      <div class="form-group col-md-3 col-sm-6">
+        <label for="disabledTextInput">MULTIPLE</label>
+          <select class="form-control">
+            <option>Option 1</option>
+          </select>
+      </div>
+      <div class="form-group col-md-3 col-sm-6">
+        <label for="disabledTextInput">GROUP</label>
+          <select class="form-control">
+            <option>Option 1</option>
+          </select>
+      </div>
+      <div class="form-group col-md-3 col-sm-6">
+        <label for="disabledTextInput">SEARCH</label>
+          <select class="form-control">
+            <option>Option 1</option>
+          </select>
+      </div>
+    </div>
+    <div class="row">
+      <button type="submit" class="btn btn-default positioned col-*-12">Submit</button>
+    </div>
+
+    </div>
+    <!-- final da parte de cadastro -->
+
+  </div>
+</div>
+</form>
+  </div>
+
+</div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
 
 </body>
+
 </html>
