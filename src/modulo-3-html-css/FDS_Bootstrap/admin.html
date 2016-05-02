@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Projeto Crescer - Administrativo</title>
+
+        <!-- Slabo x27 -->
+        <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+
+        <!--Bree Serif-->
+        <link href='https://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+
+        <!-- Roboto -->
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+        <!-- Awesome Fonts -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+        <!-- Bootstrap Core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="css/style.css" rel="stylesheet">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+  </head>
+  <body>
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+              <div class="img-sidebar">
+
+              </div>
+                  <li class="sidebar-brand top-name-sidebar">
+                    <p id="main-name-sidebar">Hedo Júnior</p>
+                  </li>
+                    <p id="sidebar-email">hedo.junior@cwi.com.br</p>
+                <nav id="nav-sidebar-icons">
+                    <a href="#" id="nav-sidebar-icons-pwroff"><i class="fa fa-power-off" aria-hidden="true"></i></a>
+                    <a href="#" id="nav-sidebar-icons-usr"><i class="fa fa-user" aria-hidden="true"></i></a>
+                    <a href="#"id="nav-sidebar-icons-key"><i class="fa fa-key" aria-hidden="true"></i></a>
+                    <a href="#" id="nav-sidebar-icons-cog"><i class="fa fa-cog fa-spin fa-fw margin-bottom"></i></a>
+                </nav>
+                  <ul class="list-group">
+                    <li class="list-group-item sidebar-list-db-setup">
+                        DASHBOARDS
+                    </li>
+                    <li class="list-group-item sidebar-list-bg-setup">
+                      <div class="btn-group">
+                        <a class="" data-toggle="dropdown" href="#">
+                          Administrativo
+                          <span class="caret caret-right"></span>
+                        </a>
+                      </div>
+                    </li>
+                    <li class="list-group-item sidebar-list-db-setup">
+                          CADASTRO
+                    </li>
+                    <li class="list-group-item sidebar-list-bg-setup">
+                      <div class="btn-group">
+                        <a class="" data-toggle="dropdown" href="#">
+                          Contato
+                          <span class="caret caret-right"></span>
+                        </a>
+                      </div>
+                    </li>
+                    <li class="list-group-item sidebar-list-bg-setup">
+                      <div class="btn-group">
+                        <a class="" data-toggle="dropdown" href="#">
+                          Usuário
+                          <span class="caret caret-right"></span>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <div id="page-content-wrapper">
+          <!-- início do nav fixo da página -->
+          <div class="container-fluid">
+            <div class="row">
+              <nav class="navbar navbar-default navbar-fixed-top col-*-12 navbar-height">
+                <a href="#menu-toggle" class="toggle-button col-lg-2 col-md-2 col-sm-2 col-xs-2" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                  <div class="col-lg-6 col-md-10 col-sm-6 col-xs-6-offset-2">
+                    <h3 id="header-text">Projeto Crescer <small>2016/01</small></h3>
+                  </div>
+                    <ul class="nav nav-pills right-nav-header-top col-lg-4 col-md-12 col-sm-4 hidden-xs">
+                      <li role="presentation">
+                        <a href="#" class="icon-hover-effect hidden-xs">
+                          <i class="fa fa-search" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li role="presentation">
+                        <a href="#" class="icon-hover-effect hidden-xs">
+                          <i class="fa fa-th nav-item" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li role="presentation">
+                        <a href="#" class="icon-hover-effect hidden-xs">
+                          <i class="fa fa-globe nav-item" aria-hidden="true"></i>
+                        </a>
+                      </li>
+                      <li role="presentation" class="dropdown">
+                        <a class="dropdown-toggle icon-hover-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                          Logout <span class="caret"></span>
+                        </a>
+                      </li>
+                      <li role="presentation">
+                        <div class="img-nav hidden-xs"></div>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+<!-- Final do nav fixo da página -->
+<!-- Início do container principal -->
+         <div class="container-fluid container-admin">
+           <div class="container-fluid">
+             <div class="top-medium-container col-lg-2 col-md-5 col-sm-5 col-xs-10" id="md-container-1">
+               <div class="rounded-div-content" id="usd-sign">
+                 <i class="fa fa-usd" aria-hidden="true"></i>
+               </div>
+                <section class="text-content-md-container">
+                 <p>31,570<br><br><small id="color-grey">Total lucro</small></p>
+               </section>
+             </div>
+             <div class="top-medium-container col-lg-2 col-md-5 col-sm-5 col-xs-10" id="md-container-2">
+               <div class="rounded-div-content" id="sp-cart">
+                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+               </div>
+               <section class="text-content-md-container">
+                 <p>300<br><br><small id="color-grey">Pedidos</small></p>
+               </section>
+             </div>
+             <div class="top-medium-container col-lg-2 col-md-5 col-sm-5 col-xs-10" id="md-container-3">
+               <div class="rounded-div-content" id="growing-bar">
+                 <i class="fa fa-bar-chart" aria-hidden="true"></i>
+               </div>
+               <section class="text-content-md-container">
+                 <p>0.16%<br><br><small id="color-grey">Crescimento</small></p>
+               </section>
+             </div>
+             <div class="top-medium-container col-lg-2 col-md-5 col-sm-5 col-xs-10" id="md-container-4">
+               <div class="rounded-div-content" id="visitors">
+                 <i class="fa fa-eye" aria-hidden="true"></i>
+               </div>
+               <section class="text-content-md-container">
+                 <p>64,570<br><br><small id="color-grey">Visitantes hoje</small></p>
+               </section>
+             </div>
+             <!-- final da div com 4 div's médias internas -->
+
+          </div>
+           <!-- início do container de eventos -->
+           <div class="container-fluid container-eventos">
+                <div class="medium-container-eventos col-lg-2 col-md-5 col-sm-5 col-xs-10 mg-left">
+                  <span id="span-eventos">Eventos</span>
+                  <span id="span-data">
+                    <p>
+                      <i class="fa fa-calendar" aria-hidden="true"></i> Hoje</p></span>
+                  <span id="span-qtd">300</span>
+                </div>
+                <div class="medium-container-eventos col-lg-2 col-md-5 col-sm-5 col-xs-10 mg-left">
+                  <span id="span-eventos">Recrutamentos</span>
+                    <span id="span-data">
+                    <p><i class="fa fa-calendar" aria-hidden="true"></i> Último ano</p></span>
+                  <span id="span-qtd">8,790</span>
+                </div>
+                <div class="medium-container-eventos col-lg-2 col-md-5 col-sm-5 col-xs-10 mg-left">
+                  <span id="span-eventos">Revenue</span>
+                    <span id="span-data">
+                    <p><i class="fa fa-calendar" aria-hidden="true"></i> Lucro Líquido</p></span>
+                  <span id="span-qtd">$ 93,880</span>
+                </div>
+                <div class="medium-container-eventos col-lg-2 col-md-5 col-sm-5 col-xs-10 mg-left">
+                  <span id="span-eventos">Média de Venda</span>
+                    <span id="span-data">
+                    <p><i class="fa fa-calendar" aria-hidden="true"></i> Últimos 6 meses</p></span>
+                  <span id="span-qtd">$ 270</span>
+                </div>
+            </div>
+          <!-- final do container-eventos -->
+            <div class="container-fluid main-container">
+              <div class="sub-container-1 hidden-xs col-md-5 col-lg-5">
+                <span>Acessos por dispositivo</span>
+                <ul class="access-type-list">
+                  <li id="li-green"><div class="green ball"></div>Desktops</li>
+                  <li id="li-red"><div class="red ball"></div>Tablets</li>
+                  <li id="li-blue"><div class="blue ball"></div>Mobiles</li>
+                </ul>
+                <img src="http://bit.ly/1Ng1bYf" alt="Graph" id="graph-img" />
+                <ul id="main-container-vertical-list">
+                  <li>200</li>
+                  <li>150</li>
+                  <li>100</li>
+                  <li>50</li>
+                  <li>0</li>
+                </ul>
+                <ul id="main-container-horizontal-list">
+                  <li>2009</li>
+                  <li>2010</li>
+                  <li>2011</li>
+                  <li>2012</li>
+                  <li>2013</li>
+                  <li>2014</li>
+                  <li>2015</li>
+                </ul>
+              </div>
+              <div class="sub-container-2 col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                <header class="container-fluid header-sub-container-2">
+                  <span>Principais Produtos</span>
+                  <span><small id="color-grey">Celulares mais vendidos</small></span>
+                  <button type="button" class="btn btn-info right hidden-xs">Ver todos</button>
+              </header>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th> </th>
+                          <th>Celular</th>
+                          <th>Variação</th>
+                          <th>Gerenciar</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <img src="http://icons.iconarchive.com/icons/icojam/blueberry-basic/32/pie-chart-graph-icon.png" alt="graph"/>
+                          </td>
+                          <td>
+                            <img src="http://bit.ly/1O8q1nI" alt="Iphone"/>
+                            Apple iPhone
+                          </td>
+                          <td id="blue-td">
+                            +$230
+                          </td>
+                          <td class="manage">
+                            <a href=""><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a href=""><i class="fa fa-times" aria-hidden="true"></i></a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <img src="http://icons.iconarchive.com/icons/icojam/blueberry-basic/32/pie-chart-graph-icon.png" alt="Graph" />
+                          </td>
+                          <td>
+                            <img src="http://bit.ly/24gQc8z" alt="Galaxy"/>
+                            Galaxy S7
+                          </td>
+                          <td id="red-td">
+                            -$120
+                          </td>
+                          <td class="manage">
+                            <a href=""><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a href=""><i class="fa fa-times" aria-hidden="true"></i></a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <img src="http://icons.iconarchive.com/icons/icojam/blueberry-basic/32/pie-chart-graph-icon.png" alt="Graph" />
+                          </td>
+                          <td>
+                            <img src="http://bit.ly/24gRcJC" alt="Nokia Lumia" />
+                            Nokia Lumia 7
+                          </td>
+                          <td id="blue-td">
+                            +$740
+                          </td>
+                          <td class='manage'>
+                            <a href=""><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a href=""><i class="fa fa-times" aria-hidden="true"></i></a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <img src="http://icons.iconarchive.com/icons/icojam/blueberry-basic/32/pie-chart-graph-icon.png" alt="Graph" />
+                          </td>
+                          <td>
+                            <img src="http://bit.ly/24gRuQK" alt="MotoG3" />
+                            Moto G3
+                          </td>
+                          <td id="red-td">
+                            -$200
+                          </td>
+                          <td class="manage">
+                            <a href=""><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a href=""><i class="fa fa-times" aria-hidden="true"></i></a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+              </div>
+            </div>
+            <!-- Final do container do gráfico e dos produtos -->
+         </div>
+         <!-- final do container principal -->
+        </div>
+      <!-- final wrapper -->
+      </div>
+
+          <!-- jQuery -->
+          <script src="js/jquery.js"></script>
+
+          <!-- Bootstrap Core JavaScript -->
+          <script src="js/bootstrap.min.js"></script>
+
+          <!-- Menu Toggle Script -->
+          <script>
+          $("#menu-toggle").click(function(e) {
+              e.preventDefault();
+              $("#wrapper").toggleClass("toggled");
+          });
+          </script>
+
+  </body>
+</html>
