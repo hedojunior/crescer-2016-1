@@ -18,14 +18,14 @@
       <option value="AB">AB</option>
       <option value="O">O</option>
     </select>
-    <!--<label for="txtUrlImagem">URL Imagem</label>-->
-    <!-- <input id="txtUrlImagem" type="text" name="urlImagem" placeholder="Ex: bit.ly/shiryu.png"> -->
+    <!-- <label for="txtUrlImagem">URL Imagem</label>
+    <input id="txtUrlImagem" type="text" name="urlImagem" placeholder="Ex: bit.ly/shiryu.png"> -->
     <label for="dateNasc">Data de Nascimento</label>
     <input type="date" name="dateNasc" id="#dateNasc" value="date">
     <label for="nbrAltura">Altura(em metros)</label>
-    <input type="number" name="nbrAltura" value="number" id="nbrAltura" placeholder="Ex. 1.68" min="0">
+    <input type="number" name="nbrAltura" value="number" id="nbrAltura" placeholder="Ex. 1.68" min="0" step="any">
     <br><label for="nbrPeso">Peso(em quilos)</label>
-    <input type="number" name="nbrPeso" value="number" id="nbrPeso" placeholder="Ex. 50" min="0">
+    <input type="number" name="nbrPeso" value="number" id="nbrPeso" placeholder="Ex. 50" min="0" step="any">
     <label for="slSignos">Signos</label>
     <select id="slSignos" name="signos">
       <option value="capricornio">Capricórnio</option>
@@ -43,15 +43,14 @@
     </select>
 
     <label for="txtLclNascimento">Local de Nascimento</label>
-    <input type="text" name="txtLclNascimento" id="txtLclNascimento" placeholder="Ex. Índia">
+    <input type="text" name="lclNascimento" id="txtLclNascimento" placeholder="Ex. Índia">
 
     <label for="txtLclTreinamento">Local de Treinamento</label>
-    <input type="text" name="txtLclTreinamento" id="txtLclTreinamento" placeholder="Ex. China">
+    <input type="text" name="lclTreinamento" id="txtLclTreinamento" placeholder="Ex. China">
     <br>
-    <button type="button" name="adcGolpe">Adicionar Golpe...</button>
-    <button type="button" name="adcImagem">Adicionar imagem...</button>
+    <button type="button" id="btAdcGolpe" name="adcGolpe">Adicionar Golpe...</button>
+    <button type="button" name="adcImagem" id="btAdcImagem">Adicionar imagem...</button>
     <!--<input type="submit" value="Cadastrar!">-->
-    <input type="checkbox" name="thumbnail" value="is-it-a-thumbnail">É thumbnail?</input>
     <button type="submit">Cadastrar!</button>
   </form>
   <hr>
