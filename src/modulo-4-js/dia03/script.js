@@ -7,8 +7,21 @@ function lbtoKg(n){
   return n * 0.4536;
 }
 
+function generatedId(){
+  var id = goldSaints.length + 1;
+  return id;
+}
+
+function kgToLb(n){
+  return n / 0.4536;
+}
+
 function cmtoMeters(n){
   return n / 100;
+}
+
+function metersToCm(n){
+  return n * 100;
 }
 
 function arredondamento(n){
@@ -25,7 +38,9 @@ function toBrDate(date){
 }
 
 function fromBrDateToDatetime(date){
-
+  var pedacos = date.split('/');
+  var dataformatada = pedacos[2] + '-' + pedacos[1] + '-' + pedacos[0] + 'T03:00:00.000Z';
+  return dataformatada;
 }
 
 //utilitarios
@@ -64,32 +79,81 @@ $('#listacavaleiros img').hover(function(e){
   $('#informacoes').empty();
 });
 
-$(function() {
 
+$('#btAdcGolpe').click(function(){
+      var $input = $('<input id="input-golpe">').attr('placeholder','Escreva o nome do golpe');
+      $('#btAdcGolpe').after($input);
+  });
+
+  $('#btAdcImagem').click(function(){
+      var $input = $('<input id="input-imagem">').attr('placeholder','Escreva a url da imagem');
+      //http://stackoverflow.com/questions/9425563/adding-text-to-checkbox-control-in-jquery
+      var $checkbox = $('<label />').html('É Thumbnail?')
+                          .prepend($('<input/>').attr({ type: 'checkbox', id: 'checkbox-imagem'}));
+      $('#btAdcImagem').after($input, $checkbox);
+  });
+
+
+$(function() {
   var $frmNovoCavaleiro = $('#frmNovoCavaleiro');
   $frmNovoCavaleiro.submit(function(e) {
-    console.log($(this));
-    console.log($frmNovoCavaleiro.serialize());
-    var nome = $('#txtNomeCavaleiro').val();
-    var tipoSanguineo = $('#slTipoSanguineo :selected').val();
-    var
-    var urlImagem = $('#txtUrlImagem').val();
-    $('#cavaleiros')
-    .append(
-      $('<li>').append(
-        $('<img>').attr('src', urlImagem).fadeIn()
-      )
-    );
-
-    goldSaints.push({
-      nome: nome,
-      imagens: [
-        { url: urlImagem, isThumb: true }
-      ]
-    });
-
-    localStorage['cavaleiros'] = JSON.stringify(goldSaints);
-
+  var cavaleiro = converterFormParaCavaleiro($frmNovoCavaleiro);
+  goldSaints.push(cavaleiro);
+  localStorage['cavaleiros'] = JSON.stringify(goldSaints);
+  renderizarCavaleiroNaTela(cavaleiro);
     return e.preventDefault();
   });
 });
+
+function converterFormParaCavaleiro($form){
+   var formData = new FormData($form[0]);
+
+   var idGerado = generatedId();
+
+   var nome = formData.getElementsByName('nome');
+   var tipoSanguineo = formData.getElementsByName('tipoSanguineo');
+   var dataNascimento = fromBrDateToDatetime(formData.getElementsByName('dateNasc'));
+   var altura = arredondamento(metersToCm(formData.getElementsByName('nbrAltura')));
+   var peso = arredondamento(kgToLb(formData.getElementsByName('nbrPeso')));
+   var signo = formData.getElementsByName('signos');
+   var localNasc = formData.getElementsByName('lclNascimento');
+   var localTrein = formData.getElementsByName('lclTreinamento');
+   var golpes = function() {
+   var arrayGolpes = [ ];
+     formData.getElementById('#input-golpe').each(function(i){
+         arrayGolpes.push($(this).val());
+     });
+     return arrayGolpes;
+   };
+   var imagens = function() {
+     var arrayImagens = [ ];
+     formData.getElementById('#input-imagem').each(function(i){
+         var obj = {url: $(this).val(), isThumb: true};
+         arrayImagens.push(obj);
+     });
+     return arrayImagens;
+   };
+
+   return {
+     id: idGerado,
+     nome: nome,
+     tipoSanguineo: tipoSanguineo,
+     dataNascimento: dataNascimento,
+     alturaCm: altura,
+     pesoLb: peso,
+     signo: signo,
+     localNascimento: localNasc,
+     localTreinamento: localTrein,
+     golpes: golpes,
+     imagens: imagens
+   };
+};
+
+function renderizarCavaleiroNaTela(cavaleiro) {
+  $('#cavaleiros')
+  .append(
+    $('<li>').append(
+      $('<img>').attr('src', cavaleiro.imagens[0])
+    )
+  );
+};
