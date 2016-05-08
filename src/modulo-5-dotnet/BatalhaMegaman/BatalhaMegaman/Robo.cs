@@ -37,7 +37,7 @@ namespace BatalhaMegaman
         }
         
                 
-        public void EquiparUpgrade(IUpgrade upgrade)
+        public virtual void EquiparUpgrade(IUpgrade upgrade)
         {
             if (upgrades.Count < 3) upgrades.Add(upgrade);
         }
