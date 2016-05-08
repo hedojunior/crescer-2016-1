@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BatalhaMegaman
 {
-    class Megaman : Robo
+    public class Megaman : Robo
     {
 
         public Megaman() : base()
@@ -14,7 +14,7 @@ namespace BatalhaMegaman
             PoderDeAtaque = 6;
         }
 
-        protected override string Nome
+        public override string Nome
         {
             get
             {
@@ -24,7 +24,20 @@ namespace BatalhaMegaman
 
         public override void Atacar(Robo robo)
         {
-            throw new NotImplementedException();
+            var aux = PoderDeAtaque;
+            EquiparUpgradesParaBatalha();
+            if (Vida < 30)PoderDeAtaque += 3;
+            robo.ReceberDano(PoderDeAtaque);
+            PoderDeAtaque = aux;
+        }
+
+        public override void ReceberDano(int poderDeAtaque)
+        {
+            var aux = PoderDeDefesa;
+            EquiparUpgradesParaBatalha();
+            var dano = poderDeAtaque - PoderDeDefesa;
+            if (dano > 0)Vida -= dano;
+            PoderDeDefesa = aux;
         }
     }
 }
