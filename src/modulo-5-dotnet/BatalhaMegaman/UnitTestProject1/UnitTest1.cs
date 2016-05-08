@@ -145,5 +145,66 @@ namespace UnitTestProject1
             Assert.AreEqual
                 ("Nome: Megaman, Vida: 100, Ataque: 6, Defesa: 0", mega.ToString());
         }
+
+        [TestMethod]
+        public void RushÉCriadoCorretamente()
+        {
+            var doggie = new Rush();
+            Assert.AreEqual
+                ("Nome: Rush, Vida: 100, Ataque: 4, Defesa: 3", doggie.ToString());
+        }
+
+        [TestMethod]
+        public void RushAceitaDoisUpgrades()
+        {
+            var doggie = new Rush();
+            var upg = new EscudoDeEnergia();
+            doggie.EquiparUpgrade(upg);
+            doggie.EquiparUpgrade(upg);
+            doggie.ReceberDano(9);
+            Assert.AreEqual
+                ("Nome: Rush, Vida: 98, Ataque: 4, Defesa: 3", doggie.ToString());
+        }
+
+        [TestMethod]
+        public void RushPodeSerUmUpgrade()
+        {
+            var bot = new Bot();
+            var doggie = new Rush();
+            doggie.EquiparUpgrade(new Rush());
+            doggie.EquiparUpgrade(new CanhaoDePlasma());
+            doggie.Atacar(bot);
+            Assert.AreEqual
+                ("Nome: Bot, Vida: 90, Ataque: 5, Defesa: 0", bot.ToString());
+        }
+
+        [TestMethod]
+        public void RushAceitaComoUpgradeUmOutroRushComUpgrade()
+        {
+            var bot = new Bot();
+            var doggie = new Rush();
+            var doggie1 = new Rush();
+            doggie1.EquiparUpgrade(new CanhaoDePlasma());
+            doggie.EquiparUpgrade(doggie1);
+            doggie.Atacar(bot);
+            Assert.AreEqual
+                ("Nome: Bot, Vida: 90, Ataque: 5, Defesa: 0", bot.ToString());
+        }
+
+        [TestMethod]
+        public void RushAceitaComoUpgradesDoisOutrosRushsComUpgrade()
+        {
+            var bot = new Bot();
+            var doggie = new Rush();
+            var doggie1 = new Rush();
+            var doggie2 = new Rush();
+            doggie1.EquiparUpgrade(new CanhaoDePlasma());
+            doggie2.EquiparUpgrade(new CanhaoDePlasma());
+            doggie.EquiparUpgrade(doggie1);
+            doggie.EquiparUpgrade(doggie2);
+            doggie.Atacar(bot);
+            Assert.AreEqual
+                ("Nome: Bot, Vida: 90, Ataque: 5, Defesa: 0", bot.ToString());
+        }
     }
 }
