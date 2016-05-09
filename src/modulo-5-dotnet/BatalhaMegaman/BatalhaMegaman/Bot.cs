@@ -14,6 +14,11 @@ namespace BatalhaMegaman
 
         }
 
+        public Bot(Chip chip) : base()
+        {
+            ChecaChip(chip);
+        }
+
         public override string Nome
         {
             get

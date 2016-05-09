@@ -14,9 +14,32 @@ namespace BatalhaMegaman
             Vida = 100;
             PoderDeAtaque = 5;
             PoderDeDefesa = 0;
+            ChipDoRobo = Chip.Nivel2;
         }
 
-        public abstract string Nome { get;}
+        public Robo(Chip chip) : base()
+        {
+            ChecaChip(chip);
+        }
+
+        protected void ChecaChip(Chip chip)
+        {
+            if (chip == Chip.Nivel1)
+            {
+                ChipDoRobo = Chip.Nivel1;
+                PoderDeAtaque -= 1;
+            }
+            else if (chip == Chip.Nivel3)
+            {
+                ChipDoRobo = Chip.Nivel3;
+                PoderDeAtaque += 2;
+                PoderDeDefesa += 1;
+            }
+        }
+
+        public Chip ChipDoRobo { get; protected set; }
+
+        public abstract string Nome { get; }
         
         public List<IUpgrade> upgrades = new List<IUpgrade>();
             
@@ -51,5 +74,12 @@ namespace BatalhaMegaman
             }
          
         }
+    }
+
+    public enum Chip
+    {
+        Nivel1,
+        Nivel2,
+        Nivel3
     }
 }
