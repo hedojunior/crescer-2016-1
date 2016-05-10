@@ -206,26 +206,27 @@ namespace Repositorio
                     Quantidade = f.Count()
 
                 })).ToList();
+
             return listaRapida;
         }
 
         public dynamic FuncionarioMaisComplexo()
         {
-            var listaFuncionarios = QuantidadeConsoantesPorNome();
-             var maiorQtdConsoantes =
-                listaFuncionarios.OrderByDescending(x => x.Consoantes).First();
+            var maiorQtdConsoantes =
+                    FuncComMaisConsoantes();
+
             return Funcionarios
-                .Where(funcionario => funcionario(maiorQtdConsoantes))
-                .Where(funcionario => funcionario.Turno != TurnoTrabalho.Tarde)
-                .Where(funcionario => funcionario.Cargo != "Desenvolvedor Júnior")
+                .Where(funcionario => funcionario == maiorQtdConsoantes)
+                .Where(funcionario => funcionario.TurnoTrabalho != TurnoTrabalho.Tarde)
+                .Where(funcionario => funcionario.Cargo.Titulo != "Desenvolvedor Júnior")
                 .Select(funcionario => new
                 {
                     Nome = funcionario.Nome,
                     DataNascimento = converterData(funcionario.DataNascimento),
-                    SalarioRS = ConverterEmReal(funcionario.Salario),
-                    SalarioUS = ConverterEmDolar(funcionario.Salario),
-                    QuantidadeMesmoCargo = QuantidadeMesmosCargos(funcionario.Cargo)
-                }).ToList();  
+                    SalarioRS = ConverterEmReal(funcionario.Cargo.Salario),
+                    SalarioUS = ConverterEmDolar(funcionario.Cargo.Salario),
+                    QuantidadeMesmoCargo = QuantidadeMesmosCargos(funcionario.Cargo.Titulo)
+                }).FirstOrDefault();  
         }
 
         private int QuantidadeMesmosCargos(String cargo)
@@ -238,7 +239,7 @@ namespace Repositorio
         {
             NumberFormatInfo nfi = new CultureInfo("pt-BR", false).NumberFormat;
             nfi.NumberDecimalSeparator = ",";
-            return "R$" + salario.ToString("N", nfi);
+            return "R$ " + salario.ToString("N", nfi);
 
         }
 
@@ -267,19 +268,23 @@ namespace Repositorio
             return consoantes;
         }
 
-        private IList<dynamic> QuantidadeConsoantesPorNome()
+        private Funcionario FuncComMaisConsoantes()
         {
-            return ((IEnumerable<dynamic>)Funcionarios
-                .Select(f => new
+            Funcionario funcComMaisConsoantes = Funcionarios[0];
+            var consoantes = 0;
+            for (var i = 0; i < Funcionarios.Count(); i++)
+            {
+              consoantes = contarConsoantes(Funcionarios[i].Nome);
+                
+                if (i == 0 || consoantes > contarConsoantes(Funcionarios[i - 1].Nome))
                 {
-                    Nome = f.Nome,
-                    Consoantes = contarConsoantes(f.Nome),
-                    Cargo = f.Cargo.Titulo,
-                    Turno = f.TurnoTrabalho,
-                    DataNascimento = f.DataNascimento,
-                    Salario = f.Cargo.Salario
-                })).ToList();
+                    funcComMaisConsoantes = Funcionarios[i];
+                }
+            }
+            return funcComMaisConsoantes;
+        }
+                
         }
 
      }
-}
+
