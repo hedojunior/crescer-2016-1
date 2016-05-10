@@ -204,7 +204,57 @@ namespace UnitTestProject1
             doggie.EquiparUpgrade(doggie2);
             doggie.Atacar(bot);
             Assert.AreEqual
-                ("Nome: Bot, Vida: 90, Ataque: 5, Defesa: 0", bot.ToString());
+                ("Nome: Bot, Vida: 84, Ataque: 5, Defesa: 0", bot.ToString());
+        }
+
+        [TestMethod]
+        public void BotCriadoComChip1Perde1DeAtaque()
+        {
+            var bot = new Bot(Chip.Nivel1);
+            Assert.AreEqual
+                ("Nome: Bot, Vida: 100, Ataque: 4, Defesa: 0", bot.ToString());
+        }
+
+        [TestMethod]
+        public void MegamanCriadoComChip1Perde1DeAtaque()
+        {
+            var bot = new Megaman(Chip.Nivel1);
+            Assert.AreEqual
+                ("Nome: Megaman, Vida: 100, Ataque: 5, Defesa: 0", bot.ToString());
+        }
+
+        [TestMethod]
+        public void BotCriadoComChip2FicaInalterado()
+        {
+            var bot = new Bot(Chip.Nivel2);
+            Assert.AreEqual
+                ("Nome: Bot, Vida: 100, Ataque: 5, Defesa: 0", bot.ToString());
+        }
+
+        [TestMethod]
+        public void BotCriadoComChip3GanhaBuffs()
+        {
+            var bot = new Bot(Chip.Nivel3);
+            Assert.AreEqual
+                ("Nome: Bot, Vida: 100, Ataque: 7, Defesa: 1", bot.ToString());
+        }
+
+        [TestMethod]
+        public void RushCriadoComChip3GanhaBuffs()
+        {
+            var bot = new Rush(Chip.Nivel3);
+            Assert.AreEqual
+                ("Nome: Rush, Vida: 100, Ataque: 6, Defesa: 4", bot.ToString());
+        }
+
+        [TestMethod]
+        public void RushNaoCausaDanoAoAtacarMegaman()
+        {
+            var bot = new Rush(Chip.Nivel3);
+            var mgmn = new Megaman();
+            bot.Atacar(mgmn);
+            Assert.AreEqual
+                ("Nome: Megaman, Vida: 100, Ataque: 6, Defesa: 0", mgmn.ToString());
         }
     }
 }

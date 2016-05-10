@@ -12,6 +12,13 @@ namespace BatalhaMegaman
         public Megaman() : base()
         {
             PoderDeAtaque = 6;
+            ChipDoRobo = Chip.Nivel2;
+        }
+
+        public Megaman(Chip chip) : base()
+        {
+            PoderDeAtaque = 6;
+            ChecaChip(chip);
         }
 
         public override string Nome
