@@ -1,0 +1,30 @@
+﻿@Model SobreMimModel
+@{
+    ViewBag.Title = "Sobre mim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="header-section">
+    <h1>Sobre</h1>
+</div>
+<div class="container">
+    <h2 class="h2-sumario">@Model.Nome</h2>
+    <img src="~/Content/Imagens/foto1.jpg" alt="Hedo Del Rey" id="foto" style="float:right; height:300px; width: 270px;" />
+    <p>
+        <strong>Cidade:</strong> @Model.Cidade <br>
+        <strong>Linguagem preferida:</strong>@Model.LingPref<br>
+        <strong>Comida preferida:</strong> <a href="http://bit.ly/1TcDigo">@Model.ComidaPref</a><br>
+        <strong>Livro Preferido:</strong><a href="http://bit.ly/1qRSbOf"> @Model.LivroPref</a><br>
+        <strong>Jogo Preferido:</strong> <a href="http://www.darkestdungeon.com/"><em> @Model.JogoPref</em></a><br>
+        <strong>Seriado Preferido:</strong> <a href="http://www.imdb.com/title/tt0460649/"><em> @Model.SeriadoPref</em></a><br>
+        <strong>Filme Preferido:</strong> <a href="http://www.imdb.com/title/tt0081505/"> @Model.FilmePref</a><br>
+        <strong>Matéria Preferida:</strong> @Model.MateriaPref<br>
+        <strong>No FIFA, Barcelona ou Real Madrid?</strong> Real Madrid.<br>
+        <strong>No Street Fighter, Ryu ou Ken?</strong> Akuma.<br>
+        <strong>Scorpion ou Sub Zero?</strong> Sub Zero.<br>
+        <strong>Golpes especiais:</strong> Ataque dos Memes, Torrente de piadas sem graça, Trocadilhos ruins aleatórios.
+    </p>
+</div>
+
+
+
