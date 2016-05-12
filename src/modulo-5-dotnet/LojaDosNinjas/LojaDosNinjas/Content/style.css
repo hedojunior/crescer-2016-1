@@ -1,0 +1,23 @@
+﻿.form-itens {
+    padding: 50px;
+}
+
+.inverted-hover {
+    transition: background-color 1s ease-in-out, color 1s ease-in-out;
+    
+}
+
+.inverted-hover:hover {
+    background-color: #000;
+    color: white;
+}
+
+.header-image {
+    width: 190px;
+    height: 190px;
+    margin-top: 10px;
+}
+
+.ninja-font {
+    font-family: 'Open Sans Condensed', sans-serif;
+}
