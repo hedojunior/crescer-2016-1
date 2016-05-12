@@ -1,8 +1,10 @@
-﻿using System;
+﻿using LojaNinja.Dominio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+
 
 namespace LojaNinja.MVC.Models
 {
@@ -20,7 +22,7 @@ namespace LojaNinja.MVC.Models
 
         [Display(Name = "Valor de venda: ")]
         [Required(ErrorMessage = "Digite o valor de venda")]
-        public int ValorVenda { get; set; }
+        public decimal ValorVenda { get; set; }
 
         [Display(Name = "Pagamento: ")]
         [Required(ErrorMessage = "Escolha o modo de pagamento")]
@@ -46,11 +48,4 @@ namespace LojaNinja.MVC.Models
 
     }
 
-    public enum TipoPagamento
-    {
-        Amex,
-        Diners,
-        Visa,
-        Mastercard
-    }
 }

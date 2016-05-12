@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LojaNinja.Repositorio
+namespace LojaNinja.Dominio
 {
-    public class Class1
+    public enum TipoPagamento
     {
+        Amex,
+        Diners,
+        Visa,
+        MasterCard
     }
 }
