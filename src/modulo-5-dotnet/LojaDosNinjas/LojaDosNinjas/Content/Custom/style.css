@@ -21,3 +21,21 @@
 .ninja-font {
     font-family: 'Open Sans Condensed', sans-serif;
 }
+
+.detalhes-header-container {
+    background-color: beige;
+    border-radius: 10px;
+}
+
+.icon-ninja {
+    width: 130px;
+    height: 130px;
+    position: relative;
+    top: 5px;
+}
+
+.listagem-header {
+    float: left;
+    position:relative;
+    top: 32px;
+}

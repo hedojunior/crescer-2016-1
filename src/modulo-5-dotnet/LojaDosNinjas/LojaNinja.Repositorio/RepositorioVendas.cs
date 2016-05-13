@@ -10,7 +10,7 @@ namespace LojaNinja.Repositorio
 {
     public class RepositorioVendas
     {
-        private const string PATH_ARQUIVO = @"C:\Users\Hedo\Desktop\vendas.txt";
+        private const string PATH_ARQUIVO = @"C:\Users\hedo.junior\Desktop\vendas.txt";
         private static readonly object objetoLock = new object();
 
 
