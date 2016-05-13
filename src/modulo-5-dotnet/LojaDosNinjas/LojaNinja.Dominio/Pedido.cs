@@ -40,7 +40,15 @@ namespace LojaNinja.Dominio
         private void ValidaPossibilidadeEntrega(double diasRestantesParaConcluirEntrega)
         {            
             if (diasRestantesParaConcluirEntrega < 1)
-                throw new ArgumentException("A data de entrega desejada deve ser no mínimo 1 dia maior do que a data atual.");
+                   throw new ArgumentException("A data de entrega desejada deve ser no mínimo 1 dia maior do que a data atual.");
+        }
+
+        public void AtualizarId(int id)
+        {
+            if (Id != 0)
+                throw new InvalidOperationException("Esse objeto já possuia Id, portanto ele já havia sido salvo no banco. Não é possível alterar esse valor.");
+
+            Id = id;
         }
 
         private void DefineUrgenciaDoPedido(double diasRestantesParaConcluirEntrega)
@@ -48,6 +56,7 @@ namespace LojaNinja.Dominio
             PedidoUrgente = diasRestantesParaConcluirEntrega < 7;
         }
 
+        
         public Pedido(int id, DateTime dataPedido, DateTime dataEntregaDesejada, string nomeProduto, decimal valor, TipoPagamento tipoPagamento, string nomeCliente, string cidade, string estado, bool pedidoUrgente)
         {
             Id = id;
