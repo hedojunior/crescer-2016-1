@@ -23,8 +23,7 @@
 }
 
 .detalhes-header-container {
-    background-color: beige;
-    border-radius: 10px;
+    background-color: beige;    
 }
 
 .icon-ninja {
@@ -34,8 +33,18 @@
     top: 5px;
 }
 
+.btn-position {
+    position: absolute;
+    left: 110px;
+    top: 0px;
+}
+
 .listagem-header {
     float: left;
     position:relative;
     top: 32px;
+}
+
+.beige-bg {
+    background-color: beige;
 }
