@@ -1,0 +1,116 @@
+﻿@model LojaNinja.Dominio.Pedido
+
+@{
+    ViewBag.Title = "Detalhes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="beige">@Model.NomeCliente</h2>
+<ul class="nav nav-pills icons-top-detalhes">
+    <li role="presentation">
+        <a href="/Pedido/ListaPedidos" class="hidden-xs">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </a>
+    </li>
+</ul>
+<div>
+    <h4 class="beige">@Model.NomeProduto</h4>
+    <hr />
+    <dl class="dl-horizontal dl-font-format">
+        <dt>
+            Data do pedido:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataPedido)
+        </dd>
+
+        <dt>
+            Data de entrega:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataEntregaDesejada)
+        </dd>
+
+        <dt>
+            Produto:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeProduto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valor):
+        </dt>
+
+        <dd>
+            R$@Html.DisplayFor(model => model.Valor)
+        </dd>
+
+        <dt>
+            Tipo de Pagamento:
+        </dt>
+
+        <dd>
+            @if (Model.TipoPagamento == LojaNinja.Dominio.TipoPagamento.Amex)
+            {
+                <i class="fa fa-cc-amex larger" aria-hidden="true"></i>
+            }
+            @if (Model.TipoPagamento == LojaNinja.Dominio.TipoPagamento.MasterCard)
+            {
+                <i class="fa fa-cc-mastercard larger" aria-hidden="true"></i>
+            }
+            @if (Model.TipoPagamento == LojaNinja.Dominio.TipoPagamento.Diners)
+            {
+                <i class="fa fa-cc-diners-club larger" aria-hidden="true"></i>
+            }
+            @if (Model.TipoPagamento == LojaNinja.Dominio.TipoPagamento.Visa)
+            {
+                <i class="fa fa-cc-visa larger" aria-hidden="true"></i>
+            }
+        </dd>
+
+        <dt>
+            Cliente:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeCliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cidade):
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado):
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt class="dt-urgente">
+            Urgente?
+        </dt>
+
+        <dd>
+            @if (Model.PedidoUrgente)
+            {
+            <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+            }
+            @if (!(Model.PedidoUrgente))
+            {
+            <i class="fa fa-thumbs-down" aria-hidden="true"></i>    
+            }
+        </dd>
+
+    </dl>
+</div>
+
