@@ -182,6 +182,7 @@
     <Content Include="Views\Pedido\CadastrarPedido.cshtml" />
     <Content Include="Views\Pedido\ListaPedidos.cshtml" />
     <Content Include="Views\Shared\Mensagem.cshtml" />
+    <Content Include="Views\Shared\Home.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
