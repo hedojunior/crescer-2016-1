@@ -74,8 +74,7 @@ namespace LojaNinja.MVC.Controllers
         public ActionResult Detalhes(int id)
         {
             var pedido = repo.ObterPedidoPorId(id);
-            var model = new PedidoModel(pedido);
-            return View("Sucesso", model);
+            return View(pedido);
         }
     }
 }
