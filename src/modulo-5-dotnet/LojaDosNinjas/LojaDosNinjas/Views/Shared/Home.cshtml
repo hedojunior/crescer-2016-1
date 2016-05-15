@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="col-md-6 red-div inner-div">
+        <i class="fa fa-search" aria-hidden="true"></i>
+        <form action="/Pedido/ListaPedidos" method="get">
+            <input type="text" name="cliente" placeholder="Cliente" class="col-md-12" />
+            <input type="text" name="produto" placeholder="Produto" class="col-md-12" />
+            <button type="submit" class="col-md-6">Pesquisar</button>
+        </form>
+    </div>
+
+    <div class="col-md-6 green-div inner-div"><a href="/Pedido/ListaPedidos"><i class="fa fa-list" aria-hidden="true"></i></a></div>
+    <div class="col-md-6 yellow-div inner-div"><a href="/Pedido/CadastrarPedido" ><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></div>
+    
+    <div class="col-md-6 blue-div inner-div">
+        <h6 class="home-title">Camelô<br />Ninja</h6>
+        <img src="~/Content/Ninja.png" rel="ninja" />
+    
+     </div>
+</div>
+
