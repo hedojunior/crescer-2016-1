@@ -1,0 +1,79 @@
+﻿@model IEnumerable<LojaNinja.Dominio.Pedido>
+
+@{
+    ViewBag.Title = "ListaPedidos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts {
+    <script src="https://use.fontawesome.com/2a8d0318a9.js"></script>    
+}
+<div class="container-fluid detalhes-header-container">
+    <img src="~/Content/ninja-icon.png" class="icon-ninja" />
+    <h1 class="ninja-font listagem-header col-md-offset-4">PEDIDOS DO CAMELÔ NINJA</h1>
+    <button type="button" class="bg-info btn-position">@Html.ActionLink("Faça outro pedido!", "CadastroPedido")</button>
+</div>
+<table class="table">
+    <tr class="beige-bg ninja-font">    
+        <th>
+            Data do pedido
+        </th>
+        <th>
+            Data de entrega desejada
+        </th>
+        <th>
+            Produto
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Valor)
+        </th>
+        <th>
+            Cliente
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th>
+            Urgente?
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr class="beige-bg ninja-font">
+        <td>
+            @Html.DisplayFor(modelItem => item.DataPedido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataEntregaDesejada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomeProduto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Valor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomeCliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cidade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PedidoUrgente)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "EditarPedido", new { id=item.Id }) |
+            @Html.ActionLink("Detalhes", "Detalhes", new { id=item.Id }) |
+            @Html.ActionLink("Deletar", "ExcluirPedido", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
