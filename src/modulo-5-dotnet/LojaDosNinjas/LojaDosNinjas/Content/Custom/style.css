@@ -2,9 +2,100 @@
     padding: 50px;
 }
 
+body {
+    margin: 0;
+    background-color: black;
+}
+
+.inner-div {
+    height: 338px;
+    color: rgba(255,255,255,0.2);
+    transition: color 1s linear;
+}
+
+.inner-div i {
+    font-size: 11em;
+    display:block;
+}
+
+.inner-div input {
+    display: block;
+    background-color: rgba(0,0,0,0.4);
+    border-color: transparent;
+    color: white;
+}
+
+.inner-div input:first-of-type {
+    margin-top: 50px;
+    margin-left: -80px;
+}
+
+.inner-div input:nth-of-type(2) {
+    float: left;
+    margin-top: 10px;
+    margin-left: -80px;
+}
+
+.inner-div button:first-of-type {
+    float:left;
+    margin-top: 10px;
+    background-color: rgba(0,0,0,0.4);
+    border-color: transparent;
+}
+.inner-div:hover {
+    color: #fff;
+}
+
+.inner-div a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.inner-div h6 {
+    font-size: 2em;
+    position: relative;
+}
+.red-div {
+    background-color: #8C2A3A;
+    padding-left: 17.5%;
+   }
+.red-div i {
+    padding-left: 3.9%;
+    padding-top: 5%;
+}
+
+.blue-div {
+    background-color: #2B838C;
+}
+
+.blue-div img {
+    width: 298px;
+    position:absolute;
+    top: 0px;
+    left: 100px;
+}
+
+.home-title {
+    color: black;
+    font-size: 0.2em;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight:bold;
+}
+
+.green-div {
+    background-color: #1F9114;
+    padding-left: 18%;
+    padding-top: 5%;
+}
+
+.yellow-div {
+    background-color: #C4B806;
+    padding-left: 16.5%;
+    padding-top: 5%;
+}
+
 .inverted-hover {
     transition: background-color 1s ease-in-out, color 1s ease-in-out;
-    
 }
 
 .inverted-hover:hover {
@@ -13,9 +104,19 @@
 }
 
 .header-image {
-    width: 190px;
+    width: 130px;
     height: 190px;
-    margin-top: 10px;
+    margin-top: 90px;
+    margin-left: 495px;
+}
+
+.navbar-height{
+  height: 70px;
+}
+
+.icon-hover-effect{
+  color: grey;
+  transition: color 1000ms ease;
 }
 
 .ninja-font {
@@ -23,7 +124,15 @@
 }
 
 .detalhes-header-container {
-    background-color: beige;    
+    background-color: beige;
+    margin-top: 100px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;    
+}
+
+.navbar-height a {
+    font-size: 2em;
+    margin-top: 10px;
 }
 
 .icon-ninja {
@@ -31,6 +140,10 @@
     height: 130px;
     position: relative;
     top: 5px;
+}
+
+table i {
+    font-size: 3em !important;
 }
 
 .btn-position {
