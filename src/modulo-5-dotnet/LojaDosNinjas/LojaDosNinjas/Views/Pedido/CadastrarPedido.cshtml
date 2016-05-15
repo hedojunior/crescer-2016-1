@@ -1,0 +1,84 @@
+﻿@model LojaNinja.MVC.Models.PedidoModel
+
+@{
+    ViewBag.Title = "Cadastro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/scripts/overrides-validacao.js"></script>
+}
+
+     <img src="~/Content/Ninja.png" class="header-image col-md-offset-5" />
+    <h2 class="col-md-offset-5 ninja-font">Camelô dos Ninjas</h2>
+    <hr />
+    @using (Html.BeginForm("SalvarPedido","Pedido",FormMethod.Post, new { id = "form-cadastro-pedido" })) 
+    {
+        @Html.AntiForgeryToken()        
+        <div class="form-horizontal form-itens">            
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.DataEntrega, htmlAttributes: new { @class = "control-label col-md-2 ninja-font" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.DataEntrega, new { htmlAttributes = new { id="form-data-entrega",@class = "form-control", placeholder="Ex. 16/08/1998", data_val_date = "Data Incorreta, digite dd/mm/aaaa" } })
+                    @Html.ValidationMessageFor(model => model.DataEntrega, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2 ninja-font" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", placeholder="Ex. Kunai de Safira" } })
+                    @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.ValorVenda, htmlAttributes: new { @class = "control-label col-md-2 ninja-font" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.ValorVenda, new { htmlAttributes = new { @class = "form-control", placeholder="Ex. 1200.00" } })
+                    @Html.ValidationMessageFor(model => model.ValorVenda, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.NomeCliente, htmlAttributes: new { @class = "control-label col-md-2 ninja-font" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.NomeCliente, new { htmlAttributes = new { @class = "form-control", placeholder="Ex. Ben-hur Ott" } })
+                    @Html.ValidationMessageFor(model => model.NomeCliente, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.Cidade, htmlAttributes: new { @class = "control-label col-md-2 ninja-font" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.Cidade, new { htmlAttributes = new { @class = "form-control", placeholder="Ex. Nova Iorque" } })
+                    @Html.ValidationMessageFor(model => model.Cidade, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.Pagamento, htmlAttributes: new { @class = "control-label col-md-2 ninja-font" })
+                <div class="col-md-8">
+                    @Html.EnumDropDownListFor(model => model.Pagamento, new { @class = "form-control"} )
+                    @Html.ValidationMessageFor(model => model.Pagamento, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2 ninja-font" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control", placeholder="Ex. Wiscounsin" } })
+                    @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-4">
+                    <input type="submit" value="Cadastrar!" class="btn btn-default inverted-hover col-md-offset-10" />
+                </div>
+            </div>
+        </div>
+    }     
+
