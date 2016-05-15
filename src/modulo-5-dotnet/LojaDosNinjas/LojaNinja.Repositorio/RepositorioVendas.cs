@@ -10,7 +10,7 @@ namespace LojaNinja.Repositorio
 {
     public class RepositorioVendas
     {
-        private const string PATH_ARQUIVO = @"C:\Users\hedo.junior\Desktop\vendas.txt";
+        private const string PATH_ARQUIVO = @"C:\Users\Hedo\Desktop\vendas.txt";
         private static readonly object objetoLock = new object();
 
 
@@ -26,6 +26,24 @@ namespace LojaNinja.Repositorio
             return this.ObterPedidos().FirstOrDefault(x => x.Id == id);
         }
 
+        public List<Pedido> ObterPedidosPorNomeEProduto(string nome, string produto)
+        {
+            var pedidos = ObterPedidos();
+             if (nome != null && produto == null)
+            {
+                return pedidos.Where(x => x.NomeCliente.Equals(nome)).ToList();
+            }
+             else if (produto != null && nome == null)
+            {
+                return pedidos.Where(x => x.NomeProduto.Equals(produto)).ToList();
+            }
+            else 
+            {
+                return pedidos.Where(x => x.NomeCliente.Equals(nome))
+                        .Where(x => x.NomeProduto.Equals(produto)).ToList();    
+            }
+        }
+
         public void IncluirPedido(Pedido pedido)
         {
             lock (objetoLock)
@@ -38,6 +56,23 @@ namespace LojaNinja.Repositorio
 
                 pedido.AtualizarId(idGerado);
             }
+        }
+
+        public void ExcluirPedido(int id)
+        {
+            var tempFile = Path.GetTempFileName();
+            var linesToKeep = File.ReadLines(PATH_ARQUIVO).Where(l => l.Split(';').First() != id.ToString());
+
+            File.WriteAllLines(tempFile, linesToKeep);
+
+            File.Delete(PATH_ARQUIVO);
+            File.Move(tempFile, PATH_ARQUIVO);
+
+        }
+
+        public void EditarPedido(Pedido pedido)
+        {
+
         }
 
         private string ConvertePedidoEmLinhaCSV(Pedido pedido, int proximoId)
@@ -82,5 +117,27 @@ namespace LojaNinja.Repositorio
 
             return listaPedidos;
         }
+
+        
+
+        //public Pedido ConverteLinhaEmPedido(int idParam)
+        //{
+        //    var linha = File.ReadLines(PATH_ARQUIVO).Where(l => l.Split(';').First() == idParam.ToString());
+        //    linha = linha.ToString();
+        //    var id = Convert.ToInt32(linha.Split(';')[0]);
+        //    var dataPedido = Convert.ToDateTime(linha.Split(';')[1]);
+        //    var dataEntregaDesejada = Convert.ToDateTime(linha.Split(';')[2]);
+        //    var nomeProduto = linha.Split(';')[3];
+        //    var valorVenda = Convert.ToDecimal(linha.Split(';')[4]);
+        //    TipoPagamento tipoPagamento;
+        //    Enum.TryParse(linha.Split(';')[5], out tipoPagamento);
+        //    var nomeCliente = linha.Split(';')[6];
+        //    var cidade = linha.Split(';')[7];
+        //    var estado = linha.Split(';')[8];
+        //    var urgente = Convert.ToBoolean(linha.Split(';')[9]);
+
+        //    var pedido = new Pedido(id, dataPedido, dataEntregaDesejada, nomeProduto, valorVenda, tipoPagamento, nomeCliente, cidade, estado, urgente);
+        //    return pedido;
+        //}
     }
 }
