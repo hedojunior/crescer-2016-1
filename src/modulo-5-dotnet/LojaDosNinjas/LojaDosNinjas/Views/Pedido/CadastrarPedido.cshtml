@@ -11,7 +11,34 @@
     <script src="~/scripts/overrides-validacao.js"></script>
 }
 
-     <img src="~/Content/Ninja.png" class="header-image col-md-offset-5" />
+<div class="container-fluid">
+    <div class="row">
+        <nav class="navbar navbar-default navbar-fixed-top col-*-12 navbar-height">
+            <div class="col-lg-6 col-md-10 col-sm-6 col-xs-6-offset-2">
+                <h3 id="header-text">Camelô do Ninja <small>cadastro</small></h3>
+            </div>
+            <ul class="nav nav-pills right-nav-header-top col-lg-4 col-md-12 col-sm-4 hidden-xs">
+                <li role="presentation">
+                    <a href="/Pedido/Home" class="icon-hover-effect hidden-xs">
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="/Pedido/ListaPedidos" class="icon-hover-effect hidden-xs">
+                        <i class="fa fa-list" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="/Pedido/CadastrarPedido" class="icon-hover-effect hidden-xs">
+                        Cadastrar Pedido
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+     <img src="http://bit.ly/27o0R05" class="header-image col-md-offset-5" />
     <h2 class="col-md-offset-5 ninja-font">Camelô dos Ninjas</h2>
     <hr />
     @using (Html.BeginForm("SalvarPedido","Pedido",FormMethod.Post, new { id = "form-cadastro-pedido" })) 
