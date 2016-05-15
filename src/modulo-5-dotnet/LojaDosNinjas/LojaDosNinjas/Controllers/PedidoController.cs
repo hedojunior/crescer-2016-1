@@ -19,6 +19,11 @@ namespace LojaNinja.MVC.Controllers
             return View();
         }
 
+        public ActionResult Home()
+        {
+            return View();
+        }
+
         public ActionResult SalvarPedido(PedidoModel model)
         {
             if (ModelState.IsValid)
