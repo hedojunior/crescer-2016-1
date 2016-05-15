@@ -160,15 +160,15 @@
     <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="scripts\overrides-validacao.js" />
     <Content Include="Web.config" />
-    <Content Include="Views\Produto\Sucesso.cshtml" />
+    <Content Include="Views\Pedido\Sucesso.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\ProdutoController.cs" />
+    <Compile Include="Controllers\PedidoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ProdutoModel.cs" />
+    <Compile Include="Models\PedidoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -179,8 +179,9 @@
     </Content>
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Produto\CadastrarProduto.cshtml" />
-    <Content Include="Views\Produto\ListaPedidos.cshtml" />
+    <Content Include="Views\Pedido\CadastrarPedido.cshtml" />
+    <Content Include="Views\Pedido\ListaPedidos.cshtml" />
+    <Content Include="Views\Shared\Mensagem.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
