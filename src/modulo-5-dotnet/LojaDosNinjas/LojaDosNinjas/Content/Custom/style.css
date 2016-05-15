@@ -88,6 +88,10 @@ body {
     padding-top: 5%;
 }
 
+.main-form {
+    margin-left: 340px;
+}
+
 .yellow-div {
     background-color: #C4B806;
     padding-left: 16.5%;
@@ -109,6 +113,35 @@ body {
     margin-top: 90px;
     margin-left: 495px;
 }
+
+.right-nav-header-top li:nth-of-type(3) {
+    margin-top: -2px;
+}
+
+.dl-font-format {
+    color: black;
+    background-color: beige;
+    border-radius: 10px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 2em;
+}
+.dl-font-format i{
+    font-size: 3em;
+}
+
+.dl-font-format dt {
+    width: 200px;
+}
+
+.dl-font-format dd {
+    padding-left: 55px;
+}
+
+.beige {
+    color: beige;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
 
 .navbar-height{
   height: 70px;
@@ -160,4 +193,28 @@ table i {
 
 .beige-bg {
     background-color: beige;
+}
+
+.icons-top-detalhes {
+    float: right;
+    color: beige;
+    margin-top: -55px;
+    font-size: 3em;
+}
+
+.icons-top-detalhes i {
+    color: white;
+    transition: color 1s ease;
+}
+
+.icons-top-detalhes:hover i {
+    color: black;
+}
+
+.table-font-format{
+    font-size: 1.5em;
+}
+
+.white {
+    color: white;
 }
