@@ -5,9 +5,34 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@section scripts {
-    <script src="https://use.fontawesome.com/2a8d0318a9.js"></script>    
-}
+<div class="container-fluid">
+    <div class="row">
+        <nav class="navbar navbar-default navbar-fixed-top col-*-12 navbar-height">
+            <div class="col-lg-6 col-md-10 col-sm-6 col-xs-6-offset-2">
+                <h3 id="header-text">Camelô do Ninja <small>pedidos</small></h3>
+            </div>
+            <ul class="nav nav-pills right-nav-header-top col-lg-4 col-md-12 col-sm-4 hidden-xs">
+                <li role="presentation">
+                    <a href="/Pedido/Home" class="icon-hover-effect hidden-xs">
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="/Pedido/ListaPedidos" class="icon-hover-effect hidden-xs">
+                        <i class="fa fa-list" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="/Pedido/CadastrarPedido" class="icon-hover-effect hidden-xs">
+                        Cadastrar Pedido
+                    </a>
+                </li>
+              </ul>
+        </nav>
+    </div>
+</div>
+
+
 <div class="container-fluid detalhes-header-container">
     <img src="~/Content/ninja-icon.png" class="icon-ninja" />
     <h1 class="ninja-font listagem-header col-md-offset-4">PEDIDOS DO CAMELÔ NINJA</h1>
@@ -26,6 +51,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Valor)
+        </th>
+        <th>
+            Tipo de Pagamento:
         </th>
         <th>
             Cliente
@@ -57,6 +85,24 @@
             @Html.DisplayFor(modelItem => item.Valor)
         </td>
         <td>
+            @if (item.TipoPagamento == LojaNinja.Dominio.TipoPagamento.Amex)
+            {
+                <i class="fa fa-cc-amex larger" aria-hidden="true"></i>
+            }
+            @if (item.TipoPagamento == LojaNinja.Dominio.TipoPagamento.MasterCard)
+            {
+                <i class="fa fa-cc-mastercard larger" aria-hidden="true"></i>     
+            }
+            @if (item.TipoPagamento == LojaNinja.Dominio.TipoPagamento.Diners)
+            {
+                <i class="fa fa-cc-diners-club larger" aria-hidden="true"></i>
+            }
+            @if (item.TipoPagamento == LojaNinja.Dominio.TipoPagamento.Visa)
+            {
+                <i class="fa fa-cc-visa larger" aria-hidden="true"></i>
+            }
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.NomeCliente)
         </td>
         <td>
@@ -66,7 +112,14 @@
             @Html.DisplayFor(modelItem => item.Estado)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PedidoUrgente)
+            @if (item.PedidoUrgente)
+            {
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+            }
+            @if (!(item.PedidoUrgente))
+            {
+                <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+            }
         </td>
         <td>
             @Html.ActionLink("Editar", "EditarPedido", new { id=item.Id }) |
