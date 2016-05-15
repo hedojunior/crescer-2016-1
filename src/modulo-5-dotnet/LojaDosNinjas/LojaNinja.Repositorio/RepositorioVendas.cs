@@ -29,11 +29,11 @@ namespace LojaNinja.Repositorio
         public List<Pedido> ObterPedidosPorNomeEProduto(string nome, string produto)
         {
             var pedidos = ObterPedidos();
-             if (nome != null && produto == null)
+             if (nome != null && produto == null || nome != null && produto =="")
             {
                 return pedidos.Where(x => x.NomeCliente.Equals(nome)).ToList();
             }
-             else if (produto != null && nome == null)
+             else if (produto != null && nome == null || produto != null && nome == "")
             {
                 return pedidos.Where(x => x.NomeProduto.Equals(produto)).ToList();
             }
