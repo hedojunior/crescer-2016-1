@@ -1,0 +1,50 @@
+﻿@model LojaNinja.MVC.Models.PedidoModel 
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <title>Sucesso</title>
+</head>
+<body>
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">Cadastro efetuado </h3>
+        </div>
+        <div class="panel-body">
+            <div class="panel-body">
+                Nome do cliente: @Model.NomeCliente
+            </div>
+            <div class="panel-body">
+                Nome do produto: @Model.Nome
+            </div>
+            <div class="panel-body">
+                Valor da venda: @Model.ValorVenda
+            </div>
+            <div class="panel-body">
+                Modo de Pagamento: @Model.Pagamento.ToString()
+            </div>
+            <div class="panel-body">
+                Cidade: @Model.Cidade
+            </div>
+            <div class="panel-body">
+                Estado: @Model.Estado
+            </div>
+            <div class="panel-body">
+                Data de entrega: @Model.DataEntrega.ToShortDateString()
+            </div>
+        </div>
+    </div>
+    <div class="col-md-offset-5">
+        @Html.ActionLink("Deseja cadastrar outro pedido?", "CadastrarPedido")
+        </div>
+</body>
+</html>
