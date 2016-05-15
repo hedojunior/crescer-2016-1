@@ -19,8 +19,8 @@ namespace LojaNinja.Dominio
         public string Estado { get; private set; }
         public bool PedidoUrgente { get; private set; }
 
-        public Pedido (DateTime dataPedido, DateTime dataEntregaDesejada, string nomeProduto, decimal valor,
-            TipoPagamento tipoPagamento, string nomeCliente, string cidade, string estado, bool pedidoUrgente)
+        public Pedido (DateTime dataEntregaDesejada, string nomeProduto, decimal valor,
+            TipoPagamento tipoPagamento, string nomeCliente, string cidade, string estado)
         {
             DataEntregaDesejada = dataEntregaDesejada;
             NomeProduto = nomeProduto;
@@ -30,9 +30,9 @@ namespace LojaNinja.Dominio
             Cidade = cidade;
             Estado = estado;
 
-            dataPedido = DateTime.Today;
+            this.DataPedido = DateTime.Now;
 
-            var diasRestantesParaEntrega = (dataEntregaDesejada - dataPedido).TotalDays;
+            var diasRestantesParaEntrega = (dataEntregaDesejada - DataPedido).TotalDays;
             ValidaPossibilidadeEntrega(diasRestantesParaEntrega);
             DefineUrgenciaDoPedido(diasRestantesParaEntrega);
         }
