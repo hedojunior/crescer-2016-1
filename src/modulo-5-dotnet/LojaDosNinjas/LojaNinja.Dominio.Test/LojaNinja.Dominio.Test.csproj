@@ -53,6 +53,12 @@
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LojaNinja.Dominio\LojaNinja.Dominio.csproj">
+      <Project>{E6F0A7FF-0D87-4058-BA85-C806E50036BC}</Project>
+      <Name>LojaNinja.Dominio</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
