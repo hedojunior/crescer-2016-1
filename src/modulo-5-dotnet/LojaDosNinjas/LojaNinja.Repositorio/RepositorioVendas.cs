@@ -58,15 +58,9 @@ namespace LojaNinja.Repositorio
         }
 
         public void ExcluirPedido(int id)
-        {
-            var tempFile = Path.GetTempFileName();
-            var linesToKeep = File.ReadLines(PATH_ARQUIVO).Where(l => l.Split(';').First() != id.ToString());
+        {   var linesToKeep = File.ReadLines(PATH_ARQUIVO).Where(l => l.Split(';').First() != id.ToString());
 
-            File.WriteAllLines(tempFile, linesToKeep);
-
-            File.Delete(PATH_ARQUIVO);
-            File.Move(tempFile, PATH_ARQUIVO);
-
+            File.WriteAllLines(PATH_ARQUIVO, linesToKeep);
         }
 
         public void EditarPedido(Pedido pedido)
