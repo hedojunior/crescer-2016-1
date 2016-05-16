@@ -5,18 +5,27 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2 class="beige">Login</h2>
+
+<ul class="nav nav-pills icons-top-detalhes">
+        
+    <li role="presentation">
+        <a href="/Pedido/Home" class="hidden-xs">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </a>
+    </li>
+</ul>
 
 @using (Html.BeginForm("Entrar","Login",FormMethod.Post, new { @class = "form" })) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>LoginViewModel</h4>
+        <h4 class="beige ninja-font">Não possui Login?  <a href="#">Cadastre-se!</a></h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2 beige" })
             <div class="col-md-10">
                 @Html.TextBoxFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
@@ -24,7 +33,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Senha, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Senha, htmlAttributes: new { @class = "control-label col-md-2 beige" })
             <div class="col-md-10">
                 @Html.TextBoxFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control", type="password" } })
                 @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
