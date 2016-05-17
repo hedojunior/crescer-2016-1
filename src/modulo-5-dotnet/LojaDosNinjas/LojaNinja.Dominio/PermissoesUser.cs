@@ -6,9 +6,17 @@ using System.Threading.Tasks;
 
 namespace LojaNinja.Dominio
 {
-   public enum PermissoesUser
+   public class Permissao
     {
-        COMUM,
-        ADMIN
+        public int Id { get; set; }
+        public string Nome { get; set; }
+
+        public Permissao(int id, string nome)
+        {
+            this.Id = id;
+            this.Nome = nome;
+        }
+
+        public Permissao() { }
     }
 }
