@@ -25,6 +25,13 @@ namespace LojaNinja.Dominio
             return usuarioEncontrado;
      }
 
+    public void InserirUsuarioAoBanco(Usuario usuario)
+        {
+            var senhaCriptografada = Criptografar(usuario.Senha);
+            usuario.Senha = senhaCriptografada;
+            _usuarioRepositorio.InserirUsuario(usuario);
+        }
+
      private string Criptografar(string texto)
      {
             //TODO: MELHORAR CRIPTOGRAFIA
