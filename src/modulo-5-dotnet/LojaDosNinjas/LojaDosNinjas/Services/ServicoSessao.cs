@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LojaNinja.MVC.Models.Login;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,6 +19,37 @@ namespace LojaNinja.MVC.Services
             {
                 return (UsuarioLogadoModel)HttpContext.Current.Session[USUARIO_LOGADO];
             }
+        }
+
+        public static bool EstaLogado
+        {
+            get
+            {
+                if (UsuarioLogado != null)
+                {
+                    HttpCookie cookieDeAutenticacao = HttpContext.Current.Request.Cookies.Get(COOKIE_AUTENTICACAO);
+
+                    bool cookieEstaOk = _usuariosLogados.Any(
+                            u => u.Key.Equals(cookieDeAutenticacao.Value)
+                            && u.Value.Equals(UsuarioLogado.Email)
+                        );
+
+                    return cookieEstaOk;
+                }
+
+                return false;
+            }
+        }
+
+        public static void CriarSessao(UsuarioLogadoModel usuario)
+        {
+            string numeroToken = Guid.NewGuid().ToString();
+            _usuariosLogados.Add(numeroToken, usuario.Email);
+
+            HttpContext.Current.Session[USUARIO_LOGADO] = usuario;
+            var cookieDeAutenticacao = new HttpCookie(COOKIE_AUTENTICACAO, numeroToken);
+
+            HttpContext.Current.Response.Cookies.Set(cookieDeAutenticacao);
         }
     }
 }
