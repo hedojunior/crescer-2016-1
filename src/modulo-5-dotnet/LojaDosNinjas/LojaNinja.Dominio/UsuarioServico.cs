@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LojaNinja.Dominio
 {
-    class UsuarioServico
+    public class UsuarioServico
     {
         private IUsuarioRepositorio _usuarioRepositorio;
 
