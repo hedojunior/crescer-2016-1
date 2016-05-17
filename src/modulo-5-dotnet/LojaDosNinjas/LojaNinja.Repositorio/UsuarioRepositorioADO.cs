@@ -36,7 +36,7 @@ namespace Repositorio
                         Email = (string)leitor["Email"],
                         Nome = (string)leitor["Nome"],
                         Senha = (string)leitor["Senha"],
-                        Permissoes = SetarPermissoesDeUsuario(id)
+                        Permissoes = VerificarPermissoesDeUsuario(id)
                     };
 
                 }
@@ -45,7 +45,7 @@ namespace Repositorio
 
 
         }
-        private List<string> SetarPermissoesDeUsuario(int id)
+        private List<string> VerificarPermissoesDeUsuario(int id)
         {
             using (var conexao = new SqlConnection(connectionString))
             {
@@ -58,11 +58,34 @@ namespace Repositorio
                 while (leitor.Read())
                 {
                     var permissao = (string)leitor["Permissao"];
-                      permissoes.Add(permissao);
+                    permissoes.Add(permissao);
                 }
                 return permissoes;
             }
 
+        }
+
+        public void InserirUsuario(Usuario usuario)
+        {
+            using (var conexao = new SqlConnection(connectionString))
+            {
+                string sql = "INSERT INTO Usuario(Nome,Email,Senha) VALUES (@p_nome,@p_email,@p_senha)";
+                var comando = new SqlCommand(sql, conexao);
+                comando.Parameters.Add(new SqlParameter("p_nome", usuario.Nome));
+                comando.Parameters.Add(new SqlParameter("p_email", usuario.Email));
+                comando.Parameters.Add(new SqlParameter("p_senha", usuario.Senha));
+                conexao.Open();
+                SqlDataReader leitor = comando.ExecuteReader();
+
+            }
+        }
+        //TODO:
+        private void SetarPermissoesDoUsuario(string email)
+        {
+            using (var conexao = new SqlConnection(connectionString))
+            {
+                //string sql = ""
+            }
         }
     }
 }
