@@ -11,12 +11,13 @@ namespace Repositorio
 {
     public class UsuarioRepositorioADO : IUsuarioRepositorio
     {
+        string connectionString = ConfigurationManager.ConnectionStrings["ConexaoBanco"].ConnectionString;
+
         public Usuario BuscarUsuarioPorAutenticacao(string email, string senha)
-        { //TODO: ADICIONAR CONEXÃO COM BANCO DE DADOS E MUDAR WEB.CONFIG
-            string connectionString = ConfigurationManager.ConnectionStrings["ConexaoBanco"].ConnectionString;
+        {
             using (var conexao = new SqlConnection(connectionString))
             {
-                string sql = "SELECT * FROM Usuarios WHERE email=@p_email and senha=@p_senha";
+                string sql = "SELECT * FROM USUARIO WHERE email=@p_email and senha=@p_senha";
                 var usuario = new Usuario();
                 var comando = new SqlCommand(sql, conexao);
                 comando.Parameters.Add(new SqlParameter("p_email", email));
@@ -28,17 +29,39 @@ namespace Repositorio
 
                 if (leitor.Read())
                 {
+                    var id = (int)leitor["UsuarioId"];
                     usuario = new Usuario
                     {
-                        Email = (string)leitor["email"],
-                        Nome = (string)leitor["nome"],
-                        Senha = (string)leitor["senha"]
+                        Id = id,
+                        Email = (string)leitor["Email"],
+                        Nome = (string)leitor["Nome"],
+                        Senha = (string)leitor["Senha"],
+                        Permissoes = SetarPermissoesDeUsuario(id)
                     };
 
                 }
                 return usuario;
             }
 
+
+        }
+        private List<string> SetarPermissoesDeUsuario(int id)
+        {
+            using (var conexao = new SqlConnection(connectionString))
+            {
+                string sql = "SELECT Permissao.Permissao from Permissao join UsuarioPermissao on Permissao.PermissaoId = UsuarioPermissao.PermissaoId and UsuarioPermissao.UsuarioId = @p_id";
+                var comando = new SqlCommand(sql, conexao);
+                comando.Parameters.Add(new SqlParameter("p_id", id));
+                conexao.Open();
+                SqlDataReader leitor = comando.ExecuteReader();
+                List<string> permissoes = new List<string>();
+                while (leitor.Read())
+                {
+                    var permissao = (string)leitor["Permissao"];
+                      permissoes.Add(permissao);
+                }
+                return permissoes;
+            }
 
         }
     }
