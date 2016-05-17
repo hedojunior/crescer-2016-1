@@ -17,7 +17,7 @@ namespace LojaNinja.MVC.Models.Login
 
         public string Email { get; private set; }
         public string Nome { get; private set; }
-        public PermissoesUser[] Permissoes { get; private set; }
+        public List<string> Permissoes { get; private set; }
 
         public bool TemPermissao(string permissao)
         {
