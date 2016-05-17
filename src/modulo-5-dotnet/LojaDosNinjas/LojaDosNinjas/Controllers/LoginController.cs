@@ -67,14 +67,14 @@ namespace LojaNinja.MVC.Controllers
             return View();
         }
 
-        public ActionResult Salvar(NovoUsuarioModel model)
-        {
-            if(ModelState.IsValid)
-            {
-                var user = new Usuario(model.Nome, model.Senha, model.Email);
-                _usuarioServico.InserirUsuarioAoBanco(user);
-            }
+        //public ActionResult Salvar(NovoUsuarioModel model)
+        //{
+        //    if(ModelState.IsValid)
+        //    {
+        //        var user = new Usuario(model.Nome, model.Senha, model.Email);
+        //        _usuarioServico.InserirUsuarioAoBanco(user);
+        //    }
 
-        }
+        //}
     }
 }

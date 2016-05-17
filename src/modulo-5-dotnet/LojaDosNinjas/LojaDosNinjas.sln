@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LojaNinja.MVC", "LojaDosNinjas\LojaNinja.MVC.csproj", "{46FB6970-8EEF-4F02-B9EC-756674C1B469}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LojaNinja.Dominio.Test", "LojaNinja.Dominio.Test\LojaNinja.Dominio.Test.csproj", "{9A45B33A-484E-4C15-9A13-41A9F62AA943}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LojaNinja.Repositorio", "LojaNinja.Repositorio\LojaNinja.Repositorio.csproj", "{71DE5CB6-C732-416D-8DE6-999DAC648E5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsuarioRepositorioEF", "UsuarioRepositorioEF\UsuarioRepositorioEF.csproj", "{719A460E-3E1F-48E8-93E6-94A453EBCF43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{71DE5CB6-C732-416D-8DE6-999DAC648E5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71DE5CB6-C732-416D-8DE6-999DAC648E5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71DE5CB6-C732-416D-8DE6-999DAC648E5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{719A460E-3E1F-48E8-93E6-94A453EBCF43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{719A460E-3E1F-48E8-93E6-94A453EBCF43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{719A460E-3E1F-48E8-93E6-94A453EBCF43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{719A460E-3E1F-48E8-93E6-94A453EBCF43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,5 +54,6 @@ Global
 		{E6F0A7FF-0D87-4058-BA85-C806E50036BC} = {4F4B329C-B9D0-4B17-AFE7-186A76D51F7E}
 		{9A45B33A-484E-4C15-9A13-41A9F62AA943} = {4F4B329C-B9D0-4B17-AFE7-186A76D51F7E}
 		{71DE5CB6-C732-416D-8DE6-999DAC648E5A} = {5EE324D6-511D-4029-BBF9-3846D9471F7F}
+		{719A460E-3E1F-48E8-93E6-94A453EBCF43} = {5EE324D6-511D-4029-BBF9-3846D9471F7F}
 	EndGlobalSection
 EndGlobal

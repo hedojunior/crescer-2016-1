@@ -10,6 +10,8 @@ namespace LojaNinja.Dominio
     {
         public int Id { get; set; }
         public string Nome { get; set; }
+        
+        public IList<Usuario> usuarios { get; set; }
 
         public Permissao(int id, string nome)
         {

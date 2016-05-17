@@ -14,6 +14,8 @@ namespace LojaNinja.Dominio
         public string Email { get; set; }
         public List<string> Permissoes { get; set; }
 
+        public IList<Permissao> permissoes { get; set; }
+
         public Usuario(string nome, string senha, string email)
         {
             this.Id = 0;

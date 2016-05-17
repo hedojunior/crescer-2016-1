@@ -1,6 +1,8 @@
 ﻿using LojaNinja.Dominio;
 using LojaNinja.MVC.Filters.BaseAulaSeguranca.Filters;
 using LojaNinja.MVC.Models;
+using LojaNinja.MVC.Models.Login;
+using LojaNinja.MVC.Services;
 using LojaNinja.Repositorio;
 using System;
 using System.Collections.Generic;
@@ -19,6 +21,8 @@ namespace LojaNinja.MVC.Controllers
         [NinjaToken(Roles ="COMUM")]
         public ActionResult CadastrarPedido()
         {
+            UsuarioLogadoModel usuarioLogado = ServicoSessao.UsuarioLogado;
+            ViewBag.NomeUsuarioLogado = usuarioLogado.Nome;
             return View();
         }
 
