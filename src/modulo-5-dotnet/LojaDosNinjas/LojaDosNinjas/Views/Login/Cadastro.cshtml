@@ -5,13 +5,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section scripts {    
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/scripts/overrides-validacao.js"></script>
+}
+
 <h2>Cadastro</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Salvar","Login",FormMethod.Post)) 
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
+    <div class="form-horizontal" id="form-cadastro-user">
         <h4>Novo usuário</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -26,7 +32,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", id="#email" })
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -34,7 +40,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Senha, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Senha, new { @class = "form-control", type = "password" })
+                @Html.TextBoxFor(model => model.Senha, 
+                    new { @class = "form-control", type = "password", id="password"})
                 @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -42,7 +49,7 @@
         <div class="form-group">
             <label class="control-label col-md-2" for="senha">Confirme sua senha:</label> 
             <div class="col-md-10">
-                <input type="password" alt="confirme-senha" class="form-control" />
+                <input type="password" alt="confirme-senha" class="form-control" id="confirmar_senha" required />
                 @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
             </div>
         </div>
