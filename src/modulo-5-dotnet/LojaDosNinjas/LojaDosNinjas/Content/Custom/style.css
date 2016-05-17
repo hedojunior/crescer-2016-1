@@ -2,6 +2,30 @@
     padding: 50px;
 }
 
+.header-nome-user {
+height: 60px;
+font-size: 2em;
+color: beige;
+display: inline;
+margin-top: 15px;
+margin-left: 12px;
+}
+
+#logout {
+    position: relative;
+    left: 915px;
+}
+
+#logout a {
+    text-decoration: none;
+    color: beige;
+    transition: color 1.2s ease;
+}
+
+#logout a:hover{
+    color: indianred;
+}
+
 body {
     margin: 0;
     background-color: black;
