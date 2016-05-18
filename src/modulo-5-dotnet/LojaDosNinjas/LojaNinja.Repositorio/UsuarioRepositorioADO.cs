@@ -67,6 +67,8 @@ namespace Repositorio
 
         public void InserirUsuario(Usuario usuario)
         {
+            var id = 0;
+
             using (var conexao = new SqlConnection(connectionString))
             {
                 string sql = "INSERT INTO Usuario(Nome,Email,Senha) VALUES (@p_nome,@p_email,@p_senha)";
@@ -74,13 +76,13 @@ namespace Repositorio
                 comando.Parameters.Add(new SqlParameter("p_nome", usuario.Nome));
                 comando.Parameters.Add(new SqlParameter("p_email", usuario.Email));
                 comando.Parameters.Add(new SqlParameter("p_senha", usuario.Senha));
-                var id = BuscarIDDoNovoUsuario();
-                SetarPermissoesDoUsuario(id);
+                id = BuscarIDDoNovoUsuario();
                 conexao.Open();
                 SqlDataReader leitor = comando.ExecuteReader();
 
             }
-        }
+            SetarPermissoesDoUsuario(id);
+       }
         //TODO:
         private void SetarPermissoesDoUsuario(int id)
         {
