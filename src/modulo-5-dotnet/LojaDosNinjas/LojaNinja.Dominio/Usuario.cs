@@ -22,7 +22,8 @@ namespace LojaNinja.Dominio
             this.Nome = nome;
             this.Email = email;
             this.Senha = senha;
-            Permissoes.Add("COMUM");
+            this.Permissoes = new List<string>();
+            this.Permissoes.Add("COMUM");
         }
 
         public Usuario() { }
