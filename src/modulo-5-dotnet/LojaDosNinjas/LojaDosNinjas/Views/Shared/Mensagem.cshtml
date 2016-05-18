@@ -3,8 +3,8 @@
     ViewBag.Title = "Mensagem";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Pedido excluído com sucesso!</h2>
+<h1>@ViewBag.NomeUsuarioLogado,</h1>
+<h2>o pedido foi excluído com sucesso!</h2>
 
 @Html.ActionLink("Deseja cadastrar outro pedido?", "CadastrarPedido") <br />
 @Html.ActionLink("Deseja deletar um outro pedido?","ListaPedidos")

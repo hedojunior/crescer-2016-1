@@ -30,6 +30,8 @@ namespace LojaNinja.MVC.Controllers
             {
                 return View();
             }
+            UsuarioLogadoModel usuarioLogado = ServicoSessao.UsuarioLogado;
+            ViewBag.NomeUsuarioLogado = usuarioLogado.Nome;
             return View("Home");
         }
 
@@ -73,7 +75,7 @@ namespace LojaNinja.MVC.Controllers
             {
                 var user = new Usuario(model.Nome, model.Senha, model.Email);
                 _usuarioServico.InserirUsuarioAoBanco(user);
-                return View("Mensagem");
+                return View("CadastroCompleto");
             }
 
             return View("Index", model);

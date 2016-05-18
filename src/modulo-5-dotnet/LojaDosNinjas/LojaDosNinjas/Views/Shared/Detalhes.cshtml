@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="beige">@Model.NomeCliente</h2>
+<h2 class="beige">@ViewBag.NomeUsuarioLogado</h2>
 <ul class="nav nav-pills icons-top-detalhes">
     <li role="presentation">
         <a href="/Pedido/ListaPedidos" class="hidden-xs">
@@ -14,7 +14,7 @@
     </li>
 </ul>
 <div>
-    <h4 class="beige">@Model.NomeProduto</h4>
+    <h4 class="beige">Logout</h4>
     <hr />
     <dl class="dl-horizontal dl-font-format">
         <dt>

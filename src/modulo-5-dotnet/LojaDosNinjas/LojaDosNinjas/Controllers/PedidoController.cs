@@ -31,6 +31,8 @@ namespace LojaNinja.MVC.Controllers
         [NinjaToken(Roles="COMUM")]
         public ActionResult Home()
         {
+            UsuarioLogadoModel usuarioLogado = ServicoSessao.UsuarioLogado;
+            ViewBag.NomeUsuarioLogado = usuarioLogado.Nome;
             return View();
         }
 
@@ -47,10 +49,12 @@ namespace LojaNinja.MVC.Controllers
 
                 repo.IncluirPedido(pedido);
 
+                UsuarioLogadoModel usuarioLogado = ServicoSessao.UsuarioLogado;
+                ViewBag.NomeUsuarioLogado = usuarioLogado.Nome;
                 return View("Sucesso", model);
             }
             else
-                return View("CadastrarPedido", model);
+                return RedirectToAction("CadastrarPedido","Pedido", model);
         }
 
 
@@ -60,6 +64,8 @@ namespace LojaNinja.MVC.Controllers
         {
             repo.ExcluirPedido(id);
 
+            UsuarioLogadoModel usuarioLogado = ServicoSessao.UsuarioLogado;
+            ViewBag.NomeUsuarioLogado = usuarioLogado.Nome;
             return View("Mensagem");
         }
 
@@ -73,7 +79,7 @@ namespace LojaNinja.MVC.Controllers
 
             repo.ExcluirPedido(pedido.Id);
 
-            return View("CadastrarPedido", model);
+            return RedirectToAction("CadastrarPedido","Pedido", model);
         }
 
 
@@ -92,6 +98,8 @@ namespace LojaNinja.MVC.Controllers
                 pedidos = repo.ObterPedidosPorNomeEProduto(cliente, produto);
             }
 
+            UsuarioLogadoModel usuarioLogado = ServicoSessao.UsuarioLogado;
+            ViewBag.NomeUsuarioLogado = usuarioLogado.Nome;
             return View(pedidos);
         }
 
@@ -101,6 +109,9 @@ namespace LojaNinja.MVC.Controllers
         public ActionResult Detalhes(int id)
         {
             var pedido = repo.ObterPedidoPorId(id);
+
+            UsuarioLogadoModel usuarioLogado = ServicoSessao.UsuarioLogado;
+            ViewBag.NomeUsuarioLogado = usuarioLogado.Nome;
 
             return View(pedido);
         }
