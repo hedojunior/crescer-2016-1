@@ -16,7 +16,7 @@ namespace LojaNinja.Dominio
             _usuarioRepositorio = usuarioRepositorio;
         }
 
-     public Usuario BuscarUsuarioPorAutenticacao(string email, string senha)
+         public Usuario BuscarUsuarioPorAutenticacao(string email, string senha)
      {
             string senhaCriptografada = Criptografar(senha);
 
@@ -25,12 +25,12 @@ namespace LojaNinja.Dominio
             return usuarioEncontrado;
      }
 
-    //public void InserirUsuarioAoBanco(Usuario usuario)
-    //    {
-    //        var senhaCriptografada = Criptografar(usuario.Senha);
-    //        usuario.Senha = senhaCriptografada;
-    //        _usuarioRepositorio.InserirUsuario(usuario);
-    //    }
+    public void InserirUsuarioAoBanco(Usuario usuario)
+        {
+            var senhaCriptografada = Criptografar(usuario.Senha);
+            usuario.Senha = senhaCriptografada;
+            _usuarioRepositorio.InserirUsuario(usuario);
+        }
 
      private string Criptografar(string texto)
      {
