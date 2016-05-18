@@ -74,18 +74,43 @@ namespace Repositorio
                 comando.Parameters.Add(new SqlParameter("p_nome", usuario.Nome));
                 comando.Parameters.Add(new SqlParameter("p_email", usuario.Email));
                 comando.Parameters.Add(new SqlParameter("p_senha", usuario.Senha));
+                var id = BuscarIDDoNovoUsuario();
+                SetarPermissoesDoUsuario(id);
                 conexao.Open();
                 SqlDataReader leitor = comando.ExecuteReader();
 
             }
         }
         //TODO:
-        private void SetarPermissoesDoUsuario(string email)
+        private void SetarPermissoesDoUsuario(int id)
         {
             using (var conexao = new SqlConnection(connectionString))
             {
-                //string sql = ""
+                string sql = @"INSERT INTO UsuarioPermissao (UsuarioId,PermissaoId) 
+                                    VALUES (@p_userId, 1)";
+                var comando = new SqlCommand(sql, conexao);
+                comando.Parameters.Add(new SqlParameter("p_userId", id));
+                conexao.Open();
+                SqlDataReader leitor = comando.ExecuteReader(); 
             }
+        }
+
+        private int BuscarIDDoNovoUsuario()
+        {
+            using (var conexao = new SqlConnection(connectionString))
+            {
+                string sql = @"SELECT TOP(1) UsuarioId FROM Usuario order by UsuarioId desc";
+                var comando = new SqlCommand(sql, conexao);
+                conexao.Open();
+                SqlDataReader leitor = comando.ExecuteReader();
+                var id = 0;
+                if(leitor.Read())
+                {
+                    id = (int)leitor["UsuarioId"];
+                }
+                return id + 1;
+            }
+            
         }
     }
 }
