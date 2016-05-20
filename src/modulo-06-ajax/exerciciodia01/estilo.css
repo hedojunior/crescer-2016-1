@@ -1,0 +1,31 @@
+@font-face {
+     font-family: Maiden;
+     src: url('maiden.ttf');
+}
+
+body {
+  background-image: url('ironmaiden.jpg');
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.header {
+  background-color: rgba(0,0,0,0.7);
+}
+
+.header img{
+  margin-left: 30%;
+  display: block;
+}
+
+#carregarImagens {
+  margin-left: 34%;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background-color: transparent;
+  text-decoration: none;
+  font-family: 'Maiden';
+  color: white;
+  font-size: 3em;
+  border:none;
+}
