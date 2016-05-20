@@ -20,7 +20,6 @@ $('#pesquisaEcletica').click(function(e){
   var trocarUrl = true;
   if(chance <= 0.20) trocarUrl = false;
 
-  debugger;
   var urlValorPesquisa = 'https://api.spotify.com/v1/search?q=' + valorPesquisa +'&type=artist';
 
   $.get({

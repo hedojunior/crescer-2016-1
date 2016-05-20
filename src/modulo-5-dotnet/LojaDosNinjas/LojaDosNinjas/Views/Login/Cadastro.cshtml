@@ -13,11 +13,11 @@
 
 <h2>Cadastro</h2>
 
-@using (Html.BeginForm("Salvar","Login",FormMethod.Post)) 
+@using (Html.BeginForm("Salvar", "Login", FormMethod.Post, new { id = "formCheckPassword" }))
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal" id="form-cadastro-user">
+    <div class="form-horizontal">
         <h4>Novo usuário</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -41,7 +41,7 @@
             @Html.LabelFor(model => model.Senha, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextBoxFor(model => model.Senha, 
-                    new { @class = "form-control", type = "password", id="password"})
+                    new { @class = "form-control", type = "password", id="senha", name="senha"})
                 @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -49,7 +49,7 @@
         <div class="form-group">
             <label class="control-label col-md-2" for="senha">Confirme sua senha:</label> 
             <div class="col-md-10">
-                <input type="password" alt="confirme-senha" class="form-control" id="confirmar_senha" required />
+                <input type="password" alt="confirme-senha" class="form-control" name="cfmSenha" id="cfmSenha" required />
                 @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
             </div>
         </div>
