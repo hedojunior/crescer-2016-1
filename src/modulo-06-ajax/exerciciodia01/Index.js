@@ -1,15 +1,15 @@
 'use strict';
 
-function carregarIronMaiden() {
+$('#carregarImagens').click(function carregarIronMaiden() {
 
   $.ajax({ url: urlSpotifyGet, type: 'GET' })
   .then(
     function onSuccess(res) {
-      var $lista = $('#ulDoHeavyMetal')
+      var $lista = $('#lista')
       apendarImagens(res, $lista);
     }
   );
-};
+});
 //------------------
 
 $('#pesquisaEcletica').click(function(e){
@@ -54,9 +54,10 @@ function checarSeEhJustinBieber(trocarUrl, valorPesquisa, id) {
 }
 //---------------
 function apendarImagens(res, $lista) {
+  $lista.empty();
   res.items.forEach(function(cover){
     $lista
     .append($('<li>')
-    .append($('<img>').attr('src',cover.images[1].url)));
+    .append($('<img>').attr('src',cover.images[1].url))).hide().fadeIn(1000);
   });
 }
