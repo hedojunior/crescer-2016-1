@@ -5,17 +5,14 @@
 </style>
 
 <h3>Listagem de cavaleiros</h3>
-
+<div class="loader" id="spinner" style="display: none;">Carregando!</div>
 <ul id="cavaleiros"></ul>
 <div id="feedback"></div>
-<button id="btnCriar">Criar hard-coded!</button>  
+<button id="btnCriar" onclick="window.location = '/Cavaleiro/CadastroCavaleiro'">Cadastrar cavaleiro</button>  
 
 <script>
     var urlCavaleiroGet = '@Url.Action("Get")';
     var urlCavaleiroPost = '@Url.Action("Post")';
-
-   
-
 </script>
 
 @section scripts {
