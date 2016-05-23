@@ -1,6 +1,7 @@
 ﻿using CdZ.Dominio;
 using CdZ.MVC.Models.Cavaleiro;
 using CdZ.MVC.Services;
+using System.Collections.Generic;
 using System.Net;
 using System.Threading;
 using System.Web.Mvc;
@@ -24,27 +25,58 @@ namespace CdZ.MVC.Controllers
                 var status = (int)HttpStatusCode.InternalServerError;
                 throw new HttpException(status, "Ops");
             */
-            Thread.Sleep(3000);
+
             return Json(new { data = _cavaleiros.Todos() }, JsonRequestBehavior.AllowGet);
         }
-        [HttpDelete]
+
+        [HttpGet]
+        public ActionResult Listagem()
+        {
+            IEnumerable<Cavaleiro> cavaleiros = _cavaleiros.Todos();
+
+            return View(cavaleiros);
+        }
+
+        [HttpGet]
+        [ActionName("GetById")]
+        public JsonResult Get(int? id)
+        {
+            return Json(new {  data = _cavaleiros.Buscar(id.Value)}, JsonRequestBehavior.AllowGet);
+        }
+
+        //[HttpDelete]
+        [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Delete)]
         public JsonResult Delete(int id)
         {
-            //deletar no repo
             _cavaleiros.Excluir(id);
-            //Preencher status no content
-            Response.StatusCode = (int)HttpStatusCode.NoContent;
-            //retornar empty json
-            return Json(new { });
+            return NoContentJsonVazio();
         }
 
         [HttpPost]
         public JsonResult Post(CavaleiroViewModel cavaleiro)
         {
-            Thread.Sleep(3000);
+           // Thread.Sleep(3000);
             var novoId = _cavaleiros.Adicionar(cavaleiro.ToModel());
             Response.StatusCode = (int)HttpStatusCode.Created;
             return Json(new { id = novoId });
+        }
+
+        public ActionResult CadastroCavaleiro()
+        {
+            return View();
+        }
+
+        [HttpPut]
+        public JsonResult Put(CavaleiroViewModel cavaleiro)
+        {
+            _cavaleiros.Atualizar(cavaleiro.ToModel());
+            return NoContentJsonVazio();
+        }
+
+        private JsonResult NoContentJsonVazio()
+        {
+            Response.StatusCode = (int)HttpStatusCode.NoContent;
+            return Json(new { });
         }
     }
 }
