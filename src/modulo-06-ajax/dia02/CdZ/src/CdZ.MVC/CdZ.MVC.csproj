@@ -114,6 +114,9 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Custom\overrides-validacao.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -132,13 +135,21 @@
     <Compile Include="Controllers\CavaleiroController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="Extensions\CavaleiroExtensions.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Extensions\GolpeExtensions.cs" />
     <Compile Include="Extensions\HttpCookieExtensions.cs" />
+    <Compile Include="Extensions\ImagemExtensions.cs" />
+    <Compile Include="Extensions\LocalExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Filters\CdZAutorizador.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Cavaleiro\CavaleiroViewModel.cs" />
+    <Compile Include="Models\Cavaleiro\GolpeViewModel.cs" />
     <Compile Include="Models\ImagemViewModel.cs" />
+    <Compile Include="Models\LocalViewModel.cs" />
     <Compile Include="Models\Login\LoginViewModel.cs" />
     <Compile Include="Models\Login\UsuarioLogadoModel.cs" />
     <Compile Include="Models\Usuario\UsuarioEditViewModel.cs" />
@@ -156,6 +167,8 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Usuario\Cadastrar.cshtml" />
     <Content Include="Views\Cavaleiro\Index.cshtml" />
+    <Content Include="Views\Cavaleiro\CadastroCavaleiro.cshtml" />
+    <Content Include="Views\Cavaleiro\Listagem.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
