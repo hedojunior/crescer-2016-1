@@ -1,0 +1,61 @@
+﻿@model IEnumerable<CdZ.Dominio.Cavaleiro>
+
+@{
+    ViewBag.Title = "Listagem";
+}
+<style>
+
+    .imgThumb {
+        width: 250px;
+        height: 150px;
+    }
+</style>
+<h2>Listagem</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>Imagem</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @{ 
+                var src = "";
+                if (item.Imagens.Count() == 0) {
+                    src = "http://blog.guiadohacker.com.br/wp-content/uploads/2016/05/anon.png";
+                }
+                else
+                {
+                    for (var i = 0; i <= item.Imagens.Count; i++)
+                    {
+                        if(item.Imagens[i].IsThumb)
+                        {
+                            src = item.Imagens[i].Url;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            <img src="@src" alt="Thumbnail" class="imgThumb"  />
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Deletar", "Delete", new { id = item.Id })
+            
+        </td>
+    </tr>
+}
+
+</table>
