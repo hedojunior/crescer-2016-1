@@ -1,0 +1,103 @@
+Controller Home
+---Action Secret() -- Só entra usuário autenticado.
+
+---Action Index() -- Qualquer usuário entra.
+
+-Para entrar na área secreta, é necessário um cara que possa fazer o controle de quem está logado ou não está.  Esse cara é um filtro.
+
+---Pasta Filters 
+
+	-- Autenticador
+-Para que ele possa ter controle de quem está ou não logado, ele precisa herdar de AuthorizeAttribute
+
+(Se pormos [Autenticador] em uma action agora, sem implementar quem pode ou não pode entrar, o Autenticador não deixa entrar ninguém.)
+
+-Para que ele possa controlar quem pode ou não entrar, precisa sobrescrever as regras que ele aceita. Esse método, que contém as regras, é AuthorizeCore. Ela retorna
+um boolean, que é true (se pode entrar) ou false (não pode entrar).
+
+
+---- FLUXO DE REQUISIÇÃO
+
+- Browser -> entra com a url/SECRET -> Dispara uma requisição pro servidor -> O ASP.NET checa a url que foi passada. Ele checa o seu padrão de rota, se está ok (de
+acordo com o padrão). Ele então instancia a controller da url. Como Secret está informado, e a controller foi instanciada, ele chama a Action 'Secret'. Porém,
+o método está decorado com um Autorizador ([Autenticador]). Quando ele vai chamar a action, ele checa se tem algum decorator em cima (por exemplo, [HttpPost]; Se a
+requisição não foi um post, ele joga um erro). O MVC checa se tem algum filtro de autenticação, baseado nas decorations da action. Ele checa o filtro, procura pelo
+Authorize Core. Se retornar true, ele deixa continuar a requisição. Do contrário, o MVC vai cortar a conexão e mandar o usuário para uma tela de 401 (Não autorizado).
+----
+
+- Por enquanto, nosso filtro só pode dizer se pode ou não continuar com a requisição. Caso seja necessário ter a liberdade de redirecionar o usuário para outro
+lugar quando não tem permissão para acessar uma área, deve ser usado o método OnAuthorization.
+
+---- ON AUTHORIZATION
+	É um método que, por padrão, chama o AuthorizeCore. Caso ele retorne false, retorna para a página 401. Digamos que queiramos redirecionar para uma pagina
+diferente quando o usuário não é autorizado. Para isso, é feita uma checagem dentro desse método, para ver se está autorizado (estaAutorizado = AUTHORIZECORE(filterCon
+text.HttpContext). Caso não esteja autorizado, precisamos mandá-lo para outra view, com outra rota. 
+Para isso, devemos usar:
+
+filterContext.Result = new RedirectToRouteResult( new RouteValueDictionary { {"action","Unauthorized"}, {"controller", "global"} });
+
+----Escolha de estratégia de autenticação
+ -Pode ser escolhido entre Cookie e Session. Cookies são melhores usados em aplicações com grande uso e fluxo de usuários.
+
+ --ESTRATEGIA DE SESSÃO
+
+---Action Login() - verifica se está no banco. se sim, 
+'var usuario = new UsuarioLogadoModel() { Nome = "nome" }; Session["USUARIO_LOGADO"] = usuario; return RedirectToAction("Secret");
+
+(Session["USUARIO_LOGADO"]: a sessão é uma coleção particular. a sua sessão possui os seus dados. A sua sessão é um "armário" em um "prédio" de outras sessões.
+Sempre que voce entrar na controller, voce vai estar somente no seu "armario". Porem, o MVC tem controle de todos os armários. Tudo o que for armazenado na session,
+é apenas para o usuário corrente. No momento que qualquer attr de sessão é setado, o MVC cria um Cookie. Esse cookie serve como uma "chave" pro armário, que é a session.
+Caso eu queira acessar dados dessa session em outros lugares, posso acessar com o Cookie.)
+
+- Na action SECRET, é criado um UsuarioLogadoModel, que usa os dados do USUARIO_LOGADO. Assim, pode usar os valores do usuário logado.
+
+-Resumindo, se eu setar a sessão dentro do login, posso usar os dados dela em qualquer outra requisição. E como a sessão cria um cookie, ele pode buscar o usuário lo-
+gado pra saber qual "armário" está utilizando. A Session funciona como um Dictionary(Hashmap).
+
+
+-Agora, se eu for no AuthorizeCore, e der um 'return httpContext.Session(USUARIO_LOGADO) != null', o usuário entra se já houver uma session com seus dados.
+
+--- AUTORIZAÇÃO BASICA - FEZ LOGIN, SETA NA SESSAO, VERIFICA SE É != NULL
+
+
+---- Digamos que o usuário tenha um array de permissões.
+
+-- Na área secret, qualquer um que estiver LOGADO pode entrar.
+
+--Agora há uma área super secret, que só pode entrar quem estiver LOGADO e tiver a ROLE necessária ("ADMIN").
+
+---dentro do Autenticador, há o atributo ROLES, que pode ser setado como um decorator([Autenticador(Roles="")]) ou dentro do Autenticador. 
+
+
+caso queiramos ter um array de strings com as permissões, no Autenticador podemos ter um array (_roles[]) que, no seu metodo get, retorna as roles usando
+'this.roles.split(',');'
+
+
+no AuthorizeCore, é criado o usuario, com dados da Sessao["USUARIO-LOGADO"], um boolean usuarioEstaLogado, que checa se o usuario é != de null, ou seja, se ele buscou
+dados da sessão com sucesso, e um bool temPermissoes, que é '!= this.Roles.Length < 1', que checa se é necessário ter permissoes. então, retorna usuarioEstaLogado &&
+usuarioPossuiPermissao.
+Então, faz-se uma checagem: se o usuário não possuiPermissao, é feito uma checagem se alguma das permissões do usuário é igual a alguma das requeridas pela action.
+
+
+SERVICO DE SESSAO - Classe estática para management da sessão. Nela, tem um método static void CriarSessao, que recebe um UsuarioLogadoModel. Quando é necessário
+usar a Sessão em um local onde não há nenhuma informação, pode-se usar 'HttpContext.Current.Session'. Nela, é setado o ['USUARIO_LOGADO']. Também, é criado um 
+static bool EstaLogado, que faz a verificação se o usuário corrente é != null. Tendo isso, podemos usar EstaLogado  e ServicoSessao no Autenticador.
+Quando temos duplicação de código na sessão, dá para criar um UsuarioLogadoModel UsuarioLogado, estático.
+
+------ TODA A SESSÃO É UM DICIONÁRIO, COM CHAVE E VALOR, QUE AGE DESDE A CRIAÇÃO DA SESSION - NO LOGIN - ATÉ O ABANDON DA SESSION. POR ISSO, UM SERVICODESESSAO É
+NECESSÁRIO, POIS ELE PODE FAZER O MANUSEIO DOS VALORES, CRIACAO DE SESSAO, DEFINICAO E BUSCA DE VALORES, ETC. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

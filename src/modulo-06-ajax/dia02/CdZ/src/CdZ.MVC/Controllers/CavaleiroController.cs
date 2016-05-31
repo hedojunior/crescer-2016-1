@@ -49,7 +49,8 @@ namespace CdZ.MVC.Controllers
         public JsonResult Delete(int id)
         {
             _cavaleiros.Excluir(id);
-            return NoContentJsonVazio();
+            Response.StatusCode = (int)HttpStatusCode.NoContent;
+            return Json(new { }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

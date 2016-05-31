@@ -3,13 +3,7 @@
 @{
     ViewBag.Title = "Listagem";
 }
-<style>
 
-    .imgThumb {
-        width: 250px;
-        height: 150px;
-    }
-</style>
 <h2>Listagem</h2>
 
 <p>
@@ -31,23 +25,24 @@
         </td>
         <td>
             @{ 
-                var src = "";
-                if (item.Imagens.Count() == 0) {
-                    src = "http://blog.guiadohacker.com.br/wp-content/uploads/2016/05/anon.png";
-                }
-                else
+                var src = "http://bit.ly/1NHqC4Z";
+                //if (item.Imagens.Count() == 0 || item.Imagens == null) {
+                //    src = "http://bit.ly/1NHqC4Z";
+                //}
+                //else
+                //{
+                for (var i = 0; i < item.Imagens.Count; i++)
                 {
-                    for (var i = 0; i <= item.Imagens.Count; i++)
+                    if(item.Imagens[i].IsThumb)
                     {
-                        if(item.Imagens[i].IsThumb)
-                        {
-                            src = item.Imagens[i].Url;
-                            break;
-                        }
+                        src = item.Imagens[i].Url;
+                        break;
                     }
                 }
             }
+            
 
+          
             <img src="@src" alt="Thumbnail" class="imgThumb"  />
         </td>
         <td>

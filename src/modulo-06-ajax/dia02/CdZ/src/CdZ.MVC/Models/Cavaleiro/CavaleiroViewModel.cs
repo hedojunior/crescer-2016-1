@@ -34,7 +34,7 @@ namespace CdZ.MVC.Models.Cavaleiro
         {
             var golpesObj = Golpes.Select(_ =>_.ToModel()).ToList();
             var imagensObj = Imagens.Select(_ => _.ToModel()).ToList();
-             
+
             return new Dominio.Cavaleiro
                 (Nome, AlturaCm, PesoLb, DataNascimentoObj, Signo, TipoSanguineo, 
                 LocalNascimento.ToModel(), LocalTreinamento.ToModel(), golpesObj, imagensObj);

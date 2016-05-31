@@ -2,14 +2,198 @@
     .erro {
         color: red;
     }
+
+    body {
+        background-image: url('http://contemporary-home-computing.org/prof-dr-style/bg/deep.gif');
+        color: yellow;
+        font-family: 'Comic Sans MS',sans-serif;
+    }
+
+    .imgThumb {
+        width: 250px;
+        height: 150px;
+        margin-left: 20px;
+    }
+
+    #btnExcluir {
+        margin-left: 20px;
+        background-color: cyan;
+        color: white;
+    }
+
+    #btnEditar {
+        margin-left: 10px;
+        background-color: magenta;
+        color: white;
+    }
+
+    #btnCriar {
+        background-color: yellow;
+        color: darkblue;
+    }
+
+    #frmNovoCavaleiro {
+        display: none;
+    }
+
+    #frmEditarCavaleiro {
+        display: none;
+    }
 </style>
 
-<h3>Listagem de cavaleiros</h3>
+<h3>Cavaleiros cadastrados:</h3>
 <div class="loader" id="spinner" style="display: none;">Carregando!</div>
 <ul id="cavaleiros"></ul>
 <div id="feedback"></div>
-<button id="btnCriar" onclick="window.location = '/Cavaleiro/CadastroCavaleiro'">Cadastrar cavaleiro</button>  
+<button id="btnCriar">Cadastrar Cavaleiro</button>
 
+<form id="frmNovoCavaleiro" method="POST">
+    <!-- nome -->
+    <input type="hidden" name="id" id="id" />
+    <fieldset class="form-group">
+        <label for="txtNomeCavaleiro">Nome</label>
+        <input id="txtNomeCavaleiro" type="text" class="form-control" name="nome" placeholder="Ex: Jon Snow">
+    </fieldset>
+    <!-- tipoSanguineo -->
+    <fieldset class="form-group">
+        <label for="slTipoSanguineo">Tipo Sanguíneo</label>
+        <select class="form-control" id="slTipoSanguineo" name="tipoSanguineo">
+            <option selected>Selecione</option>
+            <option value="1">A</option>
+            <option value="2">B</option>
+            <option value="3">AB</option>
+            <option value="4">O</option>
+        </select>
+    </fieldset>
+    <!-- dataNascimento -->
+    <fieldset class="form-group">
+        <label for="txtDtNascimento">Data de nascimento</label>
+        <input class="form-control" id="txtDtNascimento" type="text" name="dataNascimento" placeholder="Ex: 4/11/2016">
+    </fieldset>
+    <!-- altura em metros -->
+    <fieldset class="form-group">
+        <label for="nbAlturaMetros">Altura (metros)</label>
+        <input class="form-control" id="nbAlturaMetros" type="number" name="alturaMetros" placeholder="Ex: 1.76" min="0" step="0.01"> <!-- step: https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/Input -->
+    </fieldset>
+    <!-- peso em kilos -->
+    <fieldset class="form-group">
+        <label for="nbPesoKilos">Peso (kilos)</label>
+        <input class="form-control" id="nbPesoKilos" type="number" name="pesoKg" placeholder="Ex: 73.5" min="0" step="0.01">
+    </fieldset>
+    <!-- signo -->
+    <fieldset class="form-group">
+        <label for="slSigno">Signo</label>
+        <select class="form-control" id="slSigno" name="signo">
+            <option selected>Selecione</option>
+            <option value="1">Áries</option>
+            <option value="2">Touro</option>
+            <option value="3">Gêmeos</option>
+            <option value="4">Câncer</option>
+            <option value="5">Leão</option>
+            <option value="6">Virgem</option>
+            <option value="7">Libra</option>
+            <option value="8">Escorpião</option>
+            <option value="9">Sagitário</option>
+            <option value="10">Capricórnio</option>
+            <option value="11">Aquário</option>
+            <option value="12">Peixes</option>
+        </select>
+    </fieldset>
+    <!-- localNascimento -->
+    <fieldset class="form-group">
+        <label for="txtLocalNascimento">Local de nascimento</label>
+        <input id="txtLocalNascimento" class="form-control" type="text" name="localNascimento" placeholder="Ex: Porto Real">
+    </fieldset>
+    <!-- localTreinamento -->
+    <fieldset class="form-group">
+        <label for="txtLocalTreinamento">Local de treinamento</label>
+        <input class="form-control" id="txtLocalTreinamento" type="text" name="localTreinamento" placeholder="Ex: Braavos">
+    </fieldset>
+    <!-- Adicionar golpe -->
+
+    <button id="btnAdicionarGolpe" type="button">Adicionar golpe...</button>
+    <ul id="novosGolpes"></ul>
+    <!-- Adicionar imagem -->
+    <button id="btnAdicionarImg" type="button">Adicionar imagem...</button>
+    <span style="color: red; font-size:1em;">*caso não seja adicionada nenhuma imagem com 'É Thumbnail' marcado, será usada uma imagem padrão.</span>
+    <ul id="novasImagens"></ul>
+    <input type="submit" class="btn btn-primary" value="Cadastrar!" />
+</form>
+
+<form id="frmEditarCavaleiro" method="POST">
+    <!-- nome -->
+    <input type="hidden" name="id" id="id" />
+    <fieldset class="form-group">
+        <label for="txtNomeCavaleiro">Nome</label>
+        <input id="txtNomeCavaleiro" type="text" class="form-control" name="nome" placeholder="Ex: Jon Snow">
+    </fieldset>
+    <!-- tipoSanguineo -->
+    <fieldset class="form-group">
+        <label for="slTipoSanguineo">Tipo Sanguíneo</label>
+        <select class="form-control" id="slTipoSanguineo" name="tipoSanguineo">
+            <option selected>Selecione</option>
+            <option value="1">A</option>
+            <option value="2">B</option>
+            <option value="3">AB</option>
+            <option value="4">O</option>
+        </select>
+    </fieldset>
+    <!-- dataNascimento -->
+    <fieldset class="form-group">
+        <label for="txtDtNascimento">Data de nascimento</label>
+        <input class="form-control" id="txtDtNascimento" type="text" name="dataNascimento" placeholder="Ex: 4/11/2016">
+    </fieldset>
+    <!-- altura em metros -->
+    <fieldset class="form-group">
+        <label for="nbAlturaMetros">Altura (metros)</label>
+        <input class="form-control" id="nbAlturaMetros" type="number" name="alturaMetros" placeholder="Ex: 1.76" min="0" step="0.01"> <!-- step: https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/Input -->
+    </fieldset>
+    <!-- peso em kilos -->
+    <fieldset class="form-group">
+        <label for="nbPesoKilos">Peso (kilos)</label>
+        <input class="form-control" id="nbPesoKilos" type="number" name="pesoKg" placeholder="Ex: 73.5" min="0" step="0.01">
+    </fieldset>
+    <!-- signo -->
+    <fieldset class="form-group">
+        <label for="slSigno">Signo</label>
+        <select class="form-control" id="slSigno" name="signo">
+            <option selected>Selecione</option>
+            <option value="1">Áries</option>
+            <option value="2">Touro</option>
+            <option value="3">Gêmeos</option>
+            <option value="4">Câncer</option>
+            <option value="5">Leão</option>
+            <option value="6">Virgem</option>
+            <option value="7">Libra</option>
+            <option value="8">Escorpião</option>
+            <option value="9">Sagitário</option>
+            <option value="10">Capricórnio</option>
+            <option value="11">Aquário</option>
+            <option value="12">Peixes</option>
+        </select>
+    </fieldset>
+    <!-- localNascimento -->
+    <fieldset class="form-group">
+        <label for="txtLocalNascimento">Local de nascimento</label>
+        <input id="txtLocalNascimento" class="form-control" type="text" name="localNascimento" placeholder="Ex: Porto Real">
+    </fieldset>
+    <!-- localTreinamento -->
+    <fieldset class="form-group">
+        <label for="txtLocalTreinamento">Local de treinamento</label>
+        <input class="form-control" id="txtLocalTreinamento" type="text" name="localTreinamento" placeholder="Ex: Braavos">
+    </fieldset>
+    <!-- Adicionar golpe -->
+
+    <button id="btnAdicionarGolpe" type="button">Adicionar golpe...</button>
+    <ul id="novosGolpes"></ul>
+    <!-- Adicionar imagem -->
+    <button id="btnAdicionarImg" type="button">Adicionar imagem...</button>
+    <span style="color: red; font-size:1em;">*caso não seja adicionada nenhuma imagem com 'É Thumbnail' marcado, será usada uma imagem padrão.</span>
+    <ul id="novasImagens"></ul>
+    <input type="submit" class="btn btn-primary" value="Salvar!" />
+</form>
+
+  
 <script>
     var urlCavaleiroGet = '@Url.Action("Get")';
     var urlCavaleiroPost = '@Url.Action("Post")';
