@@ -58,15 +58,12 @@ SELECT P.DATAPEDIDO, PROD.NOME, PI.QUANTIDADE, PROD.PRECOVENDA, P.VALORPEDIDO VA
   FROM 
     PEDIDO P 
       JOIN 
-    Cliente C 
-      ON P.IDCLIENTE = C.IDCLIENTE 
+    Cliente C ON P.IDCLIENTE = C.IDCLIENTE 
       JOIN 
-    PedidoItem PI 
-      ON P.IDPEDIDO = PI.IDPEDIDO 
+    PedidoItem PI ON P.IDPEDIDO = PI.IDPEDIDO 
       JOIN 
-    Produto prod 
-      ON PI.IDPRODUTO = prod.IDPRODUTO 
-        WHERE C.IDCliente = :pIDCliente;
+    Produto prod ON PI.IDPRODUTO = prod.IDPRODUTO 
+      WHERE C.IDCliente = :pIDCliente;
  
  /* 
  Faça uma consulta que receba um parâmetro sendo o IDProduto 
@@ -79,16 +76,16 @@ SELECT
     FROM 
       PEDIDOITEM PI 
         JOIN 
-      PRODUTO P 
-        ON PI.IDPRODUTO = P.IDPRODUTO 
+      PRODUTO P ON PI.IDPRODUTO = P.IDPRODUTO 
         JOIN 
-      PEDIDO PED 
-        ON PED.IDPEDIDO = PI.IDPEDIDO 
-          WHERE PED.DATAPEDIDO 
+      PEDIDO PED ON PED.IDPEDIDO = PI.IDPEDIDO 
+        WHERE PED.DATAPEDIDO 
             BETWEEN 
                 TO_DATE('01/01/16','dd/MM/yy') 
               AND 
-                CURRENT_TIMESTAMP;
+                CURRENT_TIMESTAMP
+            AND
+            P.IDProduto = :pIDProduto;
 
 /*
  Utilizando de funções de agrupamento (aggregation function), faça uma consulta
@@ -99,19 +96,22 @@ SELECT
 */
 
 SELECT DISTINCT
-  COUNT(1),  
-    SUM(PI.QUANTIDADE) AS PRODUTOSDISTINTOS,
-      SUM(PED.VALORPEDIDO) AS VALORTOTAL, 
-        MIN(PED.VALORPEDIDO) AS VALORMINIMO, 
-          MAX(PED.VALORPEDIDO) AS VALORMAXIMO, 
-            AVG(PED.VALORPEDIDO) AS MEDIA
-            FROM PEDIDO PED 
+  to_char(PED.DATAPEDIDO,'YYYY-MM'),
+    COUNT(1),  
+      SUM(PI.QUANTIDADE) AS PRODUTOSDISTINTOS,
+        SUM(PED.VALORPEDIDO) AS VALORTOTAL, 
+          MIN(PED.VALORPEDIDO) AS VALORMINIMO, 
+            MAX(PED.VALORPEDIDO) AS VALORMAXIMO, 
+              AVG(PED.VALORPEDIDO) AS MEDIA
+              FROM PEDIDO PED 
                 JOIN 
-            PEDIDOITEM PI 
-                ON PED.IDPEDIDO = PI.IDPEDIDO 
+              PEDIDOITEM PI ON PED.IDPEDIDO = PI.IDPEDIDO 
                 JOIN 
-            PRODUTO prod 
-                ON PI.IDPRODUTO = prod.IDPRODUTO
-                  GROUP BY TO_CHAR(PED.DATAPEDIDO,'MM-YY'); 
-            
+            PRODUTO prod ON PI.IDPRODUTO = prod.IDPRODUTO
+              GROUP BY 
+                TO_CHAR(PED.DATAPEDIDO,'YYYY-MM')
+              ORDER BY
+              (to_char(PED.DATAPEDIDO,'YYYY-MM')) ASC;
+              
+
             
