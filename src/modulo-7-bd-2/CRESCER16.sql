@@ -113,5 +113,15 @@ SELECT DISTINCT
               ORDER BY
               (to_char(PED.DATAPEDIDO,'YYYY-MM')) ASC;
               
+/* Corrigido */
 
-            
+SELECT TO_CHAR( ped.DataPedido, 'mm/yyyy') ANO_MES,
+  COUNT(distinct item.IDProduto) Produtos_Distintos,
+  SUM(ped.ValorPedido) as Valor_Pedidos,
+  MIN(ped.ValorPedido) as Menor_Pedido,
+  MAX(ped.ValorPedido) as Maior_Pedido,
+  AVG(ped.ValorPedido) as Media_Pedido,
+  COUNT(distinct ped.IDPedido) as total_Pedidos
+FROM Pedido ped
+  inner join PedidoItem item on item.IDPedido = ped.IDpedido
+GROUP BY TO_CHAR(ped.DataPedido, 'mm/yyyy');
