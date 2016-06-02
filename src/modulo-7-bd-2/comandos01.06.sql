@@ -64,24 +64,88 @@ verifique se já existe um registro em Cidade para a combinação, caso não exista 
 o Utilize uma SEQUENCE para gerar o próximo ID válido; o Ignore o case sensitive na validação.  
 o Se já existir a cidade+uf deve imprimir uma mensagem informando. 
 */
+select max(IDCidade) from Cidade;
 
 DECLARE
 vExisteCidade Integer;
-vParamNomeCidade VARCHAR2(100);
-vParamUFCidade VARCHAR2(2);
+vParamNomeCidade VARCHAR2(100) := '&NomeCidade';
+vParamUFCidade VARCHAR2(2) := '&UFCidade';
 
 BEGIN
-vParamNomeCidade := &NomeCidade;
-vParamUFCidade := &UFCidade;
 
 SELECT Count(1) 
 INTO vExisteCidade
 from Cidade where lower(Nome) = lower(vParamNomeCidade) and lower(UF) = lower(vParamUFCidade);
 
 if (vExisteCidade = 0) then
-INSERT INTO Cidade(Nome,UF) Values (vParamNomeCidade, vParamUFCidade);
+INSERT INTO Cidade(IDCidade,Nome,UF) Values (sqCidade.nextval,vParamNomeCidade, vParamUFCidade);
 else
 DBMS_OUTPUT.PUT_LINE('A cidade já existe!');
 end if;
 
 end;
+
+-- EX 1 PROCEDURE
+CREATE PROCEDURE
+  CalculoValorPedido (pIdPedido In Number) as
+BEGIN
+  Update Pedido
+    set ValorPedido = 
+      (select SUM(PRECOUNITARIO * QUANTIDADE) from PEDIDOITEM WHERE PEDIDOITEM.IDPEDIDO = pIDPedido)
+    WHERE IDPEDIDO = pIDPedido;
+END;
+
+
+
+DECLARE
+  vIDPedido NUMBER := '&Informe_IDPedido';
+BEGIN
+  CalculoValorPedido(vIDPedido);
+  END;
+  
+-- ex 1 funcao
+
+CREATE OR REPLACE
+FUNCTION BUSCA_DATA_ULTIMO_PEDIDO
+(pIDCliente IN NUMBER) RETURN DATE AS vDataUltimoPedido PEDIDO.DATAPEDIDO%type;
+
+BEGIN
+  SELECT MAX(ped.DATAPEDIDO)
+  INTO vDataUltimoPedido
+  FROM Pedido ped
+  JOIN Cliente cli
+  on ped.IDCLIENTE = cli.IDCliente
+  WHERE cli.IDCliente = pIDCliente;
+  
+  RETURN vDataUltimoPedido;
+  
+EXCEPTION
+  WHEN no_data_found THEN
+    Return ('Produto não encontrado!');
+END;
+
+SELECT Nome, BUSCA_DATA_ULTIMO_PEDIDO(&IDCliente) as Data_Ultimo_Pedido
+FROM Cliente WHERE IDCliente = &IDCliente;
+
+-- ex 2 func
+
+CREATE OR REPLACE
+FUNCTION QUANTIDADE_VENDIDA_PERIODO(vIDProduto IN NUMBER, vPeriodo IN VARCHAR2)
+RETURN NUMBER AS vQuantidade PEDIDOITEM.QUANTIDADE%TYPE;
+
+BEGIN
+SELECT SUM(PI.QUANTIDADE)
+INTO vQuantidade
+FROM PEDIDOITEM PI
+JOIN PEDIDO PED
+ON PI.IDPEDIDO = PED.IDPEDIDO
+JOIN PRODUTO PROD
+ON PI.IDPRODUTO = PROD.IDPRODUTO
+WHERE PROD.IDPRODUTO = vIDProduto
+AND ped.DATAPEDIDO BETWEEN to_date('1/'|| vPeriodo,'dd/MM/yyyy') AND LAST_DAY(to_date('1/'||vPeriodo,'dd-MM-yyyy'));
+
+RETURN vQuantidade;
+
+END;
+
+SELECT QUANTIDADE_VENDIDA_PERIODO(4520,'03/2015') FROM DUAL;
