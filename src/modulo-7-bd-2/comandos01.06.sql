@@ -2,9 +2,9 @@
 Faça um bloco PL/SQL que receba UM parâmetro (em tempo de execução apenas): IDCliente
 , e então pesquise nome do cliente e cidade (caso tenha), e outras informações referente
 a pedidos: 
-o  Data da primeira compra (pedido) realizado; 
-o  Data da última compra realizada. 
-o  Valor total dos pedidos, quantidade de pedidos e média de valor dos pedidos. 
+  Data da primeira compra (pedido) realizado; 
+  Data da última compra realizada. 
+  Valor total dos pedidos, quantidade de pedidos e média de valor dos pedidos. 
 */
 
 DECLARE
@@ -67,12 +67,10 @@ o Se já existir a cidade+uf deve imprimir uma mensagem informando.
 
 DECLARE
 vExisteCidade Integer;
-vParamNomeCidade VARCHAR2(100);
-vParamUFCidade VARCHAR2(2);
+vParamNomeCidade VARCHAR2(100) := '&NomeCidade';
+vParamUFCidade VARCHAR2(2) := '&UFCidade';
 
 BEGIN
-vParamNomeCidade := &NomeCidade;
-vParamUFCidade := &UFCidade;
 
 SELECT Count(1) 
 INTO vExisteCidade
@@ -85,3 +83,69 @@ DBMS_OUTPUT.PUT_LINE('A cidade já existe!');
 end if;
 
 end;
+
+
+/*Crie um procedimento que receba por parâmetro o IDPedido e atualize o valor do pedido conforme seus itens.
+? Valor unitário * Quantidade */
+
+CREATE PROCEDURE 
+  CalculoValorPedido (pIDPedido In Number) as 
+BEGIN 
+  Update PEDIDO 
+    set VALORPEDIDO = 
+      (select (PRECOUNITARIO * QUANTIDADE) from PEDIDOITEM WHERE PEDIDOITEM.IDPEDIDO = pIDPedido and rownum = 1) 
+    WHERE IDPEDIDO = pIDPedido; 
+END;
+
+DECLARE
+  vIDPedido NUMBER := '&Informe_IDPedido';
+BEGIN
+  CalculoValorPedido(vIDPedido);
+END;
+
+/*Crie uma função que receba por parâmetro o IDCliente e retorne a data do último pedido realizado pelo cliente.*/
+
+CREATE OR REPLACE 
+FUNCTION BUSCA_DATA_ULTIMO_PEDIDO
+(pIDCliente in Number) RETURN DATE as vDataUltimoPedido PEDIDO.DATAPEDIDO%type;
+BEGIN
+  SELECT max(ped.DATAPEDIDO)
+  INTO vDataUltimoPedido
+  FROM Pedido ped
+  JOIN Cliente cli
+  on ped.IDCLIENTE = cli.IDCLIENTE
+  WHERE cli.IDCLIENTE = pIDCliente;
+  
+  RETURN vDataUltimoPedido;
+  
+EXCEPTION
+  When no_data_found Then
+    Return 'Produto não encontrado!';
+END;
+
+select Nome, BUSCA_DATA_ULTIMO_PEDIDO(&IDCliente) as Data_Ultimo_Pedido
+from Cliente where IDCliente = &IDCliente;
+
+/*Crie uma função que receba por parâmetro o IDProduto e o período (mês e ano) e retorne a quantidade (total)
+desde produtos vendidos no período (considere todos os dias do mês).*/
+
+CREATE OR REPLACE
+FUNCTION Quantidade_vendida_periodo (vIDProduto IN Number, vPeriodo IN DATE)
+RETURN NUMBER AS vQuantidade PEDIDOITEM.QUANTIDADE%type;  
+BEGIN
+SELECT SUM(pi.QUANTIDADE)
+INTO vQuantidade
+FROM PedidoItem pi
+JOIN Pedido ped
+ON pi.IDPedido = ped.IDPedido
+JOIN Produto prod
+ON pi.IDProduto = prod.IDProduto
+WHERE prod.IDProduto = vIDProduto
+AND ped.DATAPEDIDO BETWEEN FIRST_DAY(EXTRACT(MONTHFROMDATE vPeriodo)) AND LAST_DAY(EXTRACT(MONTHFROMDATE vPeriodo)))
+AND EXTRACT(YEARFROMDATE ped.DATAPEDIDO) = EXTRACT(YEARFROMDATE vPeriodo)
+AND EXTRACT(MONTHFROMDATE ped.DATAPEDIDO) = EXTRACT(MONTHFROMDATE vPeriodo);
+RETURN vQuantidade;
+
+END;                 
+
+select Quantidade_Vendida_Periodo(&IDProduto, &Periodo) from DUAL; 
