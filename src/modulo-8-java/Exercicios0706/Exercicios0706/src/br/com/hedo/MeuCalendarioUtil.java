@@ -48,7 +48,8 @@ public class MeuCalendarioUtil {
         cal.setTime(new Date());
         long diff = cal.getTime().getTime() - thenDate.getTime();
         Date dataFinal = new Date(diff);
-        SimpleDateFormat format = new SimpleDateFormat("yy MM dd HH:mm:ss");
-        return format.format(dataFinal);
-    }
+       cal.setTime(dataFinal);
+       
+       return String.format("Ano(s) %s, meses %s, dia(s) %s", cal.get(Calendar.YEAR) - 1970, cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
+     }
 }
