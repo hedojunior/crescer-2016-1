@@ -8,18 +8,35 @@ import java.util.Scanner;
  * @author hedo.junior
  */
 public class MeuFileUtils {
-    
+
     public static void main(String[] args) {
         MeuFileUtils mf = new MeuFileUtils();
-        
-        try(final Scanner teclado = new Scanner(System.in)){
-            String nome = teclado.nextLine();
-            mf.showAbsolutePath(nome);
-        }catch(Exception e){
-            e.printStackTrace();
-        }        
+        Scanner teclado = new Scanner(System.in);
+        switch(args[0]){
+            case "mk":
+                System.out.println("Digite o nome do arquivo:");
+                mf.createFileOrFolder(teclado.nextLine());
+            break;
+            case "rm":
+                System.out.println("Digite o nome do arquivo:");
+                mf.deleteFile(teclado.nextLine());
+            break;
+            case "ls":
+                System.out.println("Digite o nome do arquivo:");
+                mf.showAbsolutePath(teclado.nextLine());
+            break;
+            case "mv":
+                System.out.println("Digite o nome atual do arquivo:");
+                String atual = teclado.nextLine();
+                System.out.println("Digite o novo path do arquivo:");
+                String novo = teclado.nextLine();
+                mf.moveFile(atual, novo);
+            break;
+            default:
+                System.out.println("Valor inválido.");
+        }
     }
-    
+
     public void createFileOrFolder(String fileName){
         try {
             if(fileName.contains(".")){
@@ -61,7 +78,7 @@ public class MeuFileUtils {
                 }
             }
             else {
-                file.getName();
+                System.out.println(file.getAbsolutePath());
             }
         }
         catch(Exception e){
