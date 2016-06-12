@@ -23,4 +23,5 @@ public interface ICRUD<PK, T> {
 
     List<T> buscarTodos();
 
+    void exportToCSVFile();
 }
