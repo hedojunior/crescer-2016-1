@@ -22,19 +22,15 @@ import java.util.Scanner;
  */
 public class MeuSQLUtils {
 
-    private static final String SELECTCSV = "SELECT * FROM CIDADE";
+    private static final String SELECTCSV = "SELECT * FROM CLIENTE";
 
     public static void main(String[] args) {
-//        MeuSQLUtils sql = new MeuSQLUtils();
+        MeuSQLUtils sql = new MeuSQLUtils();
         try (Scanner teclado = new Scanner(System.in)) {
             System.out.println("Digite qualquer tecla para iniciar a exportação:");
             String tecla = teclado.nextLine();
-            if(!tecla.toLowerCase().matches("^select\\s.*$"))
-                System.out.println("Não é select");
-            else
-                System.out.println("É select");
-//            System.out.println("Aguarde, exportando o arquivo para CSV...");
-//            sql.exportCSV();
+            System.out.println("Aguarde, exportando o arquivo para CSV...");
+            sql.exportCSV();
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
@@ -114,13 +110,18 @@ public class MeuSQLUtils {
                 try (ResultSet rs = st.executeQuery(SELECTCSV)) {
                     ArrayList<String> linhas = new ArrayList<String>();
                     while (rs.next()) {
-                        String id = String.valueOf(rs.getInt("IDCidade"));
-                        String nome = rs.getString("Nome");
-                        String uf = rs.getString("UF");
-                        String concatenado = id + ";" + nome + ";" + uf + ";";
+                        String id = String.valueOf(rs.getInt("IDCLIENTE"));
+                        String nome = rs.getString("NOME");
+                        String razaosocial = rs.getString("RAZAOSOCIAL");
+                        String endereco = rs.getString("ENDERECO");
+                        String bairro = rs.getString("BAIRRO");
+                        String idcidade = String.valueOf(rs.getInt("IDCIDADE"));
+                        String cep = String.valueOf(rs.getInt("CEP"));
+                        String situacao = rs.getString("SITUACAO");
+                        String concatenado = id + ";" + nome + ";" + razaosocial + ";" + endereco + ";" + bairro + ";" + idcidade + ";" + cep + ";" + situacao + ";";
                         linhas.add(concatenado);
                     }
-                    File csv = new File("export.csv");
+                    File csv = new File("cliente.csv");
                     try (final Writer writer = new FileWriter(csv)) {
                         try (final BufferedWriter bfWriter = new BufferedWriter(writer)) {
                             for(int i = 0; i < linhas.size(); i++){
