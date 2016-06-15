@@ -5,14 +5,13 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import org.eclipse.persistence.sequencing.Sequence;
 
 @Entity
 @Table(name = "PESSOA")
@@ -20,43 +19,65 @@ public class Pessoa implements Serializable {
 
     @Id // Identifica a PK
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_PESSOA")
-    @SequenceGenerator(name="SEQ_PESSOA",sequenceName = "SEQ_PESSOA")
+    @SequenceGenerator(name = "SEQ_PESSOA", sequenceName = "SEQ_PESSOA")
     @Basic(optional = false)
     @Column(name = "ID_PESSOA")
-    private Long idPessoa;
+    private Long id;
 
     @Basic(optional = false)
-    @Column(name = "NM_PESSOA")
-    private String nmPessoa;
+    @Column(name = "NM_PESSOA", length = 60)
+    private String nome;
+
+    @Basic(optional = false)
+    @Column(name = "IDADE")
+    private Integer idade;
     
-    @Basic(optional = true)
-    @Column(name= "DT_NASCIMENTO")
-    @Temporal(TemporalType.DATE)
-    private Date dtNascimento;
+    @Basic(optional = false)
+    @Column(name = "SEXO")
+    @Enumerated(EnumType.STRING)
+    private Sexo sexo;
 
-     // GETTER AND SETTER
-
-    public Long getIdPessoa() {
-        return idPessoa;
+    public Long getId() {
+        return id;
     }
 
-    public Date getDtNascimento() {
-        return dtNascimento;
+    public String getNome() {
+        return nome;
     }
 
-    public void setDtNascimento(Date dtNascimento) {
-        this.dtNascimento = dtNascimento;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public void setIdPessoa(Long idPessoa) {
-        this.idPessoa = idPessoa;
+    public Sexo getSexo() {
+        return sexo;
     }
 
-    public String getNmPessoa() {
-        return nmPessoa;
+    public void setSexo(Sexo sexo) {
+        this.sexo = sexo;
     }
 
-    public void setNmPessoa(String nmPessoa) {
-        this.nmPessoa = nmPessoa;
+    public Pessoa() {
     }
+
+    public Pessoa(String nome, Sexo sexo) {
+        this.nome = nome;
+        this.sexo = sexo;
+    }
+
+    public Pessoa(String nome, Integer idade, Sexo sexo) {
+        this.nome = nome;
+        this.idade = idade;
+        this.sexo = sexo;
+    }
+
+    public Integer getIdade() {
+        return idade;
+    }
+
+    public void setIdade(Integer idade) {
+        this.idade = idade;
+    }
+    
+
 }
