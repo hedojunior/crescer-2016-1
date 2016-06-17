@@ -8,10 +8,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-/**
- * @author Carlos H. Nonnemacher
- */
-@FacesConverter("myDateConverter")
+@FacesConverter("CapNascimento")
 public class DateConverter implements Converter {
 
     private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy");

@@ -1,14 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.crescer.entity;
 
+import java.io.Serializable;
+
 /**
- *
- * @author hedo.junior
+ * @author Carlos H. Nonnemacher
+ * @param <ID>
  */
-public abstract class SerializableID {
-    
+public abstract class SerializableID<ID extends Serializable> implements Serializable {
+
+    public abstract ID getId();
+
 }

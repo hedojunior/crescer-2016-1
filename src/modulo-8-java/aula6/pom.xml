@@ -8,6 +8,8 @@
   <modules>
     <module>crescer-web</module>
     <module>web-form-template</module>
+    <module>aulaSpring</module>
+    <module>aula8</module>
   </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
