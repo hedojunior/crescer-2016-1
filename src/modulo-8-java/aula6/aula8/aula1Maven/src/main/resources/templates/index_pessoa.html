@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>thymeleaf</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+        <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css"/>
+
+    </head>
+    <body> 
+        <div class="panel" id="main-panel">
+            <div class="panel-heading">
+                <h3 class="panel-title" th:text="#{pessoa.header}"/>
+            </div>
+            <div class="panel-body">
+                <form class="form-inline" role="form" action="#" th:action="@{/rest/pessoa/save}" th:object="${pessoa}" method="POST">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="inputNome" placeholder="Nome" th:field="*{nome}" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="inputDataNasc" placeholder="11/04/1998" th:field="*{nascimento}" />
+                    </div>
+                    <input type="hidden" id="inputId" th:field="*{id}" value ="0" />
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </form>
+            </div>
+
+            <table class="table table-striped" id="tablePessoas">
+                <thead>
+                    <tr>
+                        <th th:text="#{pessoa.id}"/>
+                        <th th:text="#{pessoa.nome}"/>
+                        <th th:text="#{pessoa.nascimento}"/>
+                        <th th:text="#{pessoa.excluir}"/>
+                        <th th:text="#{pessoa.editar}"/>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="p : ${pessoas}">
+                        <td th:text="${p.id}" name="tdId">ID</td>
+                        <td th:text="${p.nome}" name="tdNome">NOME</td>
+                        <td th:text="${p.nascimento}" name="tdDataNasc">DATANASC</td>
+                        <td>
+                            <button name ="btnExcluir" class="btn btn-danger" th:attr="value=${p.id}">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"/>
+                            </button>
+                        </td>
+                        <td>
+                            <button name="btnEditar" class="btn btn-warning" th:attr="value=${p.id}">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"/>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+        <script th:src="@{/css/indexPessoa.js}"></script>
+    </body>
+</html>

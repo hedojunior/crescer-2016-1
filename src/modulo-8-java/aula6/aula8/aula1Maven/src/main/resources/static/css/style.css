@@ -1,0 +1,21 @@
+body {
+    margin: 0px;
+    background-image: url('http://static.vecteezy.com/system/resources/previews/000/094/491/original/polygonal-texture-background-vector.jpg');
+}
+
+#main-panel{
+    width: 900px;
+    margin-left: 25%;
+    margin-top: 70px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.panel-heading{
+    color: cadetblue;
+    border-bottom: 2px solid cadetblue;
+}
+
+thead{
+    color: cadetblue;
+}

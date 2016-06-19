@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 @RequestMapping(value = "/example")
-public class Example {
+public class ExampleController {
 
     @RequestMapping(value = "/index")
     String toIndex(@RequestParam(required = false) String name, Model model) {
