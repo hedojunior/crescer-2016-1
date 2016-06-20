@@ -7,8 +7,9 @@ package br.com.crescer.controllers;
 
 import br.com.crescer.pojos.Pessoa;
 import br.com.crescer.services.PessoaService;
-import java.text.SimpleDateFormat;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,11 +27,18 @@ public class PessoaController {
     PessoaService service;
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String list(Model model) {
-        Iterable<Pessoa> pessoas = service.findAll();
-         model.addAttribute("pessoa", new Pessoa());
+    public String list(Model model, Pageable pageable) {
+        Page<Pessoa> pessoas = service.findAll(pageable);
+        
+        model.addAttribute("pessoa", new Pessoa());
         model.addAttribute("pessoas", pessoas);
+        model.addAttribute("size", 3);
+        model.addAttribute("totalPages", pessoas.getTotalPages());
         return "index_pessoa";
     }
+    
+    public Page<Pessoa> findAll(Pageable pageable) {
+    return service.findAll(pageable);
+}
 
 }

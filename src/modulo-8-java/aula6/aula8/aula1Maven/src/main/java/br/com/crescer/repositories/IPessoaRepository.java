@@ -6,12 +6,12 @@
 package br.com.crescer.repositories;
 
 import br.com.crescer.pojos.Pessoa;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
  *
  * @author Hedo
  */
-public interface IPessoaRepository extends CrudRepository<Pessoa, Long> {
+public interface IPessoaRepository extends PagingAndSortingRepository<Pessoa, Long> {
     
 }

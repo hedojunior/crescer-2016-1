@@ -54,6 +54,24 @@
                     </tr>
                 </tbody>
             </table>
+            <nav class="col-md-offset-4">
+                <ul class="pagination" th:each="i : ${#numbers.sequence(0, totalPages -1)}">
+                    <li>
+                        <a aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                <li th:href="@{${'/pessoa'}(page=${i},size=${size})}">
+                    <a href="#" th:text="${i}"></a>
+                </li>
+                    
+                <li>
+                    <a th:href="@{${'/pessoa'}(page=${i},size=${size})}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
 
         <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>

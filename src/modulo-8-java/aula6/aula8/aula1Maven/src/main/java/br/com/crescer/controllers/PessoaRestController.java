@@ -2,6 +2,8 @@ package br.com.crescer.controllers;
 import br.com.crescer.pojos.Pessoa;
 import br.com.crescer.services.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,8 +18,8 @@ public class PessoaRestController {
     PessoaService service;
     
     @RequestMapping(method = RequestMethod.GET)
-    public Iterable<Pessoa> list() {
-        Iterable<Pessoa> listaPessoas = service.findAll();
+    public Iterable<Pessoa> list(Pageable pageable) {
+        Page<Pessoa> listaPessoas = service.findAll(pageable);
         return listaPessoas;
     }
     

@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -24,8 +26,8 @@ public class PessoaService {
     @Autowired
     IPessoaRepository repository;
 
-    public Iterable<Pessoa> findAll() {
-        return repository.findAll();
+    public Page<Pessoa> findAll(Pageable pageable) {
+        return repository.findAll(pageable);
     }
 
     public Pessoa save(Pessoa p) {
